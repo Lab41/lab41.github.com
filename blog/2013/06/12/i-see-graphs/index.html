@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>I See Graphs - { blog }</title>
+  <meta name="author" content="Lab41">
+
+  
+  <meta name="description" content="At Lab41 we are obsessed with graphs. We see graphs everywhere we look, in everything we think about. One of our goals is to better understand and &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://va-vsrv-github.a.internal/blog/2013/06/12/i-see-graphs/">
+  <link href="/pages/lab41/blog-preview/favicon.png" rel="icon">
+  <link href="/pages/lab41/blog-preview/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/pages/lab41/blog-preview/javascripts/ender.js"></script>
+  <script src="/pages/lab41/blog-preview/javascripts/modernizr-2.0.js"></script>
+  <script src="/pages/lab41/blog-preview/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="{ blog }" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/jquery.fancybox.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/jquery.fancybox-extra.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/jquery.fancybox-buttons.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/jquery.fancybox-thumbs.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/tables.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/kronecker.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+<script src="/pages/lab41/blog-preview/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox-activate.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox-buttons.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox-media.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/r_syntax.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/google_analytics.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script> 
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="/pages/lab41/blog-preview/javascripts/mathjax.js" type="text/x-mathjax-config"></script>
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="/pages/lab41/blog-preview/javascripts/kroneckerapp.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40906884-1, UA-40464073-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/pages/lab41/blog-preview/"><img src="/pages/lab41/blog-preview/images/lab41/logo.png" width="212" height="50" alt='Logo' %}> { blog }</a></h1>
+  
+    <h2>innovation through collaboration</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:va-vsrv-github.a.internal" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/pages/lab41/blog-preview/">Blog</a></li>
+  <li><a href="/pages/lab41/blog-preview/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">I See Graphs</h1>
+    
+    
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-12T15:17:00-07:00" pubdate data-updated="true">Jun 12<span>th</span>, 2013</time>
+        
+  
+
+<span class="byline author vcard"> - <span class="fn">Karthik Ramachandran</span></span>
+
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>At Lab41 we are obsessed with <a href="http://en.wikipedia.org/wiki/Graph_(mathematics)">graphs</a>. We see graphs everywhere we look, in everything we think about. One of our goals is to better understand and advance techniques for manipulating, storing, and analyzing graphs. In this post, we try and do three things: (1) explain what a graph is, (2) show that it’s an important concept, and (3) discuss a way of working with graphs. More specifically, we talk about how to work with graphs as matrices.</p>
+<h3 id="why-are-graphs-important">Why are graphs important?</h3>
+<p><img class="right" src="/pages/lab41/blog-preview/images/2013-06-12-i-see-graphs/directed_graph.png"> A graph is a mathematical construct that describes things that are linked together. Graphs model networks-systems of “things” connected together in some way. For example, the Internet is a physical network of computers connected together by data connections; the Web is a logical network of web pages connected by hyperlinks; and human societies are networks of people connected together by various social relationships. In the language of mathematics, we say each of the “things” in a network is a node and they are connected by “edges.”</p>
+<p>It turns out that you can think of much of the world, both physical and virtual, as a graph. As a mathematical construct, graphs have been around since <a
+href="http://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg">Leonhard Euler tried to figure out the best way to get around Konigsberg in 1735</a>. Since then, graph theory has been embraced by a wide array of disciplines including sociology, economics, physics, computer science, biology, and statistics. An excellent resource for understanding how graphs map onto real world systems is the <a href="http://www.santafe.edu/media/workingpapers/90-004.pdf">“Rosetta Stone for Connectionism,”</a> which maps various real world systems onto graph concepts. Graphs really are everywhere.</p>
+<p>While graphs are prevalent in many fields, the tools for working with graphs, especially large graphs, are still in their infancy. As graph technologies mature it should become easier to model many different problems, and easier to implement solutions. However, we are still figuring out the best ways to store, query, and compute on graphs. Right now, people use different data structures and technologies for different types of graphs and different use cases. Eventually, we need to figure out how to hide that complexity and let people treat graph data as graphs without thinking about what the right tools are for manipulating that data. Marko Rodriguez, a leading graph technologist, has a great summary of several different types of graphs and graph technologies in his <a href="http://markorodriguez.com/2013/01/09/on-graph-computing/">recent blog post</a>. Lab41 is actively using and working with many of the technologies that Marko describes, including the graph database Titan, which we load tested as noted in <a href="https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model">our previous blog entry</a>.</p>
+<p><img class="center" src="/pages/lab41/blog-preview/images/2013-06-12-i-see-graphs/java_graph.png" title="Graph of Java standard class library generated with Gephi 0.8.2" ></p>
+<h3 id="graphs-as-matrices">Graphs as Matrices</h3>
+<p>The earliest tools for working with graphs were tools for manipulating matrices. In mathematics, graphs are frequently expressed as an <a href="http://en.wikipedia.org/wiki/Adjacency_matrix">adjacency matrix</a>. In an adjacency matrix each row/column represents a node, and each entry in the matrix represents the presence of an edge between two nodes. The cool thing about the matrix form of a graph is that once you think of a graph as a matrix, you can apply concepts and methods from linear algebra to your graph analysis. Many common graph metrics and algorithms can easily be expressed in terms of standard matrix operations.</p>
+<p><img class="center" src="/pages/lab41/blog-preview/images/2013-06-12-i-see-graphs/matrix.png" title="A graph represented as an ajacency matrix" ></p>
+<p>The cool thing about the matrix form of a graph is that once you think of a graph as a matrix, you can apply concepts and methods from linear algebra to your graph analysis. Many common graph metrics and algorithms can easily be expressed in terms of standard matrix operations.</p>
+<p>While an adjacency matrix is a mathematical abstraction, it’s also a data structure. In this post we are talking primarily about a matrix as a contiguous block of memory. In most programing languages this is an array of arrays:</p>
+<div class='bogus-wrapper'>
+<notextile>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>//Java
+</span><span class='line'>int[][] matrix = {{1,2,3}, {1,2,3}}</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+
+
+<p>From an engineering perspective, there are a number of advantages to storing a graph as a matrix, if the matrix representation of the graph fits in memory:</p>
+<ul>
+<li>A number of common operations can be performed on matrices quite quickly in comparison to how long they would take on other data structures. (Table 1)
+<div class="table-lab41">
+    <table>
+      <tr>
+        <td> 
+Operation
+</td>
+        <td> 
+Adjacency Matrix
+</td>
+        <td> 
+Adjacency List
+</td>
+        <td> 
+Adjacency Tree
+</td>
+      </tr>
+      <tr>
+        <td> 
+Insert
+</td>
+        <td> 
+O(1)
+</td>
+        <td> 
+O(1)
+</td>
+        <td> 
+O(log(m/n))
+</td>
+      </tr>
+      <tr>
+        <td>
+Delete
+</td>
+        <td>
+O(1)
+</td>
+        <td>
+O(m/n)
+</td>
+        <td>
+O(log(m/n))
+</td>
+      </tr>
+      <tr>
+        <td>
+Find
+</td>
+        <td>
+O(1)
+</td>
+        <td>
+O(m/n)
+</td>
+        <td>
+O(log(m/n))
+</td>
+      </tr>
+      <tr>
+        <td>
+Enumerate
+</td>
+        <td>
+O(n)
+</td>
+        <td>
+O(m/n)
+</td>
+        <td>
+O(m/n)
+</td>
+      </tr>
+    </table>
+  </div>
+</li>
+<li>Nearly all programming languages have highly optimized libraries for storing and working with matrices. For example: Python- <a href="http://www.numpy.org/">NumPy</a>; Java-<a href="http://math.nist.gov/javanumerics/jama/">JAMA</a>, <a href="http://acs.lbl.gov/software/colt/">Colt</a>,<a href="https://code.google.com/p/java-matrix-benchmark/">etc..</a>; C++: <a href="http://arma.sourceforge.net/">Armadillo</a>, <a href="http://eigen.tuxfamily.org/index.php?title=Main_Page">Eigen</a>, etc.</li>
+</ul>
+However, matrices are a relatively limited representation of a graph. There are a number of operations that they perform very poorly, and they can be very memory inefficient:
+<ul>
+<li>
+Adjacency matrices only allow you to capture the structure of the graph. They don’t give you a chance to associate information with each node – in other words, you can’t represent <a href="https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model">property graphs</a> with matrices. For example, if you were modeling the world wide web you might want to store the url, title, and text of each web page in the network, and you can’t do that with an adjacency matrix. Now, if you’re persnickety, you might argue that it’s possible to store edge properties in an adjacency matrix if you think of each entry in the matrix as something other than a numeric value.
+</li>
+
+<li> 
+You can’t model heterogeneous graphs consisting of different types of entities using an adjacency matrix. For example, if you are trying to implement collaborative filtering, you may want to model a network of users to products. Again, if you are persnickety, you might propose various ways of simulating heterogeneous graphs using a single matrix. However, all of those methods will require you to use information not actually stored in the matrix to differentiate nodes of one type from nodes of another.
+</li>
+
+<li> 
+Adjacency matrices are really slow at some critical matrix operations, such as running through the neighbors of a particular node on a sparse matrix (O(n)– where n is the number of nodes in the graph).
+</li>
+
+<li> <p>
+Perhaps worst of all, adjacency matrices are very memory inefficient taking O(n^2) memory. An adjacency matrix has an entry for each possible edge, which means each possible edge is using memory even if it does not exist. This is primarily a problem when working with sparse networks – networks where many of the edges in the network don’t exist. Unfortunately, most real world networks are sparse. For example, if you consider the graph of all people on earth, it is a sparse network because each person knows only a relatively small number of other people. Most of the possible relationships that could exist between people don’t exist. In some ways that is both an engineering problem and an existential problem.
+</p>
+<p>
+To put the memory inefficiency of adjacency matrices into perspective, if each edge in a matrix is stored as a 32 bit integer then the memory requirement for a graph can be calculated by following equation:
+</p>
+<span class="math">\[\text{memory in gb} = \frac{(\text{number of nodes})^2 * 8}{(1024^3)}\]</span>
+<p>
+Thus a graph of 50,000 nodes would take about 10GB of memory, which means you can’t store and manipulate large graphs like the graph of the Web, which is estimated to have 4.7 billion nodes, on most desktop computers.
+</p>
+
+</li>
+
+<p>While technologies for dealing with small matrices – matrices that can fit in memory – are well developed, technologies for dealing with large matrices in a distributed manner are just emerging. One approach to dealing with extremely large matrices is to use some type of super computer, which has a lot of memory. Another approach is to swap portions of the matrix into and out of memory; there are algorithms that can do this relatively efficiently based on the unique properties of a matrix. A new, and extremely interesting, approach is to distribute a matrix computation across the memory of multiple computers. I think the <a href="http://www.cs.cmu.edu/~pegasus/">Pegasus project</a> is a particularly interesting example of the distributed matrix computation approach.</p>
+<h3 id="next-steps">Next Steps</h3>
+<p>If you’re interested in learning more about networks and adjacency matrices, I would highly recommend taking a look at M.E.J. Newman’s <a href="http://www.amazon.com/Networks-An-Introduction-Mark-Newman/dp/0199206651/ref=sr_1_1_bnp_1_har?ie=UTF8&amp;qid=1370024687&amp;sr=8-1&amp;keywords=Newman+Networks">Networks</a>. He has an excellent discussion of the adjacency matrix as a mathematical concept in Chapter 6, and discussion of an adjacency matrix as a data structure in Chapter 9.</p>
+<p>Also, keep an eye on this blog. I plan to address other data structures for storing graph data, and when they may (or may not be) appropriate in a future post.</p></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Karthik Ramachandran</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-12T15:17:00-07:00" pubdate data-updated="true">Jun 12<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="https://va-vsrv-github.a.internal/blog/2013/06/12/i-see-graphs/" data-via="" data-counturl="https://va-vsrv-github.a.internal/blog/2013/06/12/i-see-graphs/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/pages/lab41/blog-preview/blog/2013/05/02/zero-to-large/" title="Previous Post: Zero to Large">&laquo; Zero to Large</a>
+      
+      
+        <a class="basic-alignment right" href="/pages/lab41/blog-preview/blog/2013/08/27/stochastic-kronecker-natural-graphs/" title="Next Post: Stochastic Kronecker natural graphs">Stochastic Kronecker natural graphs &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  This project is maintained by the <a href="https://github.com/LAB41">Lab41</a> Team to serve as a platform of discussion on technology topics relevant to Lab41 Challenges. More information about Lab41 can be found at <a href="www.lab41.org">www.lab41.org</a>.
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/pages/lab41/blog-preview/blog/2013/08/27/stochastic-kronecker-natural-graphs/">Stochastic Kronecker natural graphs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/pages/lab41/blog-preview/blog/2013/06/12/i-see-graphs/">I See Graphs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/pages/lab41/blog-preview/blog/2013/05/02/zero-to-large/">Zero to Large</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/lab41">@lab41</a> on GitHub
+  
+  <script type="text/javascript">
+   (function($) {
+    $(document).on('ready', function() {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'lab41',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+   })(jQuery);
+  </script>
+  <script src="/pages/lab41/blog-preview/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Blog Authors</h1>
+  <ul id="blog_authors">
+    
+      
+    
+      
+    
+      
+    
+    <li><a href="https://github.com/karkumar">Karthik Ramachandran</a></li>
+    <li><a href="https://github.com/cglewis">Charlie Lewis</a></li>
+    <li><a href="https://github.com/nadesai">Nikhil Desai</a></li>
+    <li></li>
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Lab41 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

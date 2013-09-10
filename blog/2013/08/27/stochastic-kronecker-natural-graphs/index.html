@@ -1,0 +1,425 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Stochastic Kronecker natural graphs - { blog }</title>
+  <meta name="author" content="Lab41">
+
+  
+  <meta name="description" content="Why are data scientists so obsessed with graphs? It’s because graphs are the best tools we have for modeling the real world. By analyzing the graph &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://va-vsrv-github.a.internal/blog/2013/08/27/stochastic-kronecker-natural-graphs/">
+  <link href="/pages/lab41/blog-preview/favicon.png" rel="icon">
+  <link href="/pages/lab41/blog-preview/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/pages/lab41/blog-preview/javascripts/ender.js"></script>
+  <script src="/pages/lab41/blog-preview/javascripts/modernizr-2.0.js"></script>
+  <script src="/pages/lab41/blog-preview/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="{ blog }" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/jquery.fancybox.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/jquery.fancybox-extra.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/jquery.fancybox-buttons.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/jquery.fancybox-thumbs.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/tables.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/pages/lab41/blog-preview/stylesheets/custom/kronecker.css" media="screen, projection" rel="stylesheet" type="text/css">
+
+<script src="/pages/lab41/blog-preview/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox-activate.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox-buttons.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox-media.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/fancybox/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/r_syntax.js" type="text/javascript"></script>
+<script src="/pages/lab41/blog-preview/javascripts/google_analytics.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script> 
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="/pages/lab41/blog-preview/javascripts/mathjax.js" type="text/x-mathjax-config"></script>
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="/pages/lab41/blog-preview/javascripts/kroneckerapp.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40906884-1, UA-40464073-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/pages/lab41/blog-preview/"><img src="/pages/lab41/blog-preview/images/lab41/logo.png" width="212" height="50" alt='Logo' %}> { blog }</a></h1>
+  
+    <h2>innovation through collaboration</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:va-vsrv-github.a.internal" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/pages/lab41/blog-preview/">Blog</a></li>
+  <li><a href="/pages/lab41/blog-preview/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Stochastic Kronecker Natural Graphs</h1>
+    
+    
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-27T11:44:00-07:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
+        
+  
+
+<span class="byline author vcard"> - <span class="fn">Nikhil Desai</span></span>
+
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Why are data scientists so obsessed with graphs? It’s because graphs are the best tools we have for modeling the real world. By analyzing the graph representation of a real-world structure, we can glean a variety of insights about it. Graphs that model real-world phenomena are called “natural” graphs, and a great deal of data science focuses on them. However, obtaining natural graphs is hard; it would be nice if we had a way to generate similar-looking graphs without the data-gathering work. Enter the <strong>stochastic Kronecker graph model</strong>: an easy way to generate almost-natural synthetic graphs. This post will give an overview of natural graphs and describe the stochastic Kronecker model of generating graphs.</p>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span12">
+      <h3 style="text-align:center">
+Kronecker Visualization
+</h3>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span8">
+      <div style="font-size: smaller">
+        <p style="width:75%">
+The visualizations below demonstrate the contents of this post. Use the interactive controls to easily create almost-natural synthetic graphs from just a few key parameters:
+</p>
+        <div>
+          
+Node-edge Visual:
+<ul>
+            <li>
+<strong>linkDistance</strong>: relative distance between nodes
+</li>
+            <li>
+<strong>charge</strong>: repulsion force between nodes
+</li>
+            <li>
+<strong>gravity</strong>: attraction force between nodes
+</li>
+          </ul>
+        </div>
+        <div>
+          
+Kronecker Initiation:
+<ul>
+            <li>
+<strong>iterations</strong>: number of generation iterations
+</li>
+            <li>
+<strong>a1…b2</strong>: probability values for the 2x2 initiator matrix
+</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="span4">
+      <div id="controller"></div>
+    </div>
+  </div>
+
+
+<div class="row-fluid">
+    <div class="span6">
+      <div id="graph"></div>
+    </div>
+    <div class="span6">
+      <div id="matrix"></div>
+    </div>
+  </div>
+</div>
+
+<h1 id="introduction-to-natural-graphs">Introduction to natural graphs</h1>
+<h2 id="background-and-motivation">Background and motivation</h2>
+<p>At Lab41, <a href="http://lab41.github.io/blog/2013/06/12/i-see-graphs/">we see graphs everywhere</a>. Much of our work revolves around analyzing and generating natural graphs that have structural properties similar to those found in real-world settings. Such graphs could represent an arrangment of computers in a network, animals in a food chain, or neurons in your brain. Unlike randomly-generated graphs, natural graphs have <em>meaning</em>. For example, characteristics of a system modeled by a graph can be deduced by calculating mathematical metrics such as its nodes’ <em>degree</em> (the number of edges connected to a node in a graph) or the number of triangles formed by its edges.</p>
+<p>Working with natural graphs involves a number of challenges:</p>
+<ul>
+<li><p><strong>Obtaining natural graphs is hard.</strong> One must painstakingly collect a large dataset of real-world observations and connections, find a suitable way to interpret it as a graph, and then actually convert it into a graph - a process that can be tedious and time-consuming.</p></li>
+<li><p><strong>Datasets for natural graphs are scarce.</strong> There are only a small number of existing datasets representing natural graphs. In fact, at the recent <a href="http://graphlab.org/graphlab-workshop-2013/">GraphLab workshop</a>, one speaker noted that he was getting tired of every presenter using the same dataset (articles and links between them on <a href="http://www.wikipedia.org/">Wikipedia</a>) for their analyses!</p></li>
+<li><p><strong>Synthetic graphs miss the mark.</strong> Graphs randomly generated according to standard models (as my colleague Charlie did in <a href="blog/2013/05/02/zero-to-large/">his previous post</a>, and others have done using the <a href="http://en.wikipedia.org/wiki/Erdos-Renyi_model">Erdos-Renyi graph model</a>) tend to look <em>unnatural</em>, no matter what parameters we use. We can’t just create natural graphs by taking a random number generator and going crazy. Instead, we need to find out what properties make a graph “natural,” and then find a way to effectively and efficiently generate graphs with those properties.</p></li>
+</ul>
+<h2 id="properties-of-natural-graphs">Properties of natural graphs</h2>
+<p>So, what makes a graph “natural”? While there is no hard-and-fast definition, nearly all natural graphs exhibit two simple properties:</p>
+<ul>
+<li><p><strong>Power-law degree distributions.</strong> A very small number of nodes have a very large number of connections (high degree), while a large number of nodes have a very small number of connections (low degree). Mathematically speaking, this means the degree of any vertex in the graph can be interpreted as a random variable that follows a <a href="http://en.wikipedia.org/wiki/Power-law_distribution">power-law probability distribution.</a></p></li>
+<li><p><strong>Self-similarity.</strong> In natural graphs, the large-scale connections between parts of the graph reflect the small-scale connections within these different parts. Such a property also appears within fractals, such as the <a href="http://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot</a> or <a href="http://en.wikipedia.org/wiki/Julia_set">Julia</a> sets.</p></li>
+</ul>
+<p>An accurate mechanism for natural graph generation must preserve these properties. As it turns out, the <a href="http://arxiv.org/abs/0812.4905"><strong>stochastic Kronecker graph model</strong></a> does this. It has a few other advantages as well:</p>
+<ul>
+<li><p><strong>Parallelism.</strong> The model allows large graphs to be generated at scale via parallel computation.</p></li>
+<li><p><strong>Structural summarization.</strong> The model provides a very succinct, yet accurate, way to “summarize” the structural properties of natural graphs. Two Kronecker graphs generated with the same parameters will produce graphs with matching values for common structural metrics, such as degree distribution, diameter, hop number, scree value, and network value.</p></li>
+</ul>
+<p>The remainder of this blog post will describe the basic Kronecker generation algorithm and how it can be modified to efficiently generate very large graphs via parallel computation, on top of MapReduce and Hadoop.</p>
+<h1 id="mathematical-formulation">Mathematical formulation</h1>
+<p>The core of the Kronecker generation model is a simple matrix operation called the <em>Kronecker product</em>, an operation on two matrices that “nests” many copies of the second within the first. Since graphs can be represented by adjacency matrices (<a href="http://lab41.github.io/blog/2013/06/12/i-see-graphs/">Karthik’s post</a>), this operation can be generalized to graphs.</p>
+<p>Taking the Kronecker product of a graph with itself thus easily produces a new, self-similar graph, as does taking the more general “Kronecker power” of it. In fact, Kronecker powers will have further self-similarity. For example, below you can see an example of a simple three-node graph, its Kronecker cube, and its Kronecker fourth power, with the self-similarity evident in the adjacency matrix.</p>
+<p><span class='caption-wrapper'><img class='caption' src='/pages/lab41/blog-preview/images/2013-08-27-stochastic-kronecker-natural-graphs/matrix.jpg' width='' height='' title='Fractal patterns visible in the adjecency matrix of a Kronecker graph. Taken from Leskovec et al. (2008).'><span class='caption-text'>Fractal patterns visible in the adjecency matrix of a Kronecker graph. Taken from Leskovec et al. (2008).</span></span></p>
+<p>Because the Kronecker power so easily generates self-similar graphs, it’s reasonable to consider that it might be similarly effective at generating <em>random</em> natural graphs. To do this, we simply start with an adjacency matrix, but allow <em>probabilities</em> to occupy the cells of the matrix rather than ones and zeros. This gives us the <em>stochastic</em> Kronecker graph model.</p>
+<h1 id="algorithms-for-generating-kronecker-graphs">Algorithms for generating Kronecker graphs</h1>
+<h2 id="naive-algorithm">Naive algorithm</h2>
+<p>The simplest algorithm for generating Kronecker graphs is to use Kronecker powers to generate a stochastic adjacency matrix, and then step through each cell of the matrix, flipping a coin biased by the probability present in that matrix. In more detail, the algorithm is as follows:</p>
+<ol type="1">
+<li><p>We start with an <span class="math">\(n\)</span> by <span class="math">\(n\)</span> initiator matrix, <span class="math">\(\theta,\)</span> and the number of iterations <span class="math">\(k\)</span> for which we wish to run the algorithm. We compute the <span class="math">\(k\)</span>-th Kronecker power of the matrix <span class="math">\(\theta,\)</span> giving us a large matrix of probabilities, which we call <span class="math">\(P.\)</span> Each cell in this matrix corresponds to an edge between two nodes in the graph; the formula for the value at the <span class="math">\((u,v)\)</span>th cell of <span class="math">\(P\)</span> is: <span class="math">\[\prod_{i=0}^{k-1} \theta\left[\left\lfloor \frac{u}{n^i}\right\rfloor \bmod{n},
+    \left\lfloor \frac{v}{n^i}\right\rfloor \bmod{n} \right].\]</span> (For convenience, we have assumed the matrix is zero-indexed, as is common in computer science.)</p></li>
+<li><p>To generate the actual graph, we 1) step through each cell in the matrix, 2) take the probability in the cell, 3) flip a coin biased by that probability, and if the coin “comes up heads,” we 4) place the corresponding edge in the graph.</p></li>
+</ol>
+<p>If the initiator matrix is an <span class="math">\(n\times n\)</span> square matrix, and we perform <span class="math">\(k\)</span> iterations of the Kronecker power operation, the generated matrix will have dimension <span class="math">\(N=n^k.\)</span> We will need to take a product of <span class="math">\(k\)</span> values to obtain each cell of the final matrix, and there will be <span class="math">\(N^2\)</span> cells, so the runtime of this algorithm will be <span class="math">\(O(kN^2).\)</span></p>
+<p>This means that if we want to generate a graph with approximately one billion nodes (a reasonable size for a large natural graph) from an initiator matrix of size 2, our runtime expression tells us we should expect to perform approximately <span class="math">\({(30)(10^9)^2 = 3.0\times 10^{19}}\)</span> operations. That’s 30 <em>quintillion</em> operations. This leads us to wonder whether we could do this with fewer operations. Spoiler alert: it’s possible.</p>
+<h2 id="fast-algorithm">Fast algorithm</h2>
+<p>If we switch from a node-oriented approach to an edge-oriented approach, there does exist a faster algorithm for generating a Kronecker graph. Most natural graphs are sparse - <span class="math">\(E = O(N).\)</span> Thus, if we can find a way to place each <em>edge</em>, one at a time, in the graph, rather than figuring out if a pair of nodes has an edge between them, we can vastly reduce the on-average running time. To do this, we need to figure out how many edges are in the graph, and we need to figure out which nodes are associated with each edge.</p>
+<p>It turns out that the expected number of edges in a stochastically generated Kronecker graph is encoded within the initiator matrix itself - it’s given by: <span class="math">\[E = \left(\sum_{i,j} \theta[i,j]\right)^k.\]</span> In general, this works out to being on the order of the number of nodes.</p>
+<p>Next, we need to find a procedure that starts from nothing, and in <span class="math">\(k\)</span> iterations picks a new edge in the graph to add. Thankfully, this operation is already staring us in the face - in the formula presented in the previous section. Here it is again: <span class="math">\[\prod_{i=0}^{k-1} \theta\left[\left\lfloor \frac{u}{n^i}\right\rfloor \bmod{n},
+\left\lfloor \frac{v}{n^i}\right\rfloor \bmod{n} \right].\]</span> This formula can be understood in a different way - as a “recursive descent” into the adjacency matrix of the graph, picking smaller and smaller blocks of the matrix until we have finally narrowed our choice to a single cell, which we then “color in” to represent that an edge should be placed there.</p>
+<p>Thus, to generate a stochastic Kronecker graph, all we need to do is set up a loop which runs <span class="math">\(E\)</span> times, generating a new edge in the graph on each pass-through. (If we generate the same edge twice, we ignore it and repeat the pass-through as if nothing happened.) This runs in <span class="math">\(O(kE)\)</span> time, which means that for sparse, real-world graphs, it runs in <span class="math">\(O(kN)\)</span>.</p>
+<h2 id="parallel-algorithm">Parallel algorithm</h2>
+<p>This algorithm allows us to generate every edge in the graph independently of every other edge, allowing us to parallelize the graph’s generation. This means we can leverage the power of Hadoop to generate very large graphs.</p>
+<p>The only twist is that this method allows for the creation of duplicate edges, and most of the graphs we’re interested in don’t contain such duplicates. Thus, we need to figure out how to identify and eliminate them. This is hard when generating the graph across multiple machines, because it’s very likely the duplicate edges will be generated on separate machines. Fortunately, with a bit of cleverness, we can leverage the nature of MapReduce to do our duplicate checking. Instead of one MapReduce job, we’ll have three - one to generate edges and eliminate duplicates, one to generate vertices, and one to combine the two together to form a single graph. This gives us the workflow below.</p>
+<p><span class='caption-wrapper'><img class='caption' src='/pages/lab41/blog-preview/images/2013-08-27-stochastic-kronecker-natural-graphs/workflow.png' width='' height='' title='The workflow for Kronecker graph generation. Datatypes appear above the line, sample data below. For convenience, FaunusVertex objects have been represented in JSON and NodeTuple objects by pairs of values between angle brackets.'><span class='caption-text'>The workflow for Kronecker graph generation. Datatypes appear above the line, sample data below. For convenience, FaunusVertex objects have been represented in JSON and NodeTuple objects by pairs of values between angle brackets.</span></span></p>
+<p>The pipeline consists of three stages:</p>
+<ol type="1">
+<li><p>The first stage of our pipeline is vertex generation. This is the simplest stage - it is a map-only job, utilizing a custom input format representing a range of vertices to be generated. We use as the key a unique <code>Long</code> identifying the vertex, and a <code>FaunusVertex</code> object as the value, giving us a (Long,FaunusVertex`) output sequence file.</p></li>
+<li><p>The second stage of our pipeline is edge generation. As with vertex generation, it uses a custom input format representing a quota of edges to place into the graph. For each edge in this quota, we run the fast stochastic Kronecker placement algorithm, yielding a tuple of vertex IDs that represents a directed edge in the graph. This tuple is stored as a custom intermediate key type (called a <code>NodeTuple</code>), with the value as a <code>NullWritable</code>; this allows the shuffling and sorting logic of MapReduce to place identical tuples together, and consequently allows us to easily eliminate duplicate copies of the directed edges before the reduce step. Finally, in our reduce step, we emit a (Long,FaunusVertex<code>) tuple.     The</code>FaunusVertex<code>represents the edge’s source vertex and contains     a</code>FaunusEdge<code>indicating its destination vertex. The</code>Long` key is the source vertex’s ID.</p></li>
+<li><p>The third and final stage of our pipeline reads in the vertex objects generated by both the edge and vertex creators and combines them, creating a final list of <code>FaunusVertexes</code> that represents the graph.</p></li>
+</ol>
+<p>A few details on the pipeline:</p>
+<ul>
+<li><p><strong>Faunus.</strong> This pipeline uses the same data types as the <a href="http://faunus.thinkaurelius.com">Faunus</a> engine for graph analytics. Faunus provides objects representing edges (<code>FaunusEdge</code>s) and vertices (<code>FaunusVertex</code>es) that can be serialized and utilized by MapReduce jobs but can also serve as a final representation of a graph. Conveniently, <code>FaunusVertex</code>es can store the edges coming off them as well, so we do not need to store edges separately from vertices in the final graph - we need only store the list of vertices with edges added to them.</p></li>
+<li><p><strong><code>SequenceFiles</code>.</strong> This pipeline produces <code>SequenceFiles</code> (a native MapReduce serialization format) consisting of <code>FaunusVertex</code>es to serve as intermediate representations of the graph as we construct it.</p></li>
+<li><p><strong>Annotations.</strong> In the final stage, we annotate the vertices with several property values (a mixture of floating-points and strings) in order to mimic the data we are interested in.</p></li>
+</ul>
+<h1 id="references">References</h1>
+<ul>
+<li>Leskovec, Jure, Deepayan Chakrabarti, Jon Kleinberg, Christos Faloutsos, and Zoubin Ghahramani. Kronecker graphs: an approach to modeling networks. <em>ArXiv</em>, <a href="http://arxiv.org/abs/0812.4905">arXiv:0812.4905v2</a></li>
+</ul></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Nikhil Desai</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-27T11:44:00-07:00" pubdate data-updated="true">Aug 27<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="https://va-vsrv-github.a.internal/blog/2013/08/27/stochastic-kronecker-natural-graphs/" data-via="" data-counturl="https://va-vsrv-github.a.internal/blog/2013/08/27/stochastic-kronecker-natural-graphs/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/pages/lab41/blog-preview/blog/2013/06/12/i-see-graphs/" title="Previous Post: I See Graphs">&laquo; I See Graphs</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  This project is maintained by the <a href="https://github.com/LAB41">Lab41</a> Team to serve as a platform of discussion on technology topics relevant to Lab41 Challenges. More information about Lab41 can be found at <a href="www.lab41.org">www.lab41.org</a>.
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/pages/lab41/blog-preview/blog/2013/08/27/stochastic-kronecker-natural-graphs/">Stochastic Kronecker natural graphs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/pages/lab41/blog-preview/blog/2013/06/12/i-see-graphs/">I See Graphs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/pages/lab41/blog-preview/blog/2013/05/02/zero-to-large/">Zero to Large</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/lab41">@lab41</a> on GitHub
+  
+  <script type="text/javascript">
+   (function($) {
+    $(document).on('ready', function() {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'lab41',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+   })(jQuery);
+  </script>
+  <script src="/pages/lab41/blog-preview/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Blog Authors</h1>
+  <ul id="blog_authors">
+    
+      
+    
+      
+    
+      
+    
+    <li><a href="https://github.com/karkumar">Karthik Ramachandran</a></li>
+    <li><a href="https://github.com/cglewis">Charlie Lewis</a></li>
+    <li><a href="https://github.com/nadesai">Nikhil Desai</a></li>
+    <li></li>
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Lab41 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

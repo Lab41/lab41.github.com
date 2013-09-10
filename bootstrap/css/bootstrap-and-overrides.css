@@ -1,0 +1,13 @@
+/* variables */
+body {
+  background: #c3000e;
+}
+.navbar {
+  border-bottom: 10px solid #650008;
+}
+.body-text {
+  background: white;
+}
+.body-sidebar {
+  background: #cccccc;
+}
