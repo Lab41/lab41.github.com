@@ -4,7 +4,7 @@
   <title><![CDATA[{ blog }]]></title>
   <link href="https://va-vsrv-github.a.internal/atom.xml" rel="self"/>
   <link href="https://va-vsrv-github.a.internal/"/>
-  <updated>2013-09-11T17:19:41-07:00</updated>
+  <updated>2013-09-11T17:39:31-07:00</updated>
   <id>https://va-vsrv-github.a.internal/</id>
   <author>
     <name><![CDATA[Lab41]]></name>
@@ -139,6 +139,8 @@ Kronecker Initiation:
 <li><p><strong><code>SequenceFiles</code>.</strong> This pipeline produces <code>SequenceFiles</code> (a native MapReduce serialization format) consisting of <code>FaunusVertex</code>es to serve as intermediate representations of the graph as we construct it.</p></li>
 <li><p><strong>Annotations.</strong> In the final stage, we annotate the vertices with several property values (a mixture of floating-points and strings) in order to mimic the data we are interested in.</p></li>
 </ul>
+<h1 id="further-reading">Further reading</h1>
+<p>We have written a version of this blog post up as an informal paper that can be viewed <a href="https://va-vsrv-github.a.internal/assets/post.pdf">here.</a> It contains a more in-depth explanation of the mathematics behind Kronecker graphs.</p>
 <h1 id="references">References</h1>
 <ul>
 <li>Leskovec, Jure, Deepayan Chakrabarti, Jon Kleinberg, Christos Faloutsos, and Zoubin Ghahramani. Kronecker graphs: an approach to modeling networks. <em>ArXiv</em>, <a href="http://arxiv.org/abs/0812.4905">arXiv:0812.4905v2</a></li>
