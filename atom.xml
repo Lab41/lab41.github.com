@@ -4,7 +4,7 @@
   <title><![CDATA[{ blog }]]></title>
   <link href="https://va-vsrv-github.a.internal/atom.xml" rel="self"/>
   <link href="https://va-vsrv-github.a.internal/"/>
-  <updated>2013-09-11T17:06:11-07:00</updated>
+  <updated>2013-09-11T17:19:41-07:00</updated>
   <id>https://va-vsrv-github.a.internal/</id>
   <author>
     <name><![CDATA[Lab41]]></name>
@@ -35,28 +35,12 @@ The visualizations below demonstrate the contents of this post. Use the interact
 </p>
         <div>
           
-Node-edge Visual:
-<ul>
-            <li>
-<strong>linkDistance</strong>: relative distance between nodes
-</li>
-            <li>
-<strong>charge</strong>: repulsion force between nodes
-</li>
-            <li>
-<strong>gravity</strong>: attraction force between nodes
-</li>
-          </ul>
-        </div>
-        <div>
-          
 Kronecker Initiation:
 <ul>
             <li>
-<strong>iterations</strong>: number of generation iterations
-</li>
-            <li>
-<strong>a1…b2</strong>: probability values for the 2x2 initiator matrix
+<strong>Initiator matrix</strong>: a two-by-two matrix of probabilities that is used to generate the random graph.
+<li>
+<strong>Number of iterations</strong>: The number of times the matrix is “Kronecker multiplied” by itself. The number of nodes in the generated graph is <span class="math">\(2^n,\)</span> where <span class="math">\(n\)</span> is the number of iterations.
 </li>
           </ul>
         </div>
