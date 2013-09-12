@@ -4,7 +4,7 @@
   <title><![CDATA[{ blog }]]></title>
   <link href="https://va-vsrv-github.a.internal/atom.xml" rel="self"/>
   <link href="https://va-vsrv-github.a.internal/"/>
-  <updated>2013-09-10T12:00:17-07:00</updated>
+  <updated>2013-09-11T17:03:22-07:00</updated>
   <id>https://va-vsrv-github.a.internal/</id>
   <author>
     <name><![CDATA[Lab41]]></name>
@@ -28,7 +28,7 @@ Kronecker Visualization
     </div>
   </div>
   <div class="row-fluid">
-    <div class="span8">
+    <div class="span6">
       <div style="font-size: smaller">
         <p style="width:75%">
 The visualizations below demonstrate the contents of this post. Use the interactive controls to easily create almost-natural synthetic graphs from just a few key parameters:
@@ -62,8 +62,27 @@ Kronecker Initiation:
         </div>
       </div>
     </div>
-    <div class="span4">
-      <div id="controller"></div>
+    <div class="span6">
+      <div id="controller" style="font-size:smaller">
+          <div class="row-fluid"> <div>
+<strong>Number of iterations:</strong>
+<div style="display:inline" id="iterationsvalue"></div></div></div>
+          <div class="row-fluid"> <div id="iterationsslider"></div> </div>
+          <div class="row-fluid" style="margin-top:5px; margin-bottom:2px"> <div>
+<strong>Probabilities in 2x2 initiator matrix:</strong>
+</div> </div>
+          <div class="row-fluid">
+             <div class="span4" style="padding-top:12px"> <div id="a1slider"></div> </div> <div class="span2 matrixval"> <div id="a1value"></div> </div>
+             <div style="margin:0" class="span2 matrixval"> <div id="a2value"></div> </div> <div class="span4" style="padding-top:12px"> <div id="a2slider"></div> </div>
+          </div>
+          <div class="row-fluid">
+             <div class="span4" style="padding-top:12px"> <div id="b1slider"></div> </div> <div class="span2 matrixval"> <div id="b1value"></div> </div>
+             <div style="margin:0" class="span2 matrixval"> <div id="b2value"></div> </div> <div class="span4" style="padding-top:12px"> <div id="b2slider"></div> </div>
+          </div>
+          <div class="row-fluid">
+            <div style="text-align:center; margin-top:10px" class="span12"> <div id="regenerate"></div> </div>
+          </div>
+      </div>
     </div>
   </div>
 

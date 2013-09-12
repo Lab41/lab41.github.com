@@ -191,69 +191,57 @@
     }
     //end of matrix.js
 
-    var config = { "linkDistance" : 30, "charge" : 100, "gravity" : .5,
+    config = { "linkDistance" : 30, "charge" : 100, "gravity" : .5,
 	           "iterations" : 5, "a1" : 0.5, "a2" : 0.5, "b1" : 0.5, "b2" : 0.5};
-    var gui = new dat.GUI();
 
-    var linkDistanceChanger = gui.add(config, "linkDistance", 0, 400);
-    linkDistanceChanger.onChange(function(value) {
-      force.linkDistance(value)
-      restart()
-    });
-
-    var chargeChanger = gui.add(config,"charge", 0, 500);
-    chargeChanger.onChange(function(value) {
-      force.charge(-value)
-      restart()
-    });
-
-    var gravityChanger = gui.add(config,"gravity", 0, 1);
-    gravityChanger.onChange(function(value) {
-      force.gravity(value)
-      restart()
-    });
-
-    var iterationsChanger = gui.add(config,"iterations",1,8).step(1);
-    iterationsChanger.onChange(function(value) {
-      kronGen();
-      redrawMatrix();
-      restart()
-    });
-
-    var a1Changer = gui.add(config,"a1", 0, 1);
-    a1Changer.onChange(function(value) {
-      kronGen();
-      redrawMatrix();
-      restart()
-    });
-
-    var a2Changer = gui.add(config,"a2", 0, 1);
-    a2Changer.onChange(function(value) {
-      kronGen();
-      redrawMatrix();
-      restart()
-    });
-
-    var b1Changer = gui.add(config,"b1", 0, 1);
-    b1Changer.onChange(function(value) {
-      kronGen();
-      redrawMatrix();
-      restart()
-    });
-
-    var b2Changer = gui.add(config,"b2", 0, 1);
-    b2Changer.onChange(function(value) {
-      kronGen();
-      redrawMatrix();
-      restart()
-    });
-
-    config.regenerate = function() {
-      kronGen()
-      redrawMatrix();
-      restart()
+    function getSliderSlideFunction(cellName) {
+      return function(ev,ui) {
+          $("#"+cellName+"value").html(ui.value/100);
+          config[cellName] = ui.value/100;
+          if(config.iterations < 7) { kronGen(); redrawMatrix(); restart(); }
+        }
     }
-    gui.add(config, 'regenerate')
+
+    function getSliderChangeFunction(cellName) {
+      return function(ev,ui) {
+          if(config.iterations >= 7) { kronGen(); redrawMatrix(); restart(); }
+        };
+    };
+
+    function getSliderInitObject(cellName) {
+      return {
+          min:    0,
+          max:    100,
+          create: function(ev,ui) { $("#"+cellName+"value").html(config[cellName]); },
+          slide:  getSliderSlideFunction(cellName),
+          change: getSliderChangeFunction(cellName),
+          value:  config[cellName]*100
+        };
+    };
+
+    $("#iterationsslider").slider({
+                              min:    1, 
+                              max:    8,
+                              step:   1,
+                              create: function(ev,ui) { $("#iterationsvalue").html(config.iterations); },
+                              slide:  function(ev,ui) {
+                                        $("#iterationsvalue").html(ui.value);
+                                        config.iterations = ui.value;
+                                        if(!willCreateHairball()) { kronGen(); redrawMatrix(); restart(); }
+                                      },
+                              change: function(ev,ui) {
+                                        if(willCreateHairball()) { kronGen(); redrawMatrix(); restart(); }
+                                      },
+                              value:  config.iterations
+                            });
+                              
+
+    $("#a1slider").slider(getSliderInitObject("a1"));
+    $("#a2slider").slider(getSliderInitObject("a2"));
+    $("#b1slider").slider(getSliderInitObject("b1"));
+    $("#b2slider").slider(getSliderInitObject("b2"));
+
+    $("#regenerate").button({label:"Regenerate graph"}).click(function(event) { kronGen(); redrawMatrix(); restart(); });
 
     var width = 400, //window.innerWidth,
         height = 400, //window.innerHeight,
