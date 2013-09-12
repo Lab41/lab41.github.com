@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://va-vsrv-github.a.internal/sitemap.xml 
+Sitemap: http://lab41.github.io/sitemap.xml 

@@ -1,29 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>https://va-vsrv-github.a.internal/blog/2013/05/02/zero-to-large/</loc>
-        <lastmod>2013-09-11T17:39:30-07:00</lastmod>
+        <loc>http://lab41.github.io/blog/2013/05/02/zero-to-large/</loc>
+        <lastmod>2013-09-11T17:44:18-07:00</lastmod>
     </url>
     <url>
-        <loc>https://va-vsrv-github.a.internal/blog/2013/06/12/i-see-graphs/</loc>
-        <lastmod>2013-09-11T17:39:30-07:00</lastmod>
+        <loc>http://lab41.github.io/blog/2013/06/12/i-see-graphs/</loc>
+        <lastmod>2013-09-11T17:44:18-07:00</lastmod>
     </url>
     <url>
-        <loc>
-            https://va-vsrv-github.a.internal/blog/2013/08/27/stochastic-kronecker-natural-graphs/
-        </loc>
-        <lastmod>2013-09-11T17:39:30-07:00</lastmod>
+        <loc>http://lab41.github.io/blog/2013/08/27/stochastic-kronecker-natural-graphs/</loc>
+        <lastmod>2013-09-11T17:44:18-07:00</lastmod>
     </url>
     <url>
-        <loc>https://va-vsrv-github.a.internal/blog/archives/</loc>
-        <lastmod>2013-09-11T17:39:30-07:00</lastmod>
+        <loc>http://lab41.github.io/blog/archives/</loc>
+        <lastmod>2013-09-11T17:44:18-07:00</lastmod>
     </url>
     <url>
-        <loc>https://va-vsrv-github.a.internal/</loc>
-        <lastmod>2013-09-11T17:39:30-07:00</lastmod>
+        <loc>http://lab41.github.io/</loc>
+        <lastmod>2013-09-11T17:44:18-07:00</lastmod>
     </url>
     <url>
-        <loc>https://va-vsrv-github.a.internal/robots.txt</loc>
+        <loc>http://lab41.github.io/robots.txt</loc>
         <lastmod>2013-09-09T11:48:42-07:00</lastmod>
     </url>
 </urlset>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[{ blog }]]></title>
-  <link href="https://va-vsrv-github.a.internal/atom.xml" rel="self"/>
-  <link href="https://va-vsrv-github.a.internal/"/>
-  <updated>2013-09-11T17:39:31-07:00</updated>
-  <id>https://va-vsrv-github.a.internal/</id>
+  <link href="http://lab41.github.io/atom.xml" rel="self"/>
+  <link href="http://lab41.github.io/"/>
+  <updated>2013-09-11T17:44:23-07:00</updated>
+  <id>http://lab41.github.io/</id>
   <author>
     <name><![CDATA[Lab41]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Stochastic Kronecker natural graphs]]></title>
-    <link href="https://va-vsrv-github.a.internal/blog/2013/08/27/stochastic-kronecker-natural-graphs/"/>
+    <link href="http://lab41.github.io/blog/2013/08/27/stochastic-kronecker-natural-graphs/"/>
     <updated>2013-08-27T11:44:00-07:00</updated>
-    <id>https://va-vsrv-github.a.internal/blog/2013/08/27/stochastic-kronecker-natural-graphs</id>
+    <id>http://lab41.github.io/blog/2013/08/27/stochastic-kronecker-natural-graphs</id>
     <content type="html"><![CDATA[<p>Why are data scientists so obsessed with graphs? It’s because graphs are the best tools we have for modeling the real world. By analyzing the graph representation of a real-world structure, we can glean a variety of insights about it. Graphs that model real-world phenomena are called “natural” graphs, and a great deal of data science focuses on them. However, obtaining natural graphs is hard; it would be nice if we had a way to generate similar-looking graphs without the data-gathering work. Enter the <strong>stochastic Kronecker graph model</strong>: an easy way to generate almost-natural synthetic graphs. This post will give an overview of natural graphs and describe the stochastic Kronecker model of generating graphs.</p>
 <div class="container-fluid">
   <div class="row-fluid">
@@ -105,7 +105,7 @@ Kronecker Initiation:
 <h1 id="mathematical-formulation">Mathematical formulation</h1>
 <p>The core of the Kronecker generation model is a simple matrix operation called the <em>Kronecker product</em>, an operation on two matrices that “nests” many copies of the second within the first. Since graphs can be represented by adjacency matrices (<a href="http://lab41.github.io/blog/2013/06/12/i-see-graphs/">Karthik’s post</a>), this operation can be generalized to graphs.</p>
 <p>Taking the Kronecker product of a graph with itself thus easily produces a new, self-similar graph, as does taking the more general “Kronecker power” of it. In fact, Kronecker powers will have further self-similarity. For example, below you can see an example of a simple three-node graph, its Kronecker cube, and its Kronecker fourth power, with the self-similarity evident in the adjacency matrix.</p>
-<p><span class='caption-wrapper'><img class='caption' src='https://va-vsrv-github.a.internal/images/2013-08-27-stochastic-kronecker-natural-graphs/matrix.jpg' width='' height='' title='Fractal patterns visible in the adjecency matrix of a Kronecker graph. Taken from Leskovec et al. (2008).'><span class='caption-text'>Fractal patterns visible in the adjecency matrix of a Kronecker graph. Taken from Leskovec et al. (2008).</span></span></p>
+<p><span class='caption-wrapper'><img class='caption' src='http://lab41.github.io/images/2013-08-27-stochastic-kronecker-natural-graphs/matrix.jpg' width='' height='' title='Fractal patterns visible in the adjecency matrix of a Kronecker graph. Taken from Leskovec et al. (2008).'><span class='caption-text'>Fractal patterns visible in the adjecency matrix of a Kronecker graph. Taken from Leskovec et al. (2008).</span></span></p>
 <p>Because the Kronecker power so easily generates self-similar graphs, it’s reasonable to consider that it might be similarly effective at generating <em>random</em> natural graphs. To do this, we simply start with an adjacency matrix, but allow <em>probabilities</em> to occupy the cells of the matrix rather than ones and zeros. This gives us the <em>stochastic</em> Kronecker graph model.</p>
 <h1 id="algorithms-for-generating-kronecker-graphs">Algorithms for generating Kronecker graphs</h1>
 <h2 id="naive-algorithm">Naive algorithm</h2>
@@ -126,7 +126,7 @@ Kronecker Initiation:
 <h2 id="parallel-algorithm">Parallel algorithm</h2>
 <p>This algorithm allows us to generate every edge in the graph independently of every other edge, allowing us to parallelize the graph’s generation. This means we can leverage the power of Hadoop to generate very large graphs.</p>
 <p>The only twist is that this method allows for the creation of duplicate edges, and most of the graphs we’re interested in don’t contain such duplicates. Thus, we need to figure out how to identify and eliminate them. This is hard when generating the graph across multiple machines, because it’s very likely the duplicate edges will be generated on separate machines. Fortunately, with a bit of cleverness, we can leverage the nature of MapReduce to do our duplicate checking. Instead of one MapReduce job, we’ll have three - one to generate edges and eliminate duplicates, one to generate vertices, and one to combine the two together to form a single graph. This gives us the workflow below.</p>
-<p><span class='caption-wrapper'><img class='caption' src='https://va-vsrv-github.a.internal/images/2013-08-27-stochastic-kronecker-natural-graphs/workflow.png' width='' height='' title='The workflow for Kronecker graph generation. Datatypes appear above the line, sample data below. For convenience, FaunusVertex objects have been represented in JSON and NodeTuple objects by pairs of values between angle brackets.'><span class='caption-text'>The workflow for Kronecker graph generation. Datatypes appear above the line, sample data below. For convenience, FaunusVertex objects have been represented in JSON and NodeTuple objects by pairs of values between angle brackets.</span></span></p>
+<p><span class='caption-wrapper'><img class='caption' src='http://lab41.github.io/images/2013-08-27-stochastic-kronecker-natural-graphs/workflow.png' width='' height='' title='The workflow for Kronecker graph generation. Datatypes appear above the line, sample data below. For convenience, FaunusVertex objects have been represented in JSON and NodeTuple objects by pairs of values between angle brackets.'><span class='caption-text'>The workflow for Kronecker graph generation. Datatypes appear above the line, sample data below. For convenience, FaunusVertex objects have been represented in JSON and NodeTuple objects by pairs of values between angle brackets.</span></span></p>
 <p>The pipeline consists of three stages:</p>
 <ol type="1">
 <li><p>The first stage of our pipeline is vertex generation. This is the simplest stage - it is a map-only job, utilizing a custom input format representing a range of vertices to be generated. We use as the key a unique <code>Long</code> identifying the vertex, and a <code>FaunusVertex</code> object as the value, giving us a (Long,FaunusVertex`) output sequence file.</p></li>
@@ -140,7 +140,7 @@ Kronecker Initiation:
 <li><p><strong>Annotations.</strong> In the final stage, we annotate the vertices with several property values (a mixture of floating-points and strings) in order to mimic the data we are interested in.</p></li>
 </ul>
 <h1 id="further-reading">Further reading</h1>
-<p>We have written a version of this blog post up as an informal paper that can be viewed <a href="https://va-vsrv-github.a.internal/assets/post.pdf">here.</a> It contains a more in-depth explanation of the mathematics behind Kronecker graphs.</p>
+<p>We have written a version of this blog post up as an informal paper that can be viewed <a href="http://lab41.github.io/assets/post.pdf">here.</a> It contains a more in-depth explanation of the mathematics behind Kronecker graphs.</p>
 <h1 id="references">References</h1>
 <ul>
 <li>Leskovec, Jure, Deepayan Chakrabarti, Jon Kleinberg, Christos Faloutsos, and Zoubin Ghahramani. Kronecker graphs: an approach to modeling networks. <em>ArXiv</em>, <a href="http://arxiv.org/abs/0812.4905">arXiv:0812.4905v2</a></li>
@@ -149,19 +149,19 @@ Kronecker Initiation:
   
   <entry>
     <title type="html"><![CDATA[I See Graphs]]></title>
-    <link href="https://va-vsrv-github.a.internal/blog/2013/06/12/i-see-graphs/"/>
+    <link href="http://lab41.github.io/blog/2013/06/12/i-see-graphs/"/>
     <updated>2013-06-12T15:17:00-07:00</updated>
-    <id>https://va-vsrv-github.a.internal/blog/2013/06/12/i-see-graphs</id>
+    <id>http://lab41.github.io/blog/2013/06/12/i-see-graphs</id>
     <content type="html"><![CDATA[<p>At Lab41 we are obsessed with <a href="http://en.wikipedia.org/wiki/Graph_(mathematics)">graphs</a>. We see graphs everywhere we look, in everything we think about. One of our goals is to better understand and advance techniques for manipulating, storing, and analyzing graphs. In this post, we try and do three things: (1) explain what a graph is, (2) show that it’s an important concept, and (3) discuss a way of working with graphs. More specifically, we talk about how to work with graphs as matrices.</p>
 <h3 id="why-are-graphs-important">Why are graphs important?</h3>
-<p><img class="right" src="https://va-vsrv-github.a.internal/images/2013-06-12-i-see-graphs/directed_graph.png"> A graph is a mathematical construct that describes things that are linked together. Graphs model networks-systems of “things” connected together in some way. For example, the Internet is a physical network of computers connected together by data connections; the Web is a logical network of web pages connected by hyperlinks; and human societies are networks of people connected together by various social relationships. In the language of mathematics, we say each of the “things” in a network is a node and they are connected by “edges.”</p>
+<p><img class="right" src="http://lab41.github.io/images/2013-06-12-i-see-graphs/directed_graph.png"> A graph is a mathematical construct that describes things that are linked together. Graphs model networks-systems of “things” connected together in some way. For example, the Internet is a physical network of computers connected together by data connections; the Web is a logical network of web pages connected by hyperlinks; and human societies are networks of people connected together by various social relationships. In the language of mathematics, we say each of the “things” in a network is a node and they are connected by “edges.”</p>
 <p>It turns out that you can think of much of the world, both physical and virtual, as a graph. As a mathematical construct, graphs have been around since <a
 href="http://en.wikipedia.org/wiki/Seven_Bridges_of_K%C3%B6nigsberg">Leonhard Euler tried to figure out the best way to get around Konigsberg in 1735</a>. Since then, graph theory has been embraced by a wide array of disciplines including sociology, economics, physics, computer science, biology, and statistics. An excellent resource for understanding how graphs map onto real world systems is the <a href="http://www.santafe.edu/media/workingpapers/90-004.pdf">“Rosetta Stone for Connectionism,”</a> which maps various real world systems onto graph concepts. Graphs really are everywhere.</p>
 <p>While graphs are prevalent in many fields, the tools for working with graphs, especially large graphs, are still in their infancy. As graph technologies mature it should become easier to model many different problems, and easier to implement solutions. However, we are still figuring out the best ways to store, query, and compute on graphs. Right now, people use different data structures and technologies for different types of graphs and different use cases. Eventually, we need to figure out how to hide that complexity and let people treat graph data as graphs without thinking about what the right tools are for manipulating that data. Marko Rodriguez, a leading graph technologist, has a great summary of several different types of graphs and graph technologies in his <a href="http://markorodriguez.com/2013/01/09/on-graph-computing/">recent blog post</a>. Lab41 is actively using and working with many of the technologies that Marko describes, including the graph database Titan, which we load tested as noted in <a href="https://github.com/tinkerpop/blueprints/wiki/Property-Graph-Model">our previous blog entry</a>.</p>
-<p><img class="center" src="https://va-vsrv-github.a.internal/images/2013-06-12-i-see-graphs/java_graph.png" title="Graph of Java standard class library generated with Gephi 0.8.2" ></p>
+<p><img class="center" src="http://lab41.github.io/images/2013-06-12-i-see-graphs/java_graph.png" title="Graph of Java standard class library generated with Gephi 0.8.2" ></p>
 <h3 id="graphs-as-matrices">Graphs as Matrices</h3>
 <p>The earliest tools for working with graphs were tools for manipulating matrices. In mathematics, graphs are frequently expressed as an <a href="http://en.wikipedia.org/wiki/Adjacency_matrix">adjacency matrix</a>. In an adjacency matrix each row/column represents a node, and each entry in the matrix represents the presence of an edge between two nodes. The cool thing about the matrix form of a graph is that once you think of a graph as a matrix, you can apply concepts and methods from linear algebra to your graph analysis. Many common graph metrics and algorithms can easily be expressed in terms of standard matrix operations.</p>
-<p><img class="center" src="https://va-vsrv-github.a.internal/images/2013-06-12-i-see-graphs/matrix.png" title="A graph represented as an ajacency matrix" ></p>
+<p><img class="center" src="http://lab41.github.io/images/2013-06-12-i-see-graphs/matrix.png" title="A graph represented as an ajacency matrix" ></p>
 <p>The cool thing about the matrix form of a graph is that once you think of a graph as a matrix, you can apply concepts and methods from linear algebra to your graph analysis. Many common graph metrics and algorithms can easily be expressed in terms of standard matrix operations.</p>
 <p>While an adjacency matrix is a mathematical abstraction, it’s also a data structure. In this post we are talking primarily about a matrix as a contiguous block of memory. In most programing languages this is an array of arrays:</p>
 <div class='bogus-wrapper'>
@@ -289,9 +289,9 @@ Thus a graph of 50,000 nodes would take about 10GB of memory, which means you ca
   
   <entry>
     <title type="html"><![CDATA[Zero to Large]]></title>
-    <link href="https://va-vsrv-github.a.internal/blog/2013/05/02/zero-to-large/"/>
+    <link href="http://lab41.github.io/blog/2013/05/02/zero-to-large/"/>
     <updated>2013-05-02T15:22:00-07:00</updated>
-    <id>https://va-vsrv-github.a.internal/blog/2013/05/02/zero-to-large</id>
+    <id>http://lab41.github.io/blog/2013/05/02/zero-to-large</id>
     <content type="html"><![CDATA[<blockquote>
 <p>This first post is intended to introduce the type of work we’ve started at Lab41, which is a unique partnership In-Q-Tel has started with Academia, Industry, and the U.S. Intelligence Community. We’re excited about this venture and look forward to sharing our progress towards collaboratively addressing big data challenges with new technologies.</p>
 </blockquote>
@@ -324,9 +324,9 @@ Thus a graph of 50,000 nodes would take about 10GB of memory, which means you ca
 </ul></li>
 </ul>
 <p>In order to guarantee this 100% of the time, each time an edge is added, all preexisting edges must be checked to make sure that the chosen random vertices chosen do not go outside the imposed limits. To put it in perspective, the script initially enforces strict parameters, which – as you can probably guess by now – simply become untenable for quickly producing large graph data sets. As the below chart shows, we are able to generate a graph of 100 Million nodes in roughly the same amount of time it took to generate a graph of only 100,000 nodes using strict parameter enforcement:</p>
-<p>Click to enlarge: <a class="fancybox-effects-a"  href=/images/post_1/image_1.png><img src="https://va-vsrv-github.a.internal/images/post_1/image_1.png" title="Comparing Graph Generation Time With and Without Strict Parameters" ></a></p>
+<p>Click to enlarge: <a class="fancybox-effects-a"  href=/images/post_1/image_1.png><img src="http://lab41.github.io/images/post_1/image_1.png" title="Comparing Graph Generation Time With and Without Strict Parameters" ></a></p>
 <p>Since disabling strict enforcement led to a graph three orders of magnitude larger in the same amount of time, you might be asking how the absence of that check – the degree of edges/node – affected the number of edges. Below we show that the difference of edges between checking and not checking is negligible:</p>
-<p><a class="fancybox-effects-a"  href=/images/post_1/image_2.png><img src="https://va-vsrv-github.a.internal/images/post_1/image_2.png" title="Difference of \# of Edges Created" ></a></p>
+<p><a class="fancybox-effects-a"  href=/images/post_1/image_2.png><img src="http://lab41.github.io/images/post_1/image_2.png" title="Difference of \# of Edges Created" ></a></p>
 <p>Since we are generating these graphs, it seems reasonable to bend the requirements slightly to treat the minima and maxima simply as guidelines that some nodes may not conform to. While there is still room for improvement, such as leveraging more than a single CPU core, the results are reasonable enough to use.</p>
 <h3 id="generating-the-baseline">Generating the Baseline</h3>
 <p><strong>The most important point is that seemingly “simple” parameter changes – which represent actual differences in real-world networks – make huge differences to the resulting network and therefore our system design.</strong> We generated three different classes of graphs from a baseline of graph data sets to determine how varying parameters influences such important characteristics as: time to generate, number of edges created, storage footprint, number of node and edge attributes, and average degree of nodes.</p>
@@ -346,29 +346,29 @@ Maximum Edge Attributes: 0 25 0</code></pre>
 </blockquote>
 <h4 id="number-of-nodes">Number of Nodes</h4>
 <p>The first chart illustrates how the number of nodes greatly influences all other characteristics. While Type A generated one billion nodes in approximately 24 hours, the same timeframe yielded graphs of Type B with only 10 Million nodes and Type C with a scant one million nodes:</p>
-<p><a class="fancybox-effects-a"  href=/images/post_1/image_3.png><img src="https://va-vsrv-github.a.internal/images/post_1/image_3.png" title="Time to generate graphs with different characteristics" ></a></p>
+<p><a class="fancybox-effects-a"  href=/images/post_1/image_3.png><img src="http://lab41.github.io/images/post_1/image_3.png" title="Time to generate graphs with different characteristics" ></a></p>
 <h4 id="edges">Edges</h4>
 <p>As this is just a first cut, restricting the number of nodes on the graph types seems acceptable for now. The following illustrates that limiting Type C to only 100,000 nodes still produces almost the same number of edges as a one billion node version of graph A:</p>
-<p><a class="fancybox-effects-a"  href=/images/post_1/image_4.png><img src="https://va-vsrv-github.a.internal/images/post_1/image_4.png" title="Edges created generating graphs with different characteristics" ></a></p>
+<p><a class="fancybox-effects-a"  href=/images/post_1/image_4.png><img src="http://lab41.github.io/images/post_1/image_4.png" title="Edges created generating graphs with different characteristics" ></a></p>
 <h4 id="storage-footprint">Storage Footprint</h4>
 <p>The following chart shows that a one billion node graph of Type B would require approximately 10TB of storage space, while Type C would require 300 Petabytes (!) to reach one billion nodes:</p>
-<p><a class="fancybox-effects-a"  href=/images/post_1/image_5.png><img src="https://va-vsrv-github.a.internal/images/post_1/image_5.png" title="Storage footprint of generating graphs with different characteristics" ></a></p>
+<p><a class="fancybox-effects-a"  href=/images/post_1/image_5.png><img src="http://lab41.github.io/images/post_1/image_5.png" title="Storage footprint of generating graphs with different characteristics" ></a></p>
 <p>Sadly, I couldn’t justify buying 300 <a href="http://www.aberdeeninc.com/abcatg/petarack.htm">Petaracks</a> just to generate the world’s most unrealistic graph. Not to mention it would have taken approximately 20,000 <strong>years</strong> to generate, but that’s beside the point.</p>
 <h4 id="attributes">Attributes</h4>
 <p>When looking at attribute differences, Type B creates about 30-40 times more attributes than the fairly-similar Types A and C:</p>
-<p><a class="fancybox-effects-a"  href=/images/post_1/image_6.png><img src="https://va-vsrv-github.a.internal/images/post_1/image_6.png" title="Node attributes created generating graphs with different characteristics" ></a></p>
+<p><a class="fancybox-effects-a"  href=/images/post_1/image_6.png><img src="http://lab41.github.io/images/post_1/image_6.png" title="Node attributes created generating graphs with different characteristics" ></a></p>
 <h4 id="node-degree">Node Degree</h4>
 <p>Finally, this last chart shows how the degree of each node for Type C grows exponentially with the number of nodes, whereas the average degree for the other two graph types remain static:</p>
-<p><a class="fancybox-effects-a"  href=/images/post_1/image_7.png><img src="https://va-vsrv-github.a.internal/images/post_1/image_7.png" title="Average degree of nodes generating graphs with different characteristics" ></a></p>
+<p><a class="fancybox-effects-a"  href=/images/post_1/image_7.png><img src="http://lab41.github.io/images/post_1/image_7.png" title="Average degree of nodes generating graphs with different characteristics" ></a></p>
 <h3 id="loading-the-data">Loading the Data</h3>
 <p>Now that we generated our various graph datasets, we need to load them into a distributed graph data store. For a variety of reasons, we decided to use <a href="http://thinkaurelius.github.com/titan/">Titan</a> with an <a href="http://hbase.apache.org/">HBase</a> backend.</p>
 <p>One of the nice things about Titan is that its <a href="https://github.com/tinkerpop/gremlin/wiki">Gremlin console shell</a> enables graph interaction, traversals, and calculations. It also has functions for loading a graph file into the graph data store, which in this case is HBase on top of HDFS. Unfortunately, Gremlin through Titan does not leverage the <a href="http://www.kchodorow.com/blog/2010/03/15/mapreduce-the-fanfiction/">awesomeness of MapReduce</a> that generally goes hand-in-hand with HBase and its Hadoop counterparts. So running the import in parallel is currently impossible. In terms of data formats, Gremlin on Titan can load GraphML; however, the current ID scheme prevents federation of GraphML across multiple machines (or even multiple cores). So as you can see from the chart below, the load times are un-spectacular:</p>
-<p><a class="fancybox-effects-a"  href=/images/post_1/image_8.png><img src="https://va-vsrv-github.a.internal/images/post_1/image_8.png" title="Load time of graph types using Gremlin with Titan" ></a></p>
+<p><a class="fancybox-effects-a"  href=/images/post_1/image_8.png><img src="http://lab41.github.io/images/post_1/image_8.png" title="Load time of graph types using Gremlin with Titan" ></a></p>
 <blockquote>
 <p>*Note: ‘Minimal Degree and Attributes’ corresponds to ‘Graph A’ from above, similarly ‘Heavy Attributes’ and ‘Heavy Degree’ correspond to ‘Graph B’ and ‘Graph C’, respectively.</p>
 </blockquote>
 <p>Fret not! <a href="http://thinkaurelius.github.com/faunus/">Faunus</a> to the rescue! Faunus uses a Gremlin shell, which is similar to Titan’s and one we can use for importing a slightly different data format to gain benefits via MapReduce. The next chart shows the benefits of moving from GraphML to loading the GraphSON* format using a MapReduce job:</p>
-<p><a class="fancybox-effects-a"  href=/images/post_1/image_9.png><img src="https://va-vsrv-github.a.internal/images/post_1/image_9.png" title="Load time comparison using Gremlin with Titan versus Gremlin with Faunus" ></a></p>
+<p><a class="fancybox-effects-a"  href=/images/post_1/image_9.png><img src="http://lab41.github.io/images/post_1/image_9.png" title="Load time comparison using Gremlin with Titan versus Gremlin with Faunus" ></a></p>
 <blockquote>
 <p>*Note: <a href="https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format">GraphSON</a>, which is slightly modified from <a href="https://github.com/tinkerpop/blueprints/wiki/GraphSON-Reader-and-Writer-Library">traditional GraphSON</a>, is a one-record-per-line JSON-style format that describes nodes in terms of names, types, and labeled edges.</p>
 </blockquote>
