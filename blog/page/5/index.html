@@ -1,0 +1,388 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>{ lab41 }</title>
+  <meta name="author" content="Lab41">
+
+  
+  <meta name="description" content="As my last post described, Dendrite is our open source project to prototype of how teams can use graph storage and analytics within a shared &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://lab41.github.io/blog/page/5/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="{ lab41 }" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap-responsive.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-extra.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-buttons.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-thumbs.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/tables.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/kronecker.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+
+<script src="/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+
+<script src="/javascripts/fancybox/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-activate.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-buttons.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-media.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+<script src="/javascripts/r_syntax.js" type="text/javascript"></script>
+<script src="/javascripts/google_analytics.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="/javascripts/mathjax.js" type="text/x-mathjax-config"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="/javascripts/kroneckerapp.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40906884-1, UA-40464073-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/"><img src="/images/lab41/logo.png" width="212" height="50" alt='Logo' %}> { blog }</a></h1>
+  
+    <h2>innovation through collaboration</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:lab41.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h3 class="entry-title"><a href="/blog/2014/04/24/gitting-better-teamwork/">Git-ting Better Teamwork Around Graph Analytics</a></h3>
+    
+    
+    <h5 class="subtitle">Technical underpinnings of Dendrite&#8217;s collaboration and experimentation features</h5>
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-24T12:00:00+00:00" pubdate data-updated="true">Apr 24<span>th</span>, 2014</time>
+        
+        
+  
+
+<span class="byline author vcard"> - <span class="fn">Kyle Foster</span></span>
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As my <a href="http://lab41.github.io/blog/2014/04/08/dendrite-overview">last post</a> described, <a href="https://github.com/Lab41/Dendrite">Dendrite</a> is our open source project to prototype of how teams can use graph storage and analytics within a shared environment. From our perspective, collaborative experimentation is a pressing need for graph analytics. Several companies, such as <a href="http://thinkaurelius.com">Aurelius</a> and <a href="http://graphlab.com">GraphLab</a>, are developing robust and scalable technologies for storage and analytics. These tools are extremely powerful, but in our work, we’ve seen several teams that have workflows revolving around a single graph. And nobody wants to mess with the “Master Graph” when they have to manually transfer data or log in to multiple systems, each of which could modify a conclusion their colleague is about to convey to important people.</p>
+<p>We think graph analysis can add even more bang for the buck if tailored for a team environment, where colleagues could each experiment with techniques that could alter the structure of the graph. That way, workflows wouldn’t need to revolve around a single graph and colleagues could divide responsibilities, simultaneously test different theories, and follow intuition towards unknown outcomes. Basically, everyone would benefit from all the things that innovative teams do well.</p>
+<p><a class="fancybox-effects-a"  href=/images/post_5/checklist.png><img src="/images/post_5/checklist.png" title="Dendrite Goals" ></a></p>
+<p>But how could we prototype such a capability, especially since we’d need to link together multiple storage and analytics technologies? And how does it actually work under the hood to support multiple users, each of whom could be doing different or conflicting things?</p>
+<p>Just as we can build off existing open source projects, it helps to build from a common workflow paradigm when thinking about collaborative graph experimentation. To work together, many analysts want to create different versions, track changes such as modifications or calculations, and selectively accept or reject those changes back into a shared version. Yes, what I’m describing is the same <em>Track Changes</em> feature everyone has come to know and love from Microsoft<sup>®</sup> Word<sup>®</sup>. Imagine if several people tried to edit a document without that feature. Basically, everyone trips over each other’s edits, making it painful to review and merge changes. That is exactly what happens with graphs, posing a huge problem for analysts.</p>
+<p>To prototype collaboration around graphs, Dendrite borrows features from a technology that we developers use on a daily basis: distributed version control systems (such as <a href="http://git-scm.com">Git</a>). These systems enable teams of engineers to independently modify source code, collaboratively review updates, then selectively accept or reject changes. The paradigm fits so well that we even refer to this aspect of the project as <em>Git for Graphs</em> <sup>®(not really)</sup>. The only problem is that such systems are not designed to handle Big Data-esque structures, so we actually pushed down the path of implementing custom Git-style features in something that could handle the scale and data type.</p>
+<p>What scalable data type can inherently store relationships between projects, graphs, and versions? After several design and coding sessions, we developed something that we call a Metagraph. The concept is that Dendrite uses <a href="http://thinkaurelius.github.io/titan">Titan</a>, the scalable database behind its graphs, to store different versions and the associated metadata about each graph (let that sink in: Dendrite uses a graph to store data about graphs). Within the context of each project, users can create, modify, and clone different versions of a graph. They can even carve off a query-defined subset into a new graph for tailored analysis. In practice, these collaboration features support the essential actions of selectively incorporating data and experimenting with different hypotheses:</p>
+<p><a class="fancybox-effects-a"  href=/images/post_5/branching.png><img src="/images/post_5/branching.png" title="Versions of a Project" ></a></p>
+<p>With this baseline of Metagraph services, Dendrite demonstrates how teams can use different graph versions—optionally configured with a Git-backed change log—for experimentation and a better workflow. <a href="https://github.com/erickt">Erick Tryzelaar</a>, Lab41’s resident “Git whisperer” who designed and built the core of this component, rightly deserves credit for drawing these proven concepts into the graph space.</p>
+<p>Like most prototypes, the collaboration features within Dendrite would benefit from a few performance optimizations, especially to decrease the storage footprint of multiple versions. Nevertheless, it is a good foundation upon which we will continue building capabilities for better collaboration in the space. If that sounds like a worthy pursuit, we welcome talented engineers to join (perhaps even by <a href="https://www.iqt.org/software-engineer-big-data-and-advanced-analytics">applying to work at Lab41</a>) or simply <a href="http://www.lab41.org/contact">drop us a line</a> if you know of interesting work in this area.</p>
+<p>Stay tuned in the coming weeks for additional posts that describe (perhaps even demo) additional facets of Dendrite and other Lab41 projects.</p></div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h3 class="entry-title"><a href="/blog/2014/04/08/dendrite-overview/">Dendrite: A Technology Stack for Collaborative Kevin Bacon-ing</a></h3>
+    
+    
+    <h5 class="subtitle">An open source project for graph analytics in a team environment</h5>
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-08T12:00:00+00:00" pubdate data-updated="true">Apr 8<span>th</span>, 2014</time>
+        
+        
+  
+
+<span class="byline author vcard"> - <span class="fn">Kyle Foster</span></span>
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As <a href="http://lab41.github.io/blog/2013/06/12/i-see-graphs/">mentioned before</a>, we like working with graphs because the mathematical construct inherently captures relationships that matter. But to move beyond theorems and proofs—to effectively use graphs in the real world—we need ways to store and analyze them within a team environment. So how does our <a href="https://github.com/lab41/dendrite">Dendrite open source project</a> address that challenge? In short, it ties together modified versions of leading open source technologies, adds a base capability for graph collaboration, and uses a web interface to drive it all.</p>
+<p><img src="/images/post_4/collaboration.png" title="Collaboration around graphs" ></p>
+<h3 id="the-prelude">The Prelude</h3>
+<p>To understand how we got here, it helps to have a notion of how we work. At its core, <a href="http://www.lab41.org/process">Lab41</a> is a venue for collaboration among talented people from the private sector, academia, and government. Together, we develop prototypes for shared challenges in the Big Data space. Tackling points of overlap can be difficult, but in instances like this, it can be a uniquely effective way to advance capabilities.</p>
+<p>Since our Lab is <a href="http://www.lab41.org">mission</a>-driven, we started by examining the problem space of analysts using graph technologies. To put it mildly, <a href="https://www.cia.gov/careers/opportunities/analytical/view-jobs.html">some analysts</a> have to answer <a href="https://www.cia.gov/about-cia/cia-vision-mission-values">very difficult questions</a>. But looking at the problem space alone would have been insufficient. We also took time to consider workflow and communication needs, such as how colleagues can team up to tackle the ever-important <a href="http://en.wikipedia.org/wiki/Six_Degrees_of_Kevin_Bacon">Six Degrees of Kevin Bacon</a>.</p>
+<p>What we learned is that graph-focused analysts, like most teams in pretty much every industry, did not have a problem with technology alone. The market was already providing access to powerful graph databases, many elegant algorithms had been published through academia and open source, and the tailwinds behind Big Data had delivered robust analytic engines. But there was a core need to combine graph storage and analytic technologies into something a team could collaboratively use. Given the overlap among a variety of groups in different industries, we figured these goals were worth pursuing:</p>
+<p><a class="fancybox-effects-a"  href=/images/post_4/goals.png><img src="/images/post_4/goals.png" title="Dendrite Goals" ></a></p>
+<h3 id="stacking-storage-analytics-collaboration">Stacking Storage + Analytics + Collaboration</h3>
+<p>It’s easy to see that combination of goals requires a full-stack approach. So you’re probably wondering, “What open source technologies did you use, already??” Glad you asked:</p>
+<ul>
+<li><p><strong>Graph Storage</strong>: The <a href="http://thinkaurelius.com">Aurelius</a> team behind the <a href="http://thinkaurelius.github.io/titan">Titan Distributed Graph Database</a> built an impressive suite of capabilities that enables scale-free storage in either Berkeley DB for small datasets or <a href="https://hbase.apache.org">HBase</a> for horizontally scalable needs.</p></li>
+<li><p><strong>Graph Analytics</strong>: <a href="http://graphlab.com">GraphLab</a> is a powerful machine learning engine, which my fellow Lab41 contributor <a href="http://github.com/cglewis">Charlie Lewis</a> managed to execute on graphs from Titan by creatively leveraging its sister project <a href="http://thinkaurelius.github.io/faunus">Faunus</a>. Being a <a href="http://hadoop.apache.org">Hadoop</a>-based analytic engine, Faunus was also a natural fit for extra horsepower, which we rounded off with in-memory calculations using Java’s <a href="http://jung.sourceforge.net">JUNG framework</a>.</p></li>
+<li><p><strong>Information Retrieval</strong>: Developers of user-facing analytics must figure out a way to combine deep computational power, which takes time, with the interactivity we’ve come to expect from The Internets. We initially limited <a href="http://www.elasticsearch.org">Elasticsearch</a> to its standard search features, but now use it as the primary store for listing and visualizing both vertices and edges.</p></li>
+<li><p><strong>User Interface</strong>: A <a href="http://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>ful webserver (using custom <a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html">SpringMVC</a> controllers paired with endpoints served through the Titan-compatible <a href="https://github.com/thinkaurelius/titan/wiki/Rexster-Graph-Server">Rexster</a>) followed principles of data-driven modularity. This design enabled us to build both <a href="http://angularjs.org">AngularJS</a> and command-line interfaces while also allowing others to swap a different front end if desired.</p></li>
+</ul>
+<p><a class="fancybox-effects-a"  href=/images/post_4/components.png><img src="/images/post_4/components.png" title="Dendrite open source components" ></a></p>
+<h3 id="moving-forward">Moving Forward</h3>
+<p>I could go on into deep technical details, lessons learned, and future directions of the project, but my colleagues and I will save those topics for future posts, including one in the near future on the technical underpinnings of Dendrite’s collaboration features. For now, I’ll close out this overview with a few (hopefully) lasting impressions:</p>
+<ul>
+<li><p>Initial <a href="http://strata.oreilly.com/2014/02/big-data-solutions-through-the-combination-of-tools.html">feedback</a> seems to validate our thoughts that graph technologies could gain wider adoption through co-integration and development of better workflow tools. We welcome contributors to join <a href="https://github.com/Lab41/Dendrite">our project</a>, but would also appreciate pointers to any work in this space.</p></li>
+<li><p>If you really want to nerd out on graph technologies, consider attending GraphLab’s <a href="http://graphlab.com/community/events/conference14.html">annual user conference</a> in July. Our team is slated for an in-depth talk on Dendrite.</p></li>
+<li><p>There is still a lot of room for collaboration between the brainpower in academic research, talented commercial and open source engineers, and government partners with some very challenging problems. In our second year, <a href="http://www.lab41.org/process">Lab41</a> aims to continue cultivating our space as a venue for that type of participation. <a href="http://www.lab41.org/contact">Contact us</a> if you’re interested in learning more or getting involved.</p></li>
+</ul></div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/6/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/4/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  This project is maintained by the <a href="https://github.com/LAB41">Lab41</a> Team to serve as a platform of discussion on technology topics relevant to Lab41 Challenges. More information about Lab41 can be found at <a href="http://www.lab41.org">www.lab41.org</a>.
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/28/triplewide-trailer-looking-to-rig-ipython/">Triplewide Trailer, Part 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/13/ipython-on-spark-on-docker/">Using Docker to Build an IPython-driven Spark Deployment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/13/skyline/">Introducing&#8230;SKYLINE</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/04/circulo-community-detection/">Circulo: A Community Detection Evaluation Framework</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/18/rolx-discovering-individuals-roles-in-a-social-network/">Beyond Community Detection - RolX</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/lab41">@lab41</a> on GitHub
+  
+  <script type="text/javascript">
+   (function($) {
+    $(document).on('ready', function() {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'lab41',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+   })(jQuery);
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Blog Authors</h1>
+  <ul id="blog_authors">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li><a href="https://github.com/kylef-lab41" target="_blank">Kyle Foster</a></li>
+    <li><a href="https://github.com/aganeshLab41" target="_blank">Abhinav Ganesh</a></li>
+    <li><a href="https://github.com/ks-lab41" target="_blank">Kabir Soorya</a></li>
+    <li><a href="https://github.com/Lab41PaulM" target="_blank">Paul Mazzuca</a></li>
+    <li><a href="https://github.com/ymt123" target="_blank">Yonas Tesfaye</a></li>
+    <li><a href="https://github.com/nadesai" target="_blank">Nikhil Desai</a></li>
+    <li><a href="https://github.com/cglewis" target="_blank">Charlie Lewis</a></li>
+    <li><a href="https://github.com/ostrowr" target="_blank">Robbie Ostrow</a></li>
+    <li><a href="https://github.com/karkumar" target="_blank">Karthik Ramachandran</a></li>
+  </ul>
+</section>
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Lab41 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</a></span>
+  <br>
+  <span>
+    Background image: <a href="https://www.flickr.com/photos/vkurland/8219699128">"Stanford Dish hiking trail"</a> by <a href="https://www.flickr.com/photos/vkurland/">Vadim Kurland</a>, used under <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> / Desaturated from original
+  </span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

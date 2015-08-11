@@ -1,0 +1,941 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>{ lab41 }</title>
+  <meta name="author" content="Lab41">
+
+  
+  <meta name="description" content="Often times the hardest thing about building open source software is conveying what a project really does. The purpose of a project can easily be &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://lab41.github.io/blog/page/4/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="{ lab41 }" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap-responsive.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-extra.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-buttons.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-thumbs.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/tables.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/kronecker.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+
+<script src="/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+
+<script src="/javascripts/fancybox/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-activate.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-buttons.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-media.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+<script src="/javascripts/r_syntax.js" type="text/javascript"></script>
+<script src="/javascripts/google_analytics.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="/javascripts/mathjax.js" type="text/x-mathjax-config"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="/javascripts/kroneckerapp.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40906884-1, UA-40464073-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/"><img src="/images/lab41/logo.png" width="212" height="50" alt='Logo' %}> { blog }</a></h1>
+  
+    <h2>innovation through collaboration</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:lab41.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h3 class="entry-title"><a href="/blog/2014/07/22/five-steps-to-demonstration-and-delivery/">Five Steps to Demonstration and Delivery</a></h3>
+    
+    
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-22T18:57:00+00:00" pubdate data-updated="true">Jul 22<span>nd</span>, 2014</time>
+        
+        
+  
+
+<span class="byline author vcard"> - <span class="fn">Charlie Lewis</span></span>
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="entry-content">
+<p>
+Often times the hardest thing about building open source software is conveying what a project really does. The purpose of a project can easily be lost to any given audience due to a variety of factors, including mismatch of technical depth, misinterpreted jargon, or insufficient explanations. Similar to most places, “seeing is believing” in the software world - actually using something is often the only way to solidify points made around the project. However, crafting a demo has remained difficult and time consuming.
+</p>
+<p>
+For too long, software developers have had few options to provide on-demand product demos, leaving many at the mercy of PowerPoint slides and vague discussions. By combining a few easy habits with open source technologies like <a href="http://www.docker.com">Docker</a>, individuals and enterprises alike can automate the creation of simple, intuitive, and reproducible software demos.
+</p>
+<p>
+This week, our team launched <a href="https://try.lab41.org">try.lab41.org</a> which provides instances of our open source projects so users can kick the tires before committing to spinning up their own version. We encourage you to checkout <a href="https://lab41.github.io/try41/">Try41</a> and let us know what you think. In this post, I’m going to walk through five steps we use at Lab41 to easily create repeatable, on-demand demonstrations of our open source projects.
+</p>
+<h3 id="step-1-document">
+Step 1: Document that ####
+</h3>
+<p>
+The first step toward creating useful demonstrations is to craft multiple layers of documentation <em>at the project level</em>. There are many forms of documentation, from commenting on a single line of code to complete and verbose install instructions and everything in between. Two types we consistently use are markup-generated overviews of code, as well as README-style instructions for first-time installations.
+</p>
+<p>
+One such example can be taken from <a href="http://lab41.github.io/Redwood/">Redwood</a>, a framework we’ve been working on at Lab41 to identify anomalous files. Below is a breakdown of languages used in Redwood and how the number of lines of comments compares to the number of lines of code. As you can see, the bulk of the project was written in Python, and there is nearly a 1-to-1 ratio of comments to lines of code. Not bad.
+</p>
+<p>
+Click to enlarge: <a class="fancybox-effects-a"  href=/images/post_7/image_1.png><img src="/images/post_7/image_1.png" title="Spreadsheet comparing languages and lines of code, comments, and blanks" ></a> <a class="fancybox-effects-a"  href=/images/post_7/image_2.png><img src="/images/post_7/image_2.png" title="Graph of comparing lines of code, comments, and blanks" ></a>
+</p>
+<blockquote>
+    <p>
+Charts generated by <a href="https://www.ohloh.net/p/Lab41-Redwood/analyses/latest/languages_summary">Ohloh</a>
+</p>
+</blockquote>
+<p>
+While comments are great, it can often be tedious to hunt through the code and discern what a particular function does and how it is intended to behave. Most modern languages allow for a markup that can be used to generate beautiful, intuitive code documentation.
+</p>
+<p>
+Looking at <a href="https://lab41.github.io/Hemlock">Hemlock</a>, another project we’ve spent time on at the Lab, we can see how the markup works in practice.
+</p>
+<pre class="prettyprint"><code class="language-python">
+    """
+    This module is the main core of Hemlock and interfaces with and controls the 
+    majority of other modules in this package.
+····
+    Created on 19 August 2013
+    @author: Charlie Lewis
+    """
+····
+    from clients.hemlock_base import Hemlock_Base
+    from clients.hemlock_debugger import Hemlock_Debugger
+    from clients.hemlock_runner import Hemlock_Runner
+····
+    import hemlock_options_parser
+····
+    import getpass
+    import json
+    import MySQLdb as mdb
+    import os
+    import requests
+    import sys
+    import texttable as tt
+    import time
+    import uuid
+····
+    class Hemlock():
+        """
+        This class is responsible for driving the API and the core functionality of
+        Hemlock.
+        """
+····
+        def __init__(self):
+            self.log = Hemlock_Debugger()
+            self.HELP_COUNTER = 0
+····
+        def client_add_schedule(self, args, var_d):
+            """
+            Adds a specific schedule to a specific client.
+····
+            :param args: arguments to pass in from API
+            :param var_d: dictionary of key/values made from the arguments
+            :return: returns a list of the arguments supplied
+            """
+            arg_d = [
+                '--uuid',
+                '--schedule_id'
+            ]
+            return self.check_args(args, arg_d, var_d)
+············
+</code></pre>
+<blockquote>
+    <p>
+Snippet from <a href="https://github.com/Lab41/Hemlock/blob/master/hemlock/hemlock.py">Hemlock</a>
+</p>
+</blockquote>
+<p>
+The red comments enclosed in triple quotes are the markup lines for Python that can be used by tools like <a href="http://sphinx-doc.org/">Sphinx</a> to generate HTML documentation, as seen in the screenshot below.
+</p>
+<p>
+<a class="fancybox-effects-a"  href=/images/post_7/image_3.png><img src="/images/post_7/image_3.png" title="Sphinx Documentation for Hemlock" ></a>
+<blockquote>
+    <p>
+Taken from <a href="http://lab41.github.io/Hemlock/docs/_build/html/index.html">Hemlock’s Documentation</a>
+</p>
+</blockquote>
+<p>
+That sort of documentation is great for fellow developers of the project, but what about the rest of us that just want to know how to install the project and get it up and running so that we can actually <strong>use</strong> the awesome tool? For those less familiar users, we at Lab41 ensure our projects always have a solid README to guide end-to-end installation from an outsider’s perspective.
+</p>
+<p>
+Having a well-thought-out README goes a long way and should not only explain the project’s intentions, but also include details like installation, dependencies, quick start, known issues, examples, and so on. Here we have the first page of the README for another project we’ve spent a fair amount of time on, called <a href="https://github.com/Lab41/Dendrite">Dendrite</a>, which provides a way to analyze and share graphs.
+</p>
+<p align="center">
+<a class="fancybox-effects-a"  href=/images/post_7/image_4a.png><img src="/images/post_7/image_4a.png" title="Dendrite README" ></a>
+<blockquote>
+    <p>
+Taken from <a href="http://lab41.github.io/Dendrite">Dendrite’s README</a>
+</p>
+</blockquote></p>
+<p>
+There are many ways to document a project, and the more up-to-date and consistent the documentation is, the easier it will be to maintain in the future. More importantly, great documentation will help others get a sense of where the project stands and what it is expected to do.
+</p>
+<p>
+We’ve often heard the saying, “<a href="http://en.wikipedia.org/wiki/Undocumented_feature">It’s not a bug; it’s an undocumented feature!</a>”. The truth, however, is that if it’s not documented, it’s a bug. It may be hard at times to fit things like this into a schedule, but this can sometimes be just as valuable if not more so (user experience, etc.) than the product itself.
+</p>
+
+<h3 id="step-2-test">
+Step 2: Covering-all Tests with Coveralls
+</h3>
+<p>
+Teams often refactor code - restructure the program - to make it cleaner, less complex, and more intuitive as the project evolves. However refactoring a project can potentially create unpredictable and unstable behavior.
+</p>
+<p>
+To avoid unintended consequences during the process of refactoring, good test coverage of the code base can help give you peace of mind as you rework functions, syntax, formatting, or other general cleanup.
+</p>
+<p>
+Testing is another one of those things, like documentation, that often gets left behind, forgotten, or deemed unimportant. To avoid this common target of neglect, we at Lab41 turn to a popular (and automated) testing framework. Beyond the obvious benefits of having tests that ensure a particular project’s code behaves as intended, we’ve found that tests are a great way to craft reproducible demonstrations that behave exactly as intended.
+</p>
+<p>
+Below we can see the code coverage for several of our projects using <a href="https://coveralls.io/">Coveralls</a>, which we have integrated with Travis CI (we will cover this tool in more depth in step <a href="#step-3-build">3</a>) so that every time a build happens, we can not only ensure that the project builds, but also that the tests pass, automatically.
+</p>
+<a class="fancybox-effects-a"  href=/images/post_7/image_5a.png><img src="/images/post_7/image_5a.png" title="Lab41 Coveralls Repositories" ></a>
+<blockquote>
+    <p>
+Taken from <a href="https://coveralls.io/r/Lab41/">Coveralls</a>
+</p>
+</blockquote>
+<p>
+Here we see that specifically for <a href="https://github.com/Lab41/Hemlock-REST">Hemlock-REST</a>, a RESTful server for the Hemlock project, the test coverage adjusts for most of the commits in the history, indicating that tests are being written alongside the code for the project.
+</p>
+<a class="fancybox-effects-a"  href=/images/post_7/image_6.png><img src="/images/post_7/image_6.png" title="Hemlock-REST coverage by commits" ></a>
+<blockquote>
+    <p>
+Coverage for <a href="https://github.com/Lab41/Hemlock-REST">Hemlock-REST</a> on <a href="https://coveralls.io/r/Lab41/Hemlock-REST">Coveralls</a>
+</p>
+</blockquote>
+<p>
+As you can see, automated testing makes it, er &#8230; automatic to march forward with greater peace of mind and less effort. Another specific reason to write tests is to benefit others who want to contribute to a project. Basically, tests are a nice way to show others the way the project is expected to operate - especially for those who haven’t contributed to the project yet or are not familiar with how everything is designed to work.
+</p>
+<p>
+Unit tests are a great way to get started writing tests that will provide code coverage. Most languages have several different unit testing frameworks, including <a href="http://junit.org">JUnit</a> (Java), <a href="http://cunit.sourceforge.net">CUnit</a> (C), and my personal favorite, <a href="http://pytest.org">py.test</a> (Python). Combine these testing frameworks with tools like Cobertura, CodeCover, or Emma to generate reports on how well the unit tests covered the code in the project. Finally, feed those reports to Coveralls, and you’re left with automated code coverage tied to commit history as the project emerges.
+</p>
+<p>
+In concert with documentation, retaining and maintaining traceable testing for a project preps it nicely for the next step toward delivering demonstration: building.
+</p>
+
+<h3 id="step-3-build">
+Step 3: Travis the Builder
+</h3>
+<p>
+Project builds are important. Being able to build a project consistently, and furthermore, guarantee that it still builds in the expected manner as the project gets updated and evolves, is paramount to ensuring that the community has a positive experience getting the project up and running on their own.
+</p>
+<p>
+One of the ways we ensure the project builds correctly with every change we make is by using a tool called <a href="https://travis-ci.org/">Travis CI</a> (“CI” refers to Continuous Integration). There are lots of CI solutions out there, but this one integrates nicely with GitHub and supports a large number of languages and services to build and test against.
+</p>
+<a class="fancybox-effects-a"  href=/images/post_7/image_13.png><img src="/images/post_7/image_13.png" title="erickt pull request" ></a> <a class="fancybox-effects-a"  href=/images/post_7/image_12.png><img src="/images/post_7/image_12.png" title="Travis build passed" ></a>
+<blockquote>
+    <p>
+<a href="https://github.com/Lab41/Dendrite/pull/108">Pull Request</a> by <a href="https://github.com/erickt"><span class="citation" data-cites="erickt">@erickt</span></a> for Dendrite showing green check mark of a passing build
+</p>
+</blockquote>
+<p>
+Here we have a sample config file for Travis CI that tells Travis what it needs to build and test in order to verify that the new changes made don’t break any tests or intended build executions. We can set multiple targets; this one builds against both OpenJDK7 and OracleJDK7. We can specify which branches get built (or which ones don’t) as well as have before and after installation steps for things like dependencies and test reports.
+</p>
+<pre class="prettyprint"><code class="language-bash">
+    language: java
+
+    jdk:
+        - oraclejdk7
+        - openjdk7
+
+    before_install:
+        - source ./scripts/ci/dependencies.sh
+
+    install: mvn install
+
+    after_success:
+        - mvn cobertura:cobertura coveralls:cobertura
+
+    branches:
+        except:
+            - gh-pages
+
+    notifications:
+        email:
+            - charliel@lab41.org
+
+</code></pre>
+<blockquote>
+    <p>
+<a href="https://github.com/Lab41/Dendrite/blob/master/.travis.yml">.travis.yml</a> config file for Travis CI for Dendrite
+</p>
+</blockquote>
+<p> 
+That simple config file translates into a nice user interface that shows the progress, logs, and history of all builds for each specific project setup with Travis.
+</p>
+<a class="fancybox-effects-a"  href=/images/post_7/image_7.png><img src="/images/post_7/image_7.png" title="Lab41 Dendrite Travis-CI" ></a>
+<blockquote>
+    <p>
+Travis CI <a href="https://travis-ci.org/Lab41/Dendrite/">status</a> of Dendrite
+</p>
+</blockquote>
+<a class="fancybox-effects-a"  href=/images/post_7/image_8.png><img src="/images/post_7/image_8.png" title="Lab41 Dendrite build history" ></a>
+<blockquote>
+    <p>
+Travis CI <a href="https://travis-ci.org/Lab41/Dendrite/builds">build history</a> of Dendrite
+</p>
+</blockquote>
+<p>
+Each PR (Pull Request) is built and tested against Travis before it gets merged, ensuring that no broken builds end up in Master, or whatever specific branch you’re intending the community use to download and try your project. If the build breaks on the PR, it gives the contributor the opporunity to remedy the error before it gets pushed upstream, which keeps things clean and consistent for everyone.
+</p>
+
+<h3 id="step-4-deploy">
+Step 4: (more) Trusted Deployments with Tags and Docker
+</h3>
+A lot of groups jump straight to this step, with the popularized war cry: “Ship it!”
+<p align="center">
+<a class="fancybox-effects-a"  href=/images/post_7/image_16.png><img src="/images/post_7/image_16.png" title="ship it squirrel" ></a>
+<blockquote>
+    <p>
+<a href="http://shipitsquirrel.github.io/">Ship it! squirrel</a>
+</p>
+</blockquote></p>
+<p>
+However, jumping the gun before doing due diligence on steps <a href="#step-1-document">1</a>, <a href="#step-2-test">2</a>, and <a href="#step-3-build">3</a> can lead to unstable builds, irreproducible build errors, and next to impossible troubleshooting. For those of us working with open source projects, this can lead to general frustration for all. And there’s no quicker path to unused open source then when something doesn’t work due to lack of documentation, absense of testing, or unchecked build processes.
+</p>
+<p>
+When you are ready to deploy, there are several great options that vary from generic to specific. Since our projects are all hosted on GitHub we get one deployment path for free: tags.
+</p>
+<a class="fancybox-effects-a"  href=/images/post_7/image_10.png><img src="/images/post_7/image_10.png" title="hemlock github tags" ></a>
+<blockquote>
+    <p>
+GitHub tags for <a href="https://github.com/Lab41/Hemlock/tags">Hemlock</a>
+</p>
+</blockquote>
+<p>
+GitHub allows us to create tags associated at any particular point in the commit history to create a downloadable version of the project at that particular point in time. This can be great for pre-releases, or even more official releases.
+</p>
+<p align="center">
+<a class="fancybox-effects-a"  href=/images/post_7/image_11.png><img src="/images/post_7/image_11.png" title="hemlock github tag 0.1.6" ></a>
+<blockquote>
+    <p>
+Release notes for pre-release <a href="https://github.com/Lab41/Hemlock/releases/tag/0.1.6">0.1.6</a> of Hemlock
+</p>
+</blockquote></p>
+<p>
+Tags are very generic, letting one create downloadable source of anything at any given time, leaving the details of how to get it installed and running up to you.
+</p>
+<p>
+Another more specific approach that can be used for deployment is <a href="http://pytest.org">PyPI</a>, a Python specific index for packages that can be automatically downloaded and installed via tools like pip and easy_setup. There are many language specific indices for packages, such as <a href="http://www.cpan.org">CPAN</a> (Perl), <a href="https://rubygems.org">RubyGems</a> (Ruby), and <a href="http://central.sonatype.org">Sonatype</a> (Java).
+</p>
+<p align="center">
+<a class="fancybox-effects-a"  href=/images/post_7/image_9.png><img src="/images/post_7/image_9.png" title="hemlock 0.1.6" ></a>
+<blockquote>
+    <p>
+Hemlock package hosted on <a href="https://pypi.python.org/pypi/hemlock/0.1.6">PyPI</a>
+</p>
+</blockquote></p>
+<p>
+Sometimes project deployment requires many moving parts, multiple languages, and is more complex than just a single package. Docker, which we’ll go into in more detail in <a href="#step-5-repeat">step 5</a>, is a fantastic new technology for these complex cases. It provides developers with a simple way to create an environment, based on a simple configuration file, for running one or more processes inside a container. In addition to providing fine-grained resource utilization, this capability moves us faster towards the “build once, ship everywhere” Holy Grail for deploying across multiple machines. Using Docker, we are able to deploy trusted builds of each project that remain synced with GitHub as each project matures and evolves. All the end user has to do is issue a few easy commands to pull down the image and run it; the installation and setup is already baked into the container and ready to go.
+</p>
+<a class="fancybox-effects-a"  href=/images/post_7/image_15.png><img src="/images/post_7/image_15.png" title="project images on Docker index" ></a>
+<blockquote>
+    <p>
+Lab41 projects deployed on the <a href="https://index.docker.io/search?q=lab41">Docker Index</a>
+</p>
+</blockquote>
+
+<h3 id="step-5-repeat">
+Step 5: Rinse and Repeat the Demo Pipeline
+</h3>
+<p>
+Repeatability is the key to tying together demonstration and deployment. Pretty much every developer has run into the opposite (and unfortunate) situation: for example, having a demo that only runs on a specific laptop becuase of undocumented dependencies, untested hacks, an outdated operating system, or unspecific and mismatched build parameters. These all-too-common unreproducible factors really mean you have a weak prototype, not a demo. A demo should be something that can be shared and reproduced, not a <a href="http://en.wikipedia.org/wiki/Rube_Goldberg_machine">Rube Goldberg machine</a>:
+</p>
+<p align="center">
+<a class="fancybox-effects-a"  href=/images/post_7/image_14.png><img src="/images/post_7/image_14.png" title="rube goldberg" ></a>
+</p>
+<blockquote>
+    <p>
+<strong><a href="http://www.lizarum.com/assignments/flash/2007/animation/rube_goldberg.html">Simplified pencil-sharpener</a></strong>
+</p>
+</blockquote>
+<p>
+Thanks to <a href="https://www.docker.io/">Docker</a>, we can specify the exact environment(s), all of the required dependencies and their versions, and any other setup required for a given project. Through a simple configuration file, we can be assured that the next time someone builds that Docker container, it will do the exact same thing it did before, regardless of the state of the machine - and without any “gotchas” or undocumented hacks! Once that Docker specification - a Dockerfile - is created and deployed as a trusted build, repeatable demonstration of the project (Redwood in this case) comes as simple as a single command:
+<p>
+<pre class="prettyprint"><code class="language-bash">docker run –d -P lab41/redwood
+</code></pre>
+<p>
+Below is an example of a Dockerfile for another project Lab41 has been working on called <a href="https://github.com/Lab41/try41">try41</a>.
+</p>
+<pre class="prettyprint"><code class="language-bash">
+    from ubuntu
+    MAINTAINER Charlie Lewis <charliel@lab41.org>
+····
+    ENV REFRESHED_AT 2014-02-14
+    RUN sed 's/main$/main universe/' -i /etc/apt/sources.list
+    RUN apt-get update
+····
+    # Keep upstart from complaining
+    RUN dpkg-divert --local --rename --add /sbin/initctl
+    RUN ln -s /bin/true /sbin/initctl
+····
+    RUN apt-get install -y git
+    RUN apt-get install -y python-setuptools
+    RUN easy_install pip
+    ADD . /try41
+    RUN pip install -r /try41/requirements.txt
+    ADD patch/auth.py /usr/local/lib/python2.7/dist-packages/docker/auth/auth.py 
+    ADD patch/client.py /usr/local/lib/python2.7/dist-packages/docker/client.py
+····
+    EXPOSE 5000
+····
+    WORKDIR /try41
+    CMD ["python", "api.py"]
+····
+</code></pre>
+<blockquote>
+    <p>
+Dockerfile for <a href="https://github.com/Lab41/try41/blob/master/Dockerfile">try41</a>
+</p>
+</blockquote>
+
+<h3 id="conclusion-content">
+Conclusion
+</h3>
+<p>
+You’re now ready to follow these five steps for demonstration and delivery:
+<ol>
+    <li>
+Document: Use tools like <a href="http://sphinx-doc.org">Sphinx</a> and leverage services like <a href="https://pages.github.com">GitHub Pages</a> and <a href="https://www.ohloh.net">Ohloh</a> to give the project more clarity and build a valuable foundation towards easier delivery and documented demonstration.
+</li>
+    <li>
+Test: Get code coverage via <a href="https://coveralls.io">Coveralls</a> and discover the benefits of decisive tests, which by extension, can be used to test both demonstration and delivery.
+</li>
+    <li>
+Build: Pave the road for deployment by using GitHub’s Pull Request system in concert with the Continuous Integration system, <a href="https://travis-ci.org">Travis CI</a>.
+</li>
+    <li>
+Deploy: Employ GitHub tags, services like <a href="https://pypi.python.org">PyPI</a>, and the <a href="https://registry.hub.docker.com">Docker Index</a> to prep your projects for delivery and demonstration.
+</li>
+    <li>
+Repeat: Use Dockerfiles (and allow the projects to be built by Docker) to establish repeatable, consistent, and reliable ways for projects to be demonstrated and delivered without special cases or nasty hacks.
+</li>
+  </ol>
+</p>
+<p>
+So no more excuses. Get out there and deliver demos for your projects.
+</p>
+</div></div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h3 class="entry-title"><a href="/blog/2014/07/14/dockercon-hackathon/">DockerCon Hackathon</a></h3>
+    
+    
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-07-14T18:39:00+00:00" pubdate data-updated="true">Jul 14<span>th</span>, 2014</time>
+        
+        
+  
+
+<span class="byline author vcard"> - <span class="fn">Charlie Lewis</span></span>
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div class="entry-content"><p>
+Recently, <a href="https://github.com/schvin"><span class="citation" data-cites="schvin">@schvin</span></a> and I participated in <a href="http://www.docker.com/">Docker</a>’s first 24-hour hackathon ahead of the first <a href="http://www.dockercon.com/">DockerCon</a>. We were joined by 98 other tech junkies at the Docker offices, each teaming up to build their own awesome projects in the hopes of winning the highly coveted DockerCon tickets as well as a speaking slot at the conference. <a href="https://github.com/schvin"><span class="citation" data-cites="schvin">@schvin</span></a> and I set off with an idea that spawned at the <a href="http://monitorama.com/">Monitorama</a> conference we attended in May.
+</p>
+<p>
+After seeing a presentation on logging by <a href="https://github.com/torkelo"><span class="citation" data-cites="torkelo">@torkelo</span></a> around <a href="http://grafana.org/">Grafana</a> – which gives you all of the benefits one might get from <a href="http://logstash.net/">Logstash</a> and <a href="http://www.elasticsearch.org/overview/kibana/">Kibana</a>, but lets you use <a href="http://graphite.wikidot.com/">Graphite</a> and <a href="https://github.com/etsy/statsd/">StatsD</a> to provide a more timeseries-centric view of your logs – we decided that it would be cool if we could automatically ship logs from a Docker host, and the containers running on that Docker host, straight into Grafana without having to run extra services on the containers or enforce global changes on legacy containers.
+</p>
+<p>
+Here is how we built it:
+</p>
+<p>
+5:15 pm - We started the project at the kickoff of the hackathon with an initial commit to <em>Dockerana</em>.
+</p>
+<p>
+<a class="fancybox-effects-a"  href=/images/post_6/initial.png><img src="/images/post_6/initial.png" title="Initial Commit" ></a>
+</p>
+<blockquote>
+    <p>
+Initial commit to <a href="https://github.com/dockerana/dockerana">Dockerana</a>
+</p>
+</blockquote>
+<p>
+For our idea to work, we had to overcome a number of hurdles related to three core aspects of Docker’s unique environment. First, we needed to ensure we could extract logs from both the host and its containers without having to modify the containers themselves. Second, in order to use Grafana, we had to incorporate several dependencies all within a Docker environment. Finally, we needed to come up with a standard format to wrap the Docker logs in so that the logs could be fed to Graphite and displayed with Grafana.
+</p>
+<p>
+8:45 pm - Three and a half hours later, we had our initial working prototype: a single Docker container running Grafana and all of its dependencies, gleaning data from the Docker host, and shoving it into Graphite so that it was viewable via Grafana.
+</p>
+<p>
+<a class="fancybox-effects-a"  href=/images/post_6/initial_data.png><img src="/images/post_6/initial_data.png" title="Initial Data" ></a>
+</p>
+<p>
+While it was a good start, there was still a lot of work to be done. The following three tasks required significantly more thought and tinkering:
+<ul>
+ <li>
+Getting log data from the containers themselves, and not just the host;
+</li>
+ <li>
+Breaking out the monolithic Grafana container into a series of integrated components, each in their own containers; and
+</li>
+ <li>
+Bringing it all together by automating the process of spinning up Grafana with its dependencies as well as collecting and aggregating the logs.
+</li>
+</p>
+<p>
+For our Grafana setup, we required six processes to be running, which in Dockerland translates to six containers that all know how to properly communicate and share data with each other. Below are the six services, which together work as a cohesive Grafana system:
+<ul>
+    <li>
+Carbon
+</li>
+    <li>
+Elasticsearch
+</li>
+    <li>
+Grafana
+</li>
+    <li>
+Graphite
+</li>
+    <li>
+Nginx
+</li>
+    <li>
+StatsD
+</li>
+  </ul>
+Graphite is comprised of two components, an engine, and a backend. The backend is Carbon which gets fed the logs via StatsD. StatsD is a network daemon that listens for statistics, counters, timers, and events sent over UDP and aggregates it to pluggable backend services, such as Carbon. Graphite, the engine, is being served up through Nginx, an HTTP and reverse proxy server, making it available to Grafana. Elasticsearch allows different Grafana dashboards to be saved and loaded.
+</p>
+<p>
+Here’s a roughly drawn diagram of how all of these technologies are wired up for Dockerana:
+</p>
+<p>
+<a class="fancybox-effects-a"  href=/images/post_6/Image.png><img src="/images/post_6/Image.png" title="Dockerana Diagram" ></a>
+</p>
+<p>
+Here in Dockerland, we can see how to spin up some of the necessary containers and how they are interconnected both through data and communication.
+</p>
+<pre class="prettyprint"><code>
+# spin up carbon container with a volume
+docker run -d \
+           -p 2004:2004 \
+           -p 7002:7002 \
+           -v /opt/graphite \
+           --name dockerana-carbon dockerana/carbon
+
+# spin up a graphite container and connect the volume from carbon to it
+docker run -d \
+           --volumes-from dockerana-carbon \
+           --name dockerana-graphite dockerana/graphite
+
+# spin up an nginx container and link the networking exposed in graphite to it
+docker run -d \
+           -p 8080:80 \
+           --link dockerana-graphite:dockerana-graphite-link \
+           --name dockerana-nginx dockerana/nginx
+
+</code></pre>
+<p>
+An astute eye might notice that when the Graphite container is spun up there does not appear to be any exposed networking specified for the Nginx container to link to. That is because we are not exposing any networking to the outside. Instead, we are using native Docker linking between containers through the Dockerfile. As you can see in the example below, the <code>EXPOSE</code> command allows those ports (in this case, 8000) to communicate between linked containers without being exposed to the outside world.
+</p>
+<pre class="prettyprint"><code>
+FROM ubuntu:trusty
+MAINTAINER Charlie Lewis <charliel@lab41.org>
+
+RUN apt-get -y update
+RUN apt-get -y install git \
+                       python-django \
+                       python-django-tagging \
+                       python-simplejson \
+                       python-memcache \
+                       python-ldap \
+                       python-cairo \
+                       python-twisted \
+                       python-pysqlite2 \
+                       python-support \
+                       python-pip
+
+
+# graphite, carbon, and whisper
+WORKDIR /usr/local/src
+RUN git clone https://github.com/graphite-project/graphite-web.git
+RUN git clone https://github.com/graphite-project/carbon.git
+RUN git clone https://github.com/graphite-project/whisper.git
+RUN cd whisper && git checkout master && python setup.py install
+RUN cd carbon && git checkout 0.9.x && python setup.py install
+RUN cd graphite-web && git checkout 0.9.x && python check-dependencies.py; python setup.py install
+
+# make use of cache from dockerana/carbon
+RUN apt-get -y install gunicorn
+
+RUN mkdir -p /opt/graphite/webapp
+WORKDIR /opt/graphite/webapp
+
+ENV GRAPHITE_STORAGE_DIR /opt/graphite/storage
+ENV GRAPHITE_CONF_DIR /opt/graphite/conf
+ENV PYTHONPATH /opt/graphite/webapp
+
+EXPOSE 8000
+
+CMD ["/usr/bin/gunicorn_django", "-b0.0.0.0:8000", "-w2", "graphite/settings.py"]
+
+</code></pre>
+<blockquote>
+    <p>
+Snippet from <a href="https://github.com/dockerana/dockerana/blob/master/components/graphite/Dockerfile">Graphite Dockerfile</a>
+</p>
+</blockquote>
+<p>
+If we then look at the Nginx configuration snippet below, we can see how it is using that link to proxy through the Graphite content to Grafana:
+</p>
+<pre class="prettyprint"><code>
+. . .
+
+http {
+  . . .
+
+  server {
+    listen 80 default_server;
+    server_name _;
+
+    open_log_file_cache max=1000 inactive=20s min_uses=2 valid=1m;
+
+    location / {
+        proxy_pass                 http://dockerana-graphite-link:8000;
+        proxy_set_header           X-Real-IP   $remote_addr;
+        proxy_set_header           X-Forwarded-For  $proxy_add_x_forwarded_for;
+
+. . .
+
+</code></pre>
+<blockquote>
+    <p>
+Snippet from <a href="https://github.com/dockerana/dockerana/blob/master/components/nginx/nginx.conf">Nginx configuration file</a>
+</p>
+</blockquote>
+<p>
+With all of those components working nicely, we just needed a process to collect and aggregate logs. This sounds like a good candidate for a container - so that’s exactly what we did. We Dockerized that process as well into a simple container that runs a couple scripts which poll various parts of the Docker host to glean logs not only about the host but also about the containers running on the host.
+</p>
+<p>
+Here is our simple Dockerfile to build the container to do the log collection, where the primary driver is <code><a href="https://github.com/dockerana/dockerana/blob/master/scripts/runner.sh">runner.sh</a></code>:
+</p>
+<pre class="prettyprint"><code>
+FROM ubuntu:trusty
+MAINTAINER George Lewis <schvin@schvin.net>
+
+RUN apt-get update
+RUN apt-get install -y sysstat make
+
+RUN perl -MCPAN -e 'install Net::Statsd'
+
+ADD scripts/ingest.pl /usr/local/bin/
+ADD scripts/loop.pl /usr/local/bin/
+ADD scripts/periodic-ingest.sh /usr/local/bin/
+ADD scripts/runner.sh /usr/local/bin/
+
+CMD /usr/local/bin/runner.sh
+</code></pre>
+<blockquote>
+    <p>
+Snippet from <a href="https://github.com/dockerana/dockerana/blob/master/Dockerfile">Main Dockerfile</a>
+</p>
+</blockquote>
+
+<p>
+Now for the fun part: displaying the data. We built a dashboard that is mostly centered around the events on the Docker host. In the future we hope to add automatic dashboards specific to containers, but there’s only so much two people can do in 24 hours.
+</p>
+<p>
+Here are some screenshots of what the dashboard looks like, all dynamically configurable:
+</p>
+<p>
+<a class="fancybox-effects-a"  href=/images/post_6/dashboard1.png><img src="/images/post_6/dashboard1.png" title="Dockerana Dashboard" ></a>
+</p>
+<p>
+Note that here we can see the virtual network interfaces of each container as well as the host:
+</p>
+<p>
+<a class="fancybox-effects-a"  href=/images/post_6/dashboard2.png><img src="/images/post_6/dashboard2.png" title="Dockerana Dashboard" ></a>
+</p>
+
+<p>
+Finally, we wanted it to be easy to setup and repeatable by anyone running a Docker host. Below is a screencast showing just how simple it is to get Dockerana up and running:
+</p>
+<div style="width:600px;">
+<script type="text/javascript" src="https://asciinema.org/a/10047.js" id="asciicast-10047" async data-speed="2" data-size="small" data-autoplay=0></script>
+</div>
+<p>
+DockerCon was a great event. We learned a lot, and got to see a lot of other interesting ideas around Docker that other groups worked on. You can find our presentation as well as those from the other groups that participated on the <a href="http://blog.docker.com/2014/07/dockercon-video-dockercon-hackathon-winners/">Docker Blog</a>. We are definitely looking forward to the next hackathon.
+</p></div></div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/5/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/3/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  This project is maintained by the <a href="https://github.com/LAB41">Lab41</a> Team to serve as a platform of discussion on technology topics relevant to Lab41 Challenges. More information about Lab41 can be found at <a href="http://www.lab41.org">www.lab41.org</a>.
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/28/triplewide-trailer-looking-to-rig-ipython/">Triplewide Trailer, Part 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/13/ipython-on-spark-on-docker/">Using Docker to Build an IPython-driven Spark Deployment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/13/skyline/">Introducing&#8230;SKYLINE</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/04/circulo-community-detection/">Circulo: A Community Detection Evaluation Framework</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/18/rolx-discovering-individuals-roles-in-a-social-network/">Beyond Community Detection - RolX</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/lab41">@lab41</a> on GitHub
+  
+  <script type="text/javascript">
+   (function($) {
+    $(document).on('ready', function() {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'lab41',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+   })(jQuery);
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Blog Authors</h1>
+  <ul id="blog_authors">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li><a href="https://github.com/kylef-lab41" target="_blank">Kyle Foster</a></li>
+    <li><a href="https://github.com/aganeshLab41" target="_blank">Abhinav Ganesh</a></li>
+    <li><a href="https://github.com/ks-lab41" target="_blank">Kabir Soorya</a></li>
+    <li><a href="https://github.com/Lab41PaulM" target="_blank">Paul Mazzuca</a></li>
+    <li><a href="https://github.com/ymt123" target="_blank">Yonas Tesfaye</a></li>
+    <li><a href="https://github.com/nadesai" target="_blank">Nikhil Desai</a></li>
+    <li><a href="https://github.com/cglewis" target="_blank">Charlie Lewis</a></li>
+    <li><a href="https://github.com/ostrowr" target="_blank">Robbie Ostrow</a></li>
+    <li><a href="https://github.com/karkumar" target="_blank">Karthik Ramachandran</a></li>
+  </ul>
+</section>
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Lab41 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</a></span>
+  <br>
+  <span>
+    Background image: <a href="https://www.flickr.com/photos/vkurland/8219699128">"Stanford Dish hiking trail"</a> by <a href="https://www.flickr.com/photos/vkurland/">Vadim Kurland</a>, used under <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> / Desaturated from original
+  </span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

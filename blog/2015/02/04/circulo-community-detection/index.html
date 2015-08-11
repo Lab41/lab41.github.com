@@ -1,0 +1,859 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Circulo: A Community Detection Evaluation Framework - { lab41 }</title>
+  <meta name="author" content="Lab41">
+
+  
+  <meta name="description" content="Lab41 recently released &lt;a href=&quot;https://github.com/lab41/circulo&quot; target=&quot;_blank&quot;&gt;Circulo&lt;/a&gt;, a python framework &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://lab41.github.io/blog/2015/02/04/circulo-community-detection/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="{ lab41 }" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap-responsive.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-extra.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-buttons.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-thumbs.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/tables.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/kronecker.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+
+<script src="/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+
+<script src="/javascripts/fancybox/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-activate.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-buttons.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-media.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+<script src="/javascripts/r_syntax.js" type="text/javascript"></script>
+<script src="/javascripts/google_analytics.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="/javascripts/mathjax.js" type="text/x-mathjax-config"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="/javascripts/kroneckerapp.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40906884-1, UA-40464073-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/"><img src="/images/lab41/logo.png" width="212" height="50" alt='Logo' %}> { blog }</a></h1>
+  
+    <h2>innovation through collaboration</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:lab41.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h3 class="entry-title">Circulo: A Community Detection Evaluation Framework</h3>
+    
+    
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-04T09:00:00+00:00" pubdate data-updated="true">Feb 4<span>th</span>, 2015</time>
+        
+  
+
+<span class="byline author vcard"> - <span class="fn">Paul Mazzuca and Yonas Tesfaye</span></span>
+
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="row-fluid" style="margin-bottom: 40px">
+<div class="span3" style="padding-top: 5px">
+<img src="/images/post_9_circulo/logo_circulo.png" title="Circulo Community Detection Framework" >
+</div>
+<div class="span9">
+<pre><code>Lab41 recently released &lt;a href=&quot;https://github.com/lab41/circulo&quot; target=&quot;_blank&quot;&gt;Circulo&lt;/a&gt;, a python framework that evaluates *Community Detection Algorithms*.  As background, a community detection algorithm partitions a *graph* containing vertices and edges into clusters or communities.  Vertices can be entities such as people, places or things; while the relationships among these entities are the edges.  Behind the scenes, community detection algorithms use these relationships (edges), their strength (edge weights), and their direction (directedness) to conduct the partitioning. The partitioning is significant because it often can provide valuable insight into the underlying raw data, revealing information such as community organizational structure, important relationships, and influential entities.</code></pre>
+</div>
+</div>
+<p>Circulo becomes especially important in circumstances where community detection algorithms fail to present clear and consistent results. One of the more prominent examples of this is the case where algorithms executed against the same dataset produce variable results relative to membership, size, execution time, or number of communities. For example, ten different algorithms can produce ten different results, all at different rates. This level of variation puts a researcher into the difficult position of having to choose among the results, without much guidance as to which of the results most accurately applies to the circumstances. Can varying results combine to form a global best result? Does the type of input data affect which algorithm to use? If an algorithm takes too long to execute, is using a fast algorithm sufficient? Do different definitions of a <em>community</em> determine the algorithm to use? Is there such thing as a best result?</p>
+<p><em>Circulo enables researchers to try and answer these questions by giving them an efficient platform to conduct data collection, analysis, and experimentation</em>. The framework calculates a variety of quantitative metrics on each resulting community. It can validate a partitioning against some predefined ground truth or can compare two different partitions to each other. This data can be used to draw conclusions about algorithm performance and efficacy. And best of all, it is completely modular so that a researcher can add new algorithms, metrics, and experiments with ease.</p>
+<p>To help explain the Circulo framework, we will use the flight routes data <a href="http://sourceforge.net/p/openflights/code/HEAD/tree/openflights" target="_blank">obtained</a> by <a href="http://openflights.org" target="_blank">openflights.org</a>. This dataset is one of 14 that we use for testing in Circulo. In this example, the airports are nodes, and the routes between airports are the edges. The resulting graph is both directed (since flights travel in a direction from one airport to another) and multi-edged (since numerous routes may exist from one airport to another) and contains 3,255 vertices and 67,614 edges. The reasons to employ community detection against this type of data could range anywhere from an airline debating where to build its next hub, to trying to identify a new route to an underserved region, or to developing a plan to reroute regional airport traffic to a different hub. A clearer understanding of how flight routes can divide airports into clusters could lead to better informed decisions.</p>
+<h2 id="the-circulo-data-pipeline">The Circulo Data Pipeline</h2>
+<p>Circulo execution can be divided into a three stage pipeline. Generally speaking, the inputs to the pipeline are a collection of algorithms and a collection of datasets. What comes out are JSON encoded files containing numeric metric results. Each algorithm/data pair produces a <em>partitioning</em>, and each <em>partitioning</em> produces a set of <em>metrics</em>. The first stage is the <strong>Data Ingestion</strong> stage, where raw data is extracted, transformed, and loaded (ETL) into a graph and serialized into a GraphML file. The second stage is the <strong>Algorithm Execution</strong> stage, where one or more algorithms are executed against the graph. And finally, the third stage is the <strong>Metric Execution</strong> stage, where the results of the previous stage are evaluated against a variety of metrics.</p>
+<h3 id="stage-1-data-ingestion">Stage 1: Data Ingestion</h3>
+<p>The primary purpose of the <em>Data Ingestion</em> stage is to provide the remaining two stages with a consistent, known graph input format. In many ways, this stage therefore serves as a tool to convert any raw data format into the expected input format of downstream stages. To accomplish this, a researcher needs to subclass the provided <a href="https://github.com/Lab41/Circulo/blob/master/circulo/data/databot.py" target="_blank">CirculoData base class</a>. We have chosen <em>igraph</em> as the primary framework for representing a graph in memory, and <em>graphML</em> as the primary serialization format for storing the graph to disk. Both <em>igraph</em> and <em>graphML</em> were selected for the following reasons:</p>
+<ul style="list-style-type: disc">
+  <li>
+<em>igraph</em> offered a few key benefits that made it an attractive choice. First and foremost, in addition to the standard vertex and edge manipulation typically provided in a graph framework, <em>igraph</em> also provides a suite of community detection algorithms. That means that not only can we leverage these algorithms out of the box, but also that <em>igraph</em> already has a notion of many of the key data structures and functions one would want when creating an evaluation framework. For example, <em>igraph</em> includes a Dendrogram for divisive results, a VertexClustering for non-overlapping results, and a VertexCover for overlapping results. At a lower level, a vertex <em>membership array</em> maintains which vertices belong to which communities. <em>igraph</em> also provides many evaluation functions such as cohesion, degree distribution, and triad_census to name a few. <em>igraph</em>, which is written in C, also has decent performance, is well-documented, and provides wrappers for both <em>Python</em> and <em>R</em>.
+</li>
+  <li>
+<em>graphML</em> is a widely used graph serialization format, enabling Circulo to be compatible with numerous other graph related technologies. <em>graphML</em> is also written in XML which is a standard serialization format, making it reliable and easy to parse using any number of third party tools.
+</li>
+</ul>
+
+<p>For the flights data, the <em>Data Ingestion</em> stage begins with the execution of functionality provided by the <a href="https://github.com/Lab41/Circulo/blob/master/circulo/data/flights/run.py" target="_blank">FlightsData class</a>. Each new dataset must subclass the CirculoData class as we do with FlightsData, which provides the base functionality to download the data, convert it into a graph, identify ground truth from labels when available, then serialize the graph as graphML. The raw data for flights includes two CSV files:</p>
+<ul style="list-style-type: disc">
+  <li>
+<code>flights.csv</code> (e.g. “Goroka”,“Goroka”,“Papua New Guinea”,“GKA”,“AYGA”,-6.081689,145.391881,5282,10,“U”,“Pacific/Port_Moresby”)
+</li>
+  <li>
+<code>routes.csv</code> (e.g. “AF,137,ATL,3682,ILM,3845,Y,0,CRJ 319”)
+</li>
+</ul>
+
+<p>Below are both the vertex (node) and edge representations of the previous CSV lines from flights and routes in <em>graphML</em>:</p>
+<h4 id="graphml-airport-example">GraphML (Airport Example)</h4>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>  <span class="nt">&lt;node</span> <span class="na">id=</span><span class="s">&quot;n0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_ICAO&quot;</span><span class="nt">&gt;</span>&quot;AYGA&quot;<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_airport_name&quot;</span><span class="nt">&gt;</span>&quot;Goroka&quot;<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_DST&quot;</span><span class="nt">&gt;</span>&quot;U&quot;<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_city&quot;</span><span class="nt">&gt;</span>&quot;Goroka&quot;<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_name&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_country&quot;</span><span class="nt">&gt;</span>&quot;Papua New Guinea&quot;<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_latitude&quot;</span><span class="nt">&gt;</span>-6.081689<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_IATA/FAA&quot;</span><span class="nt">&gt;</span>&quot;GKA&quot;<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_timezone&quot;</span><span class="nt">&gt;</span>10<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_altitude&quot;</span><span class="nt">&gt;</span>5282<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;v_longitude&quot;</span><span class="nt">&gt;</span>145.391881<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/node&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+<h4 id="graphml-route-example">GraphML (Route Example)</h4>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'>  <span class="nt">&lt;edge</span> <span class="na">source=</span><span class="s">&quot;n1797&quot;</span> <span class="na">target=</span><span class="s">&quot;n1878&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e_equipment&quot;</span><span class="nt">&gt;</span>CRJ 319<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e_dest_id&quot;</span><span class="nt">&gt;</span>3845<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e_source_id&quot;</span><span class="nt">&gt;</span>3682<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e_codeshare&quot;</span><span class="nt">&gt;</span>Y<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e_source_airport&quot;</span><span class="nt">&gt;</span>ATL<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e_airline_id&quot;</span><span class="nt">&gt;</span>3090<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e_stops&quot;</span><span class="nt">&gt;</span>0<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e_airline&quot;</span><span class="nt">&gt;</span>KL<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>    <span class="nt">&lt;data</span> <span class="na">key=</span><span class="s">&quot;e_dest_airport&quot;</span><span class="nt">&gt;</span>ILM<span class="nt">&lt;/data&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/edge&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+<p>By default, Circulo includes 14 datasets to enable a researcher to quickly evaluate community detection algorithms out of the box. The project contains <a href="https://github.com/Lab41/Circulo/tree/master/circulo/data" target="_blank">information</a> about these default datasets, including how to add additional datasets.</p>
+<table class="table-lab41" style="margin-bottom: 40px">
+  <tbody>
+    <tr>
+      <td>
+<strong>Dataset</strong>
+</td><td>
+<strong>Description</strong>
+</td>
+    </tr>
+    <tr>
+      <td>
+amazon
+</td><td>
+Co-purchasing Data – <a href="http://snap.stanford.edu/data/bigdata/communities" target="_blank" rel="nofollow">http://snap.stanford.edu/data/bigdata/communities</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+house_voting
+</td><td>
+2014 congress (house) voting data – <a href="https://www.govtrack.us/developers/data" target="_blank" rel="nofollow">https://www.govtrack.us/developers/data</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+flights
+</td><td>
+Flight Route Data – <a href="http://openflights.org/data.html" target="_blank" rel="nofollow">http://openflights.org/data.html</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+football
+</td><td>
+NCAA D1A games - <a href="http://www-personal.umich.edu/%7Emejn/netdata/football.zip" target="_blank" rel="nofollow">http://www-personal.umich.edu/~mejn/netdata</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+karate
+</td><td>
+Famous data set of Zachary’s karate club - <a href="http://www-personal.umich.edu/%7Emejn/netdata/karate.zip" target="_blank" rel="nofollow">http://www-personal.umich.edu/~mejn/netdata/</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+malaria
+</td><td>
+Amino acids in malaria parasite – <a href="http://danlarremore.com/bipartiteSBM/malariaData.zip" target="_blank" rel="nofollow">http://danlarremore.com/bipartiteSBM</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+nba_schedule
+</td><td>
+Games played in the 2013-2014 NBA season – <a href="https://github.com/davewalk/2013-2014-nba-schedule" target="_blank" rel="nofollow">https://github.com/davewalk/2013-2014-nba-schedule</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+netscience
+</td><td>
+Graph of collaborators on papers about network science – <a href="http://www-personal.umich.edu/%7Emejn/netdata/netscience.zip" target="_blank" rel="nofollow">http://www-personal.umich.edu/~mejn/netdata/</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+pgp
+</td><td>
+Interactions in pretty good privacy – <a href="http://deim.urv.cat/%7Ealexandre.arenas/data/xarxes/PGP.zip" target="_blank" rel="nofollow">http://deim.urv.cat/~alexandre.arenas/data/xarxes/</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+revolution
+</td><td>
+Graph representing colonial American dissidents – <a href="https://github.com/kjhealy/revere.git" target="_blank" rel="nofollow">https://github.com/kjhealy/revere.git</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+school
+</td><td>
+Face-to-face interactions in a primary school – <a href="http://www.sociopatterns.org/datasets/primary-school-cumulative-networks/" target="_blank" rel="nofollow">http://www.sociopatterns.org/datasets/primary-school-cumulative-networks/</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+scotus
+</td><td>
+Supreme court case citation network – <a href="http://jhfowler.ucsd.edu/judicial.htm" target="_blank" rel="nofollow">http://jhfowler.ucsd.edu/judicial.htm</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+senate_voting
+</td><td>
+2014 congress (senate) voting data – <a href="https://www.govtrack.us/developers/data" target="_blank" rel="nofollow">https://www.govtrack.us/developers/data</a>
+</td>
+    </tr>
+    <tr>
+      <td>
+southern_women
+</td><td>
+bipartite graph of southern women social groups – <a href="http://nexus.igraph.org/api/dataset_info?id=23&amp;format=html" target="_blank" rel="nofollow">http://nexus.igraph.org/api/dataset_info?id=23&amp;format=html</a>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3 id="stage-2-algorithm-execution">Stage 2: Algorithm Execution</h3>
+<p><a class="fancybox-effects-a"  href=/images/post_9_circulo/algorithm_execution.png><img src="/images/post_9_circulo/algorithm_execution.png" title="Circulo Algorithm Execution" ></a></p>
+<p>The second stage of the Circulo pipeline is running the community detection algorithms against each dataset. To run all algorithms against the <em>flights</em> dataset, a researcher would do the following:</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'>  <span class="n">python3</span> <span class="n">run_algos</span><span class="o">.</span><span class="n">py</span> <span class="n">flights</span> <span class="n">ALL</span> <span class="err">–</span><span class="n">output</span> <span class="n">algorithm_results</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+<p>Circulo will run each algorithm/dataset pair in parallel, serializing the <em>job name</em>, <em>dataset name</em>, <em>iteration</em> (running algorithm/dataset pair multiple times), <em>VertexCover</em> membership array, total <em>elapsed time of execution</em>, and <em>alterations</em> to the filesystem in JSON as shown in the following example:</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'> <span class="nt">&quot;algo&quot;</span><span class="p">:</span> <span class="s2">&quot;bigclam&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="nt">&quot;jobname&quot;</span><span class="p">:</span> <span class="s2">&quot;flights—bigclam—0&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="nt">&quot;alterations&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;weighted&quot;</span><span class="p">,</span> <span class="s2">&quot;undirected&quot;</span><span class="p">,</span><span class="s2">&quot;simple&quot;</span><span class="p">],</span>
+</span><span class='line'> <span class="nt">&quot;dataset&quot;</span><span class="p">:</span> <span class="s2">&quot;flights&quot;</span><span class="p">,</span>
+</span><span class='line'> <span class="nt">&quot;iteration&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'> <span class="nt">&quot;membership&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="mi">56</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">56</span><span class="p">],</span> <span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="p">[</span><span class="mi">28</span><span class="p">,</span> <span class="mi">44</span><span class="p">],</span> <span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="p">[</span><span class="mi">102</span><span class="p">],</span> <span class="err">...</span> <span class="p">],</span>
+</span><span class='line'> <span class="nt">&quot;elapsed&quot;</span><span class="p">:</span> <span class="mf">17.63929653167724</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+<p>The <em>VertexCover</em> membership array above indicates through 0-based indexing that vertex 0 belongs to communities 56 and 1, vertex 1 belongs to community 56, vertex 2 belongs to community 28, etc.</p>
+<p>Though a researcher could add any algorithm for evaluation, the framework by default comes with 15 algorithms, with implementations from Lab41 (Conga, Congo, Radicchi Strong, Radicchi Weak), <em>igraph</em> (infomap, fastgreedy, Girvan Newman, leading eigenvector, label propagation, walktrap, spinglass, multilevel) and SNAP–Stanford Network Analysis Project (BigClam, Coda, Clauset Newman Moore). More information about each algorithm can be found in the <a href="http://lab41.github.io/survey-community-detection/" target="_blank" rel="nofollow">Lab41 Community Detection Survey</a>.</p>
+<p>When an algorithm executes against a dataset, the <em>Algorithm Execution</em> stage first attempts to match that dataset as best as possible to the input parameters of that algorithm. Given that algorithms may vary in how they use weighted, multi, and directed edges, it is necessary to conform a dataset to an algorithm to enable proper execution and maximize algorithm efficacy. In this manner, Circulo operates with a <em>Best Chance</em> methodology when executing algorithms –we provide the algorithm with the best circumstances so that it can have the best chance at finding a solution. This transformation process can sometimes be as simple as changing all directed edges to undirected edges, however in other cases, it can be more difficult. <em>igraph</em> provides all the transformation functionality through the functions <em>simplify</em> and <em>to_undirected</em>, which both have the ability to collapse edges, which is necessary when, for example, simplifying a multi-edge graph.</p>
+<p>The flights dataset (directed, multigraph, unweighted) is an excellent example of how these transformations can occur. To illustrate this, we highlight how the flights data will change when encountering the following two algorithms:</p>
+<ol type="1">
+<li>The <strong>fastgreedy</strong> algorithm accepts an undirected, simple (opposite of multigraph), and weighted graph – basically the opposite of the flights data. To make the dataset compatible, Circulo will first convert all directed edges to undirected edges, collapsing those edge pairs between two nodes into a single edge when each goes in an opposite direction. Because we want to preserve the number of edges that are collapsed, Circulo will first add an edge weight of 1 to each edge in the graph. Therefore, two opposite directed edges between two nodes will collapse into a single undirected edge with a weight of 2. Then finally, Circulo will convert any remaining multi-edges into a single edge by collapsing those edges and summing the weights. The result is an undirected, simple, weighted graph.</li>
+<li>The <strong>bigclam</strong> algorithm accepts an undirected, simple, and <em>unweighted</em> graph. Unlike fastgreedy, bigclam cannot rely on edge weights to distinguish between collapsed edges. As a result, a decision must be made to prune or not prior to sending the collapsed graph to the algorithm. Because this logic largely depends on the data, we expect the researcher to provide that logic in the implementation of the CirculoData class. The prune function will be called in one of two circumstances: (1) the graph collapses and the algorithm does not support weights or (2) the graph collapses and becomes nearly complete. The default prune function does nothing. The FlightsData class will prune all edges less than the median + 0.0001. Another issue that arises with the bigclam algorithm is that it has a variety of optional parameters for fine-tuning. To deal with this case, Circulo can pass a data <em>context</em> for each dataset, where the data provider can specify parameters for specific algorithms that it might encounter.</li>
+</ol>
+<p>Once data is transformed and executed against algorithms, a researcher can already start to experiment with some of the results. The following experiment highlights a distinct difference between Label Propagation and Infomap when applied against the flights dataset. We will use the graph visualization tool Gephi to view the results overlaid onto a map using the geo-coordinates of the airports.. Each color in the figures below represents a community as determined by the respective algorithm (the colors vary between the two figures because gephi randomizes the colors).</p>
+<p>The visualization confirms that both algorithms are presenting accurate partitions if one assumes that locality is a valid source of ground truth for flight data. However, if one were to look closely, the results do vary in regards to the degree of locality. For example, Label Propagation treats most of the US and Mexico as a single community while Infomap treats them as separate communities. <em>One could surmise that perhaps Infomap presents a more detailed view of communities whereas Label Propagation a more general one–information valuable when using the algorithms in the future, especially when ground truth such as geo-coordinates is not available</em>.</p>
+<div class="row-fluid" style="margin-bottom: 40px">
+<div class="span6">
+<pre><code>&lt;a class=&quot;fancybox-effects-a&quot;  href=/images/post_9_circulo/label_propagation_flights.jpg&gt;&lt;img src=&quot;/images/post_9_circulo/label_propagation_flights.jpg&quot; title=&quot;Label Propagation Community Detection Results for Flight Data&quot; &gt;&lt;/a&gt;
+&lt;p style=&quot;text-align:center&quot;&gt;&lt;small&gt;_Label Propagation Results_&lt;/small&gt;&lt;/p&gt;</code></pre>
+</div>
+<div class="span6">
+<pre><code>&lt;a class=&quot;fancybox-effects-a&quot;  href=/images/post_9_circulo/infomap_flights.jpg&gt;&lt;img src=&quot;/images/post_9_circulo/infomap_flights.jpg&quot; title=&quot;Infomap Community Detection Results for Flight Data&quot; &gt;&lt;/a&gt;
+&lt;p style=&quot;text-align:center&quot;&gt;&lt;small&gt;_Infomap Results_&lt;/small&gt;&lt;/p&gt;</code></pre>
+</div>
+</div>
+<h3 id="stage-3-metric-execution">Stage 3: Metric Execution</h3>
+<p>Before we proceed, it is important to identify the two major data points known at this point in the data pipeline: the <em>vertex membership</em> produced by the algorithm and the algorithm execution time. With this data alone, a researcher could likely come to various conclusions: (1) the effectiveness of algorithms by comparing resulting memberships with ground truth memberships, (2) the variance of membership results by comparing memberships produced from different algorithms, and (3) the accuracy of algorithms as a function of time by including elapsed execution time. So why probe further into the data? Why not just accept that vertex membership and time are enough?</p>
+<p>Generally speaking, if more data is available, there are more opportunities to come to better conclusions. When an algorithm draws a boundary, and a community is formed, the graph <em>does</em> actually change. Yes, it has the same vertices, and yes it has the same edges, but it now has a third element: the communities themselves. Communities interact with other communities. Communities have ecosystems within them. It is not just that a boundary sets apart vertices in a graph, it is also that it redefines how relationships among vertices can collectively be viewed. All of these facets of the communities can provide further insight beyond just the vertex membership.</p>
+<p>One notable benefit of metrics is that we can now better define what it means to be a good community. For example, a good community might be one that is isolated from the rest of the graph, a metric known as conductance. Now, we can identify those algorithms that minimize the conductance metric or discover other metrics that correlate with conductance. We could even use individual metrics to help distinguish individual communities amongst themselves. What is the most isolated community? What is the most dense community?</p>
+<p>In Circulo, we have identified the following community metrics:</p>
+<table class="table-lab41">
+  <tbody>
+    <tr>
+      <td>
+Cut Ratio
+</td>
+      <td>
+TLU–Local Clustering CoefficientMax
+</td>
+      <td>
+TLU–Local Clustering CoefficientBiased Kurtosis
+</td></tr>
+    <tr>
+      <td>
+Degree StatisticsMax
+</td>
+      <td>
+TLU–Local Clustering CoefficientMedian
+</td>
+      <td>
+Average Out Degree Fraction
+</td></tr>
+    <tr>
+      <td>
+Internal Number Edges
+</td>
+      <td>
+Transitivity Undirected (Global Clustering Coefficient)
+</td>
+      <td>
+Diameter
+</td></tr>
+    <tr>
+      <td>
+Conductance
+</td>
+      <td>
+Degree StatisticsUnbiased Variance
+</td>
+      <td>
+Separability
+</td></tr>
+    <tr>
+      <td>
+Triangle Participation Ratio
+</td>
+      <td>
+Cohesiveness
+</td>
+      <td>
+TLU–Local Clustering CoefficientUnbiased Variance
+</td></tr>
+    <tr>
+      <td>
+Fraction over a Median Degree
+</td>
+      <td>
+TLU–Local Clustering CoefficientMin
+</td>
+      <td>
+Degree StatisticsMedian
+</td></tr>
+    <tr>
+      <td>
+Degree StatisticsMean
+</td>
+      <td>
+Degree StatisticsSize
+</td>
+      <td>
+Degree StatisticsBiased Kurtosis
+</td></tr>
+    <tr>
+      <td>
+TLU–Local Clustering CoefficientSize
+</td>
+      <td>
+Internal Number Nodes
+</td>
+      <td>
+Degree StatisticsBiased Skewness
+</td></tr>
+    <tr>
+      <td>
+Density
+</td>
+      <td>
+Flake Out Degree Fraction
+</td>
+      <td>
+Expansion
+</td></tr>
+    <tr>
+      <td>
+TLU–Local Clustering CoefficientMean
+</td>
+      <td>
+Maximum Out Degree Fraction
+</td>
+      <td>
+Normalized Cut
+</td></tr>
+    <tr>
+      <td>
+Degree StatisticsMin
+</td>
+      <td>
+TLU–Local Clustering CoefficientBiased Skewness
+</td>
+      <td></td></tr>
+  </tbody>
+</table>
+
+<p>Descriptions of each of these metrics can be found in the <em>igraph</em> documentation and the paper “<a href="http://cs.stanford.edu/people/jure/pubs/comscore-icdm12.pdf" target="_blank" rel="nofollow">Evaluating Network Communities based on Ground-truth</a>,” by Jaewon Yang and Jure Leskovec.</p>
+<p>To run the metrics against a given vertex membership, one would do the following:</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'>  <span class="n">python3</span> <span class="n">run_metrics</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="n">algorithm_results_path</span><span class="p">]</span> <span class="p">[</span><span class="n">metric_results_output_path</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+<p>The algorithm_results_path is the directory containing the JSON encoded results from stage 2. The metric_results_output_path is the path to the directory where the JSON encoded metrics results will be saved. For example, by running the metrics suite against the infomap/flights result, the following JSON would be created:</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;flights--infomap--0&quot;</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;omega&quot;</span><span class="p">:</span> <span class="mf">0.45103078087242837</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;metrics_elapsed&quot;</span><span class="p">:</span> <span class="mf">152.93790674209595</span><span class="p">,</span>
+</span><span class='line'>  <span class="nt">&quot;membership&quot;</span><span class="p">:</span> <span class="p">[</span><span class="err">Membership</span> <span class="err">array</span><span class="p">],</span>
+</span><span class='line'>  <span class="nt">&quot;metrics&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;Average Out Degree Fraction&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>            <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01293</span><span class="p">,</span> <span class="mf">0.03441</span><span class="p">,</span> <span class="err">...</span><span class="p">,</span> <span class="err">metric</span> <span class="err">scores</span> <span class="err">for</span> <span class="err">each</span> <span class="err">community</span><span class="p">],</span>
+</span><span class='line'>              <span class="nt">&quot;aggregations&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="nt">&quot;Biased Kurtosis&quot;</span><span class="p">:</span> <span class="mf">8.609365543507755</span><span class="p">,</span>
+</span><span class='line'>                  <span class="nt">&quot;Biased Skewness&quot;</span><span class="p">:</span> <span class="mf">2.859077427455205</span><span class="p">,</span>
+</span><span class='line'>                  <span class="nt">&quot;Max&quot;</span><span class="p">:</span> <span class="mf">0.19886363636363635</span><span class="p">,</span>
+</span><span class='line'>                  <span class="nt">&quot;Mean&quot;</span><span class="p">:</span> <span class="mf">0.01995900385645678</span><span class="p">,</span>
+</span><span class='line'>                  <span class="nt">&quot;Median&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+</span><span class='line'>                  <span class="nt">&quot;Min&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+</span><span class='line'>                  <span class="nt">&quot;Size&quot;</span><span class="p">:</span> <span class="mi">157</span><span class="p">,</span>
+</span><span class='line'>                  <span class="nt">&quot;Unbiased Variance&quot;</span><span class="p">:</span> <span class="mf">0.0015095135838776254</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>      <span class="p">},</span>
+</span><span class='line'>    <span class="err">#</span> <span class="err">Repeated</span> <span class="err">for</span> <span class="err">each</span> <span class="err">metric</span>
+</span><span class='line'>  <span class="p">},</span>
+</span><span class='line'>  <span class="nt">&quot;elapsed&quot;</span><span class="p">:</span> <span class="mf">17.639296531677246</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+<p>The <em>omega index</em> is a measurement of how similar the partition is to some predefined ground truth, if available. In the case of the flights data, we used the countries of the airports. The <em>metrics_elapsed</em> is the time for the stage to complete. The <em>membership</em> is a carry over of the membership from the <em>Algorithm Execution</em> stage. The <em>metrics</em> is divided into two sub-sections for each metric: (1) <em>results</em>–the actual score for each community indexed by the community id, and (2) <em>aggregations</em>: aggregations of the results.</p>
+<p>Though each metric has the potential to provide a valuable perspective on the resulting communities, we will only focus on conductance and density in detail here for the sake of example. Conductance is the ratio of edges leaving the community to the total number of edges. One could consider conductance as a measure of how much a community <em>conducts</em> its energy to the rest of the graph. Density is a measure of the ratio of edges inside a community to the number of possible edges in a community. Vertices belonging to dense communities will have multiple edges connecting them to other vertices in the community.</p>
+<p>Using the flights example once again, a researcher for the airline industry might have concluded that the <em>infomap</em> algorithm tends to find communities with low conductance and high density based on previous analysis of the algorithm against numerous datasets. Because the researcher is trying to find the airline new opportunities for expanding into underserved markets, a <em>good</em> community in this case is one that is isolated from other regions (low conductance) and has high internal traffic (high density). When applying the metrics to the results of infomap/flights, we see the following results:</p>
+<div class="bogus-wrapper">
+<notextile>
+<figure class='code'><figcaption>
+<span></span>
+</figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="s2">&quot;Density&quot;</span><span class="err">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;aggregations&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nt">&quot;Min&quot;</span><span class="p">:</span> <span class="mf">0.036311094358587766</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Max&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Size&quot;</span><span class="p">:</span> <span class="mi">156</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Biased Kurtosis&quot;</span><span class="p">:</span> <span class="mf">-1.008373328338681</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Biased Skewness&quot;</span><span class="p">:</span> <span class="mf">0.7121628304637683</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Median&quot;</span><span class="p">:</span> <span class="mf">0.3333333333333333</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Unbiased Variance&quot;</span><span class="p">:</span> <span class="mf">0.11103269168799376</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Mean&quot;</span><span class="p">:</span> <span class="mf">0.4512116997206803</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.058736682966007606</span><span class="p">,</span> <span class="mf">0.036311094358587766</span><span class="p">,</span> <span class="err">...</span><span class="p">,</span> <span class="mf">0.11522048364153628</span><span class="p">,</span> <span class="err">...</span><span class="p">],</span>
+</span><span class='line'><span class="p">}</span><span class="err">,</span>
+</span><span class='line'><span class="s2">&quot;Conductance&quot;</span><span class="err">:</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;aggregations&quot;</span><span class="p">:</span> <span class="p">{</span>
+</span><span class='line'>        <span class="nt">&quot;Min&quot;</span><span class="p">:</span> <span class="mf">0.0002958677142575364</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Max&quot;</span><span class="p">:</span> <span class="mf">0.9808383233532935</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Size&quot;</span><span class="p">:</span> <span class="mi">156</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Biased Kurtosis&quot;</span><span class="p">:</span> <span class="mf">-0.9679934944718234</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Biased Skewness&quot;</span><span class="p">:</span> <span class="mf">-0.55152643311979</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Median&quot;</span><span class="p">:</span> <span class="mf">0.6666666666666666</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Unbiased Variance&quot;</span><span class="p">:</span> <span class="mf">0.0767265835269525</span><span class="p">,</span>
+</span><span class='line'>        <span class="nt">&quot;Mean&quot;</span><span class="p">:</span> <span class="mf">0.6085926165581683</span>
+</span><span class='line'>    <span class="p">},</span>
+</span><span class='line'>    <span class="nt">&quot;results&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5116088500409725</span><span class="p">,</span> <span class="mf">0.6683854334514986</span><span class="p">,</span> <span class="mf">0.6622996968384582</span><span class="p">,</span> <span class="err">...</span><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+</notextile>
+</div>
+<p>We can see that the <em>infomap</em> algorithm discovered 156 communities, with an average density of ~0.45 and an average conductance of ~0.61. The individual scores are documented in the <em>results</em> section, where for instance, the <em>conductance</em> of each of the first 3 communities is approximately 0.51, 0.67, and 0.66. Though the moderate average scores of both conductance and density suggest that, overall, many of the existing airports optimally serve their regions; interestingly, there exists at least one community with a conductance of 0.00029 and at least one community with a density of 1.0. Given that in our example, a researcher is trying to identify underserved regions, the results of <em>infomap</em> might still be worth a more detailed analysis.</p>
+<h2 id="whats-next">What’s Next</h2>
+<p>The big question that remains is, “What’s Next?” Circulo provides the pipeline for efficiently gathering metrics based on community detection algorithm execution, but where is the value?</p>
+<p>The value, we would argue, is hidden in the metrics data. Before, when we asked the questions about determining which algorithms to use in which situations, we really had no place to start aside from crude qualitative observations. Now when researchers ask these questions, they can leverage the Circulo framework to produce quantitative metrics to serve as the impetus for further experimentation. We have started this experimentation on our <a href="https://github.com/Lab41/Circulo/tree/master/experiments" target="_blank" rel="nofollow">Circulo experiments page</a>. From here, we hope to add more algorithms, include more metrics, and build a variety of experiments that will drive a better understanding of community detection and the numerous algorithms that encompass it. We also hope that you can help make this happen by contributing to Circulo in the future.</p></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Paul Mazzuca and Yonas Tesfaye</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-02-04T09:00:00+00:00" pubdate data-updated="true">Feb 4<span>th</span>, 2015</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://lab41.github.io/blog/2015/02/04/circulo-community-detection/" data-via="" data-counturl="http://lab41.github.io/blog/2015/02/04/circulo-community-detection/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/12/18/rolx-discovering-individuals-roles-in-a-social-network/" title="Previous Post: Beyond Community Detection - RolX">&laquo; Beyond Community Detection - RolX</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/03/13/skyline/" title="Next Post: Introducing...SKYLINE">Introducing...SKYLINE &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  This project is maintained by the <a href="https://github.com/LAB41">Lab41</a> Team to serve as a platform of discussion on technology topics relevant to Lab41 Challenges. More information about Lab41 can be found at <a href="http://www.lab41.org">www.lab41.org</a>.
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/28/triplewide-trailer-looking-to-rig-ipython/">Triplewide Trailer, Part 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/13/ipython-on-spark-on-docker/">Using Docker to Build an IPython-driven Spark Deployment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/13/skyline/">Introducing...SKYLINE</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/04/circulo-community-detection/">Circulo: A Community Detection Evaluation Framework</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/18/rolx-discovering-individuals-roles-in-a-social-network/">Beyond Community Detection - RolX</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/lab41">@lab41</a> on GitHub
+  
+  <script type="text/javascript">
+   (function($) {
+    $(document).on('ready', function() {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'lab41',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+   })(jQuery);
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Blog Authors</h1>
+  <ul id="blog_authors">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li><a href="https://github.com/kylef-lab41" target="_blank">Kyle Foster</a></li>
+    <li><a href="https://github.com/aganeshLab41" target="_blank">Abhinav Ganesh</a></li>
+    <li><a href="https://github.com/ks-lab41" target="_blank">Kabir Soorya</a></li>
+    <li><a href="https://github.com/Lab41PaulM" target="_blank">Paul Mazzuca</a></li>
+    <li><a href="https://github.com/ymt123" target="_blank">Yonas Tesfaye</a></li>
+    <li><a href="https://github.com/nadesai" target="_blank">Nikhil Desai</a></li>
+    <li><a href="https://github.com/cglewis" target="_blank">Charlie Lewis</a></li>
+    <li><a href="https://github.com/ostrowr" target="_blank">Robbie Ostrow</a></li>
+    <li><a href="https://github.com/karkumar" target="_blank">Karthik Ramachandran</a></li>
+  </ul>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Lab41 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</a></span>
+  <br>
+  <span>
+    Background image: <a href="https://www.flickr.com/photos/vkurland/8219699128">"Stanford Dish hiking trail"</a> by <a href="https://www.flickr.com/photos/vkurland/">Vadim Kurland</a>, used under <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> / Desaturated from original
+  </span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,653 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Exploring the CONGO - { lab41 }</title>
+  <meta name="author" content="Lab41">
+
+  
+  <meta name="description" content="ul { list-style-type: none; } Here at Lab41, we don’t just see graphs. We’re also investigating the interesting and useful properties of these &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://lab41.github.io/blog/2014/08/22/exploring-the-congo/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="{ lab41 }" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap-responsive.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-extra.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-buttons.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-thumbs.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/tables.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/kronecker.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+
+<script src="/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+
+<script src="/javascripts/fancybox/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-activate.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-buttons.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-media.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+<script src="/javascripts/r_syntax.js" type="text/javascript"></script>
+<script src="/javascripts/google_analytics.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="/javascripts/mathjax.js" type="text/x-mathjax-config"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="/javascripts/kroneckerapp.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40906884-1, UA-40464073-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/"><img src="/images/lab41/logo.png" width="212" height="50" alt='Logo' %}> { blog }</a></h1>
+  
+    <h2>innovation through collaboration</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:lab41.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h3 class="entry-title">Exploring the CONGO</h3>
+    
+    
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-22T12:00:00+00:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2014</time>
+        
+  
+
+<span class="byline author vcard"> - <span class="fn">Robbie Ostrow</span></span>
+
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><style>
+    ul {
+        list-style-type: none;
+    }
+</style>
+
+<p>Here at Lab41, we don’t just <a href="http://lab41.github.io/blog/2013/06/12/i-see-graphs/">see graphs</a>. We’re also investigating the interesting and useful properties of these graphs. Recently, the lab has been evaluating the applicability of <strong>community detection</strong> algorithms to graphs of varying size and structure. These algorithms attempt to find groups of vertices that seem related to one another, and could therefore be considered <strong>communities</strong> in the larger network.</p>
+<p>When a graph can be split into groups of nodes that are densely internally connected, we say that those groups are communities and that the graph has <strong>community structure</strong>. Natural graphs often have this property, and as we’ve <a href="http://lab41.github.io/blog/2013/08/27/stochastic-kronecker-natural-graphs/">mentioned before</a>, natural graphs tend to be the most illuminating.</p>
+<p>While there has been a fair amount of research focused on community detection since Michelle Girvan and Mark Newman published their <a href="http://arxiv.org/abs/cond-mat/0308217v1">seminal paper</a> in 2002, we still lack a proper understanding of which algorithm(s) work best for a given graph structure and scale.</p>
+<p>There are two classes of community detection algorithms. Some algorithms find overlapping communities, while others partition the graph into distinct, non-overlapping communities. The Girvan-Newman algorithm is the canonical example of the latter group. In this post, we’ll discuss an evolution of the Girvan-Newman algorithm into newer algorithms called CONGA and CONGO, and eventually try to find out whether the structure of a graph impacts CONGO’s performance.</p>
+<h2 id="girvan-newman-algorithm">Girvan-Newman Algorithm</h2>
+<p>It is a good idea to fully digest Girvan-Newman before delving into derivations such as CONGA and CONGO.</p>
+<p>Girvan and Newman introduced an idea called edge betweenness centrality, or <strong>edge betweenness</strong>. The edge betweenness of an edge <span class="math">\(e\)</span> is defined as the number of shortest-paths that pass through <span class="math">\(e\)</span>, normalized by the number of shortest-paths between each pair of vertices. Girvan and Newman argue that edges with high betweenness scores tend to be inter-community edges, because a high edge betweenness hints that the popular edge acts as a bottleneck between two communities. An examination of the inter-community edges in the figure below make this intuition obvious.</p>
+<a class="fancybox-effects-a"  href=/images/post_8/gn_communities.png><img src="/images/post_8/gn_communities.png" title="Communities are circled. You can see that the light, inter-community edges have high betweenness scores. Figure from [1]." ></a>
+<center> 
+<em>Hover over the pictures for more information.</em>
+</center>
+<p><br /></p>
+<p>If we accept that the edge with the highest betweenness tends to divide communities, we see that repeatedly removing that edge might be a good way to partition a network. To do so, the Girvan-Newman algorithm takes the following steps:</p>
+<ul>
+    <li>
+        <ol>
+            <li>
+Calculate betweenness scores for all edges in the network.
+</li>
+            <li>
+Find the edge with the highest score and remove it from the network.
+</li>
+            <li>
+Recalculate betweenness for all remaining edges.
+</li>
+            <li>
+Repeat from step 2 until all edges have been removed.
+</li>
+        </ol>
+    </li>
+</ul>
+
+
+<p>Natural graphs can grow very large. It’s not uncommon to want to find insight about a graph with millions or even billions of nodes. Consequently, it’s important to be able to compare the expected performance of algorithms without looking at the exact number of machine instructions or even writing code. One way to do this is by leveraging asymptotic (also known as <a href="http://en.wikipedia.org/wiki/Big_O_notation">Big-O</a>) notation. An easy way to think of Big-O notation is to imagine an expression once you’ve eliminated all constants and kept only the largest factor. For example, <span class="math">\(.01x^3 + 950x^2\log x + 3 = O(x^3)\)</span>, since even though <span class="math">\(x^3\)</span>’s constant is the smallest, it is still the dominating factor as <span class="math">\(x\)</span> increases.</p>
+<p>If some function <span class="math">\(f(x)\)</span> grows no faster than another function <span class="math">\(g(x)\)</span>, we say that <span class="math">\(f(x) \in O(g(x))\)</span> or <span class="math">\(f(x) = O(g(x))\)</span>. A bit more formally, <span class="math">\(f(x) = O(g(x))\)</span> if and only if there exist constants <span class="math">\(C\)</span> and <span class="math">\(x_0\)</span> such that <span class="math">\(f(x) \le C g(x)\)</span> for all <span class="math">\(x &gt; x_0\)</span>. In other words, no matter how much larger <span class="math">\(f(x)\)</span> is for small values of <span class="math">\(x\)</span>, <span class="math">\(g(x)\)</span> will eventually catch up. Big-O notation is an incredibly useful tool to quickly compare algorithms and find out how much performance depends on the size of the input.</p>
+<p><a class="fancybox-effects-a"  href=/images/post_8/big_o_1.png><img src="/images/post_8/big_o_1.png" title="Some examples of functions using Big-O notation. Behavior as n approaches infinity is all that matters. Notice that despite constants, O(2^n) grows faster than O(Cn^2) Figure from science.slc.edu" ></a></p>
+<p>On a graph with <span class="math">\(|V|\)</span> vertices and <span class="math">\(|E|\)</span> edges, it would seem that calculating all of the betweenness centralities would require <span class="math">\(O(|E||V|^2)\)</span> time, because shortest paths must be found between all <span class="math">\(|V| \times (|V| - 1) / 2 = O(|V|^2)\)</span> pairs of vertices, each using a <a href="http://en.wikipedia.org/wiki/Breadth-first_search">breadth-first search</a> that costs <span class="math">\(O(|E|)\)</span>. Luckily, <a href="http://www-personal.umich.edu/~mejn/papers/016132.pdf">Newman</a> and <a href="http://www.inf.uni-konstanz.de/algo/publications/b-fabc-01.pdf">Brandes</a> independently describe an <span class="math">\(O(|E||V|)\)</span> algorithm for betweenness centrality that requires a single breadth-first search from each vertex. This shortcut method uses a flow algorithm, which yields the edge betweenness without requiring the shortest-paths.</p>
+<p>An algorithm like Girvan-Newman’s that repeatedly divides the graph is known as a divisive algorithm. A divisive algorithm on a graph usually returns a <a href="http://en.wikipedia.org/wiki/Dendrogram">dendrogram</a> – a specialized type of tree. A dendrogram is a memory-efficient data structure that describes the history of the algorithm. It stores a list of the ways small communities merge to make larger ones, until the entire graph is one big community. We can even derive the historical list of divisions that the algorithm made by inspecting the list of merges. Furthermore, a dendrogram can be split at any level to find a single clustering (a set of clusters) that contains the desired number of communities. When the number of communities is known, the dendrogram can easily be split at the appropriate level. When the optimal number of communities is unknown, we use a metric like <a href="http://en.wikipedia.org/wiki/Modularity_(networks)">modularity</a> to determine which clustering is the “best” one.</p>
+<p><a class="fancybox-effects-a"  href=/images/post_8/dendro.png><img src="/images/post_8/dendro.png" title="The dendrogram generated by running Girvan-Newman on the famous Zachary's Karate Club graph. The merges that happen near the top, like 33-32 and 29-{33-32} describe closely related communities, while merges further down show communities that the algorithm split apart early." ></a></p>
+<p>Ostensibly, the Girvan-Newman algorithm runs in <span class="math">\(O(|E|^2|V|)\)</span> time, since the betweennesses must be recalculated for each edge removal. However, since the betweenness only needs to be recalculated in the component in which an edge has just been removed, the algorithm is much more tractable on graphs with strong community structure that split quickly into several disconnected components.</p>
+<p>An example of a graph with strong community structure is the graph of character interactions in Victor Hugo’s <em>Les Miserables</em>. The following figure shows how Girvan-Newman partitions that graph.</p>
+<p><a class="fancybox-effects-a"  href=/images/post_8/les_mis.png><img src="/images/post_8/les_mis.png" title="A depiction of the community structure that the Girvan-Newman algorithm finds from a graph of the characters in Les Miserables. From [1]." ></a></p>
+<h2 id="overlapping-communities">Overlapping Communities</h2>
+<p>While Valjean’s cohorts in <em>Les Mis</em> seem to partition nicely into their own communities, actors in real networks are often members of multiple communities. Most of us belong to multiple social groups. In fact, almost any real-world network has at least some overlapping community structure.</p>
+<p>Most existing algorithms partition networks into non-overlapping communities, but there has been a recent push to design an effective overlapping community detection algorithm.</p>
+<p>Zachary’s Karate Club is a famous network representing feuding factions at a karate club. Non-overlapping community detection algorithms provide a great deal of insight, but at the cost of forcing each student into a single faction, even if he belongs in multiple. The figure on the left is a partitioning performed by a non-overlapping algorithm like Girvan-Newman, and the figure on the right is a clustering that allows for overlap. Of course, this is a toy example in which we’ve limited the number of communities to two, but it’s not hard to imagine a very complex network with many communities and vertices that belong in several.</p>
+<p><a class="fancybox-effects-a"  href=/images/post_8/lapping.png><img src="/images/post_8/lapping.png" title="A comparison of non-overlapping and overlapping result structures. The unfilled nodes in the right figure represent students who are in both communities. From [5] and [6]." ></a></p>
+<p>For whatever reason, network scientists have been exclusively naming their overlapping algorithms using acronyms. <a href="http://dl.acm.org/citation.cfm?id=1835907">CODA</a>, <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&amp;arnumber=6729613&amp;url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6729613">CESNA</a>, <a href="http://dl.acm.org/citation.cfm?id=2433471">BIGCLAM</a>, and <a href="http://link.springer.com/chapter/10.1007/978-3-540-74976-9_12#page-1">CONGA</a> are all algorithms that attempt to discover overlapping communities in a graph. Today, we’ll briefly explore Steve Gregory’s CONGA, or Cluster Overlap Newman Girvan Algorithm.</p>
+<h2 id="conga">CONGA</h2>
+<p>In CONGA, Gregory defines a concept called <strong>split betweenness</strong>. Imagine splitting a vertex into two parts, such that each part keeps some of the original edges. Then the split betweenness is the edge betweenness of an imaginary edge between the two new vertices (represented as a dashed line in the figure below).</p>
+<p><a class="fancybox-effects-a"  href=/images/post_8/split.png><img src="/images/post_8/split.png" title="The red vertex splits such that edges to subgraphs A, B, and C split from subgraphs C and D. The split betweenness of this split is the edge betweenness of the dashed line." ></a></p>
+<p>Since split betweenness of this imaginary edge can be calculated the same way as edge betweenness on a real one, comparing the two values is an entirely legitimate operation. CONGA splits the vertex instead of removing an edge when the maximum split betweenness is greater than the maximum edge betweenness. Vertices can be split repeatedly, so a single vertex in the original graph can end up in an arbitrary number of communities. This property gives us the overlapping community structure that we were looking for.</p>
+<p>A naive version of CONGA would simply calculate the split betweenness for every possible split of every vertex. The algorithm would then look like this:</p>
+<ul>
+    <li>
+        <ol>
+            <li>
+Calculate all edge and split betweenness scores.
+</li>
+            <li>
+                <ol>
+                    <li>
+If the maximum split betweenness is greater than the maximum edge betweenness, split the vertex at the optimal split.
+</li>
+                    <li>
+Otherwise, delete the edge with the maximum edge betweenness.
+</li>
+                </ol>
+            </li>
+            <li>
+Recalculate all edge and split betweenness scores.
+</li>
+            <li>
+Repeat from step 2 until all edges have been removed.
+</li>
+        </ol>
+    </li>
+</ul>
+
+<p>Each time the graph splits, vertices are assigned to one more community than before. Since we don’t know the optimal number of communities, we have to somehow store the historical community assignments before continuing the algorithm. Because CONGA is a divisive algorithm, we would hope to be able to use a dendrogram to store the results. However, the overlapping structure of the result set means that such a data structure wouldn’t make much sense. Instead, our version of CONGA returns a list of all of the community assignments that the algorithm generates.</p>
+<p>This version of CONGA is simple, but it’s also intractable with more than a handful of nodes. To see why, assume that each vertex has <span class="math">\(m\)</span> incident edges. Then we can split each vertex <span class="math">\(2^m\)</span> different ways, since we can choose any subset of edges to be split away to the new vertex, and any set with <span class="math">\(m\)</span> elements has <span class="math">\(2^m\)</span> subsets. Since we have <span class="math">\(|V|\)</span> vertices, we need to calculate <span class="math">\(|V|\times 2^m\)</span> split betweenness scores. Calculating a split betweenness costs <span class="math">\(O(|E||V|)\)</span> operations, so each iteration of the algorithm takes <span class="math">\(O(|E||V|^2 2^m)\)</span> time. Finally, we have to recalculate all split betweennesses each time we remove an edge, yielding a total runtime of <span class="math">\(O(|E|^2|V|^2 2^m)\)</span>. In the worst case, on a connected graph, <span class="math">\(m = O(|V|)\)</span> and <span class="math">\(|E| = O(|V|^2)\)</span>, so we have <span class="math">\(O(|E|^2|V|^2 2^m)=O(|V|^6 2^{|V|})\)</span> operations. Even a single densely connected vertex takes this algorithm into exponential time.</p>
+<p>Luckily, there are a few significant improvements that we can make. Split betweenness is clearly bounded above by <strong>vertex betweenness</strong>, the normalized number of paths through some vertex <span class="math">\(v\)</span>, because an imaginary path within a vertex cannot possibly be involved in more shortest-paths than the vertex as a whole. Furthermore, we can calculate vertex betweenness from edge betweenness, since any shortest-paths going through an edge incident to some vertex must also contribute to the betweenness of the vertex itself.</p>
+We can calculate vertex betweenness from edge betweenness using the following equation:
+<div style="text-align:center; margin: 20px 0 20px 0">
+<span class="math">\(VertexBetweenness(v) = \frac{1}{2} \left(\sum\limits_{e \in incident(v)} EdgeBetweenness(e) - (n-1)\right)\)</span>
+</div>
+<p>In practice, filtering the vertices by vertex betweenness makes a big difference. However, calculating all split betweennesses for even a single vertex can still take exponential time. To fix this, Gregory introduces a greedy algorithm that makes use of yet another metric that he calls <strong>pair betweenness</strong>. While pair betweenness is not too useful by itself, it allows us to calculate split betweenness much faster. Pair betweenness is the normalized number of shortest-paths that travel through some triplet <span class="math">\(u \rightarrow v \rightarrow w\)</span>. For every vertex <span class="math">\(v\)</span> with <span class="math">\(m\)</span> incident edges, there are <span class="math">\(\binom{m}{2}\)</span> pair betweennesses that need to be calculated. If we use the original all-pairs-shortest-paths algorithm, we can calculate the pair betweennesses at the same time as the edge betweennesses, in <span class="math">\(O(|V|^2|E|)\)</span> time (though we’re trying to extend the optimized algorithm to do so in <span class="math">\(O(|V||E|)\)</span>).</p>
+<p>We can represent the pair betweennesses of a single vertex <span class="math">\(v\)</span> of degree <span class="math">\(k\)</span> by constructing a <a href="http://en.wikipedia.org/wiki/Clique_(graph_theory)">k-clique</a> where each vertex in the clique represents some neighbor of <span class="math">\(v\)</span>. The weight on each edge <span class="math">\(\{u, w\}\)</span> is the pair betweenness of <span class="math">\(v\)</span> for <span class="math">\(\{u, w\}\)</span> (the normalized number of shortest paths through <span class="math">\(u\rightarrow v \rightarrow w\)</span>).</p>
+<p>Gregory explains the greedy algorithm using these four steps:</p>
+<ul>
+    <li>
+        <ol>
+            <li>
+Choose edge <span class="math">\(\{u,w\}\)</span> with minimum score.
+</li>
+            <li>
+Coalesce <span class="math">\(u\)</span> and <span class="math">\(w\)</span> to a single vertex, <span class="math">\(uw\)</span>.
+</li>
+            <li>
+For each vertex <span class="math">\(x\)</span> in the clique, replace edges <span class="math">\(\{u,x\}\)</span>, score <span class="math">\(b_1\)</span>, and <span class="math">\(\{w,x\}\)</span>, score <span class="math">\(b_2\)</span>, by a new edge <span class="math">\(\{uw,x\}\)</span> with score <span class="math">\(b_1+b_2\)</span>.
+</li>
+            <li>
+Repeat from step 1 <span class="math">\(k-2\)</span> times (in total).
+</li>
+        </ol>
+    </li>
+</ul>
+
+<p>We are left with two vertices with one edge connecting them, where the edge weight is the split betweenness and the labels on each remaining vertex specify the split.</p>
+<p>This procedure does not guarantee an optimal split, but Gregory asserts that it usually ends up close, and the greedy algorithm is much (much) more efficient. Our implementation is <span class="math">\(O(k^3)\)</span>, but a cleverer one that sorts the betweennesses could potentially use <span class="math">\(O(k^2\log k)\)</span> operations. Compared with <span class="math">\(2^k\)</span>, we’re quite pleased.</p>
+<p><a class="fancybox-effects-a"  href=/images/post_8/greedy.png><img src="/images/post_8/greedy.png" title="An example of the greedy split betweenness algorithm. This example shows how we would find max split betweenness of some vertex a with neighbors b, c, d, and e and pair betweennesses specified as edge weights. Figure from [3]." ></a></p>
+<p>We can modify CONGA to use the greedy algorithm and to filter by vertex betweenness as follows (steps taken from [3]):</p>
+<ul>
+    <li>
+        <ol>
+            <li>
+Calculate all edge betweenness scores.
+</li>
+            <li>
+Calculate all vertex betweenness scores, using the equation described above.
+</li>
+            <li>
+Find set of vertices such that each member’s vertex betweenness is greater than the maximum edge betweenness. If the set is empty, remove the edge with maximum betweenness and skip to step 7.
+</li>
+            <li>
+For each member of the set, calculate pair betweennesses of each vertex by examining shortest paths.
+</li>
+            <li>
+Calculate the maximum split betweenness and optimal split using the greedy algorithm outlined above.
+</li>
+            <li>
+Remove edge with maximum edge betweenness or split vertex with maximum split betweenness (if greater).
+</li>
+            <li>
+Recalculate edge betweenness for all remaining edges in same component(s) as removed edge or split vertex.
+</li>
+            <li>
+Repeat from step 2 until no edges remain.
+</li>
+        </ol>
+    </li>
+</ul>
+
+<p>Given these two optimizations, we now have an algorithm that runs in <span class="math">\(O(|E|^2|V|)\)</span>. In practice, runtime again depends heavily on the community structure of the graph, and how often vertices need to be split.</p>
+<p>CONGA is a nice extension to Girvan-Newman, and it even has a cool name. But even with the optimizations, it is still painfully, brain-meltingly slow. What we really need is a significantly faster algorithm with a slightly cooler name. This brings us to Gregory’s next iteration of the algorithm, which fits into the CONG-esque theme: CONGO, or Cluster-Overlap Newman Girvan <em>Optimized</em>.</p>
+<h2 id="congo">CONGO</h2>
+<p>CONGA spends almost all of its time calculating edge and pair betweennesses, because it has to calculate all shortest-paths each time we want to recalculate a score. Since almost all contributions to betweenness tend to come from very short shortest-paths, Gregory defines yet another class of betweenness: <strong>local betweenness</strong>.</p>
+<p>We can calculate both edge betweenness and pair betweenness by only considering paths no longer than length <span class="math">\(h\)</span>. This is a much faster calculation, since any breadth-first search needs only to traverse to <span class="math">\(h\)</span> levels, rather than to the entire graph. This localization is the essence of CONGO.</p>
+<p>When we’re only concerned with shortest-paths less than or equal to length <span class="math">\(h\)</span>, betweenness scores aren’t affected by an edge removal or a vertex split <span class="math">\(h + \epsilon\)</span> away, where <span class="math">\(\epsilon\)</span> is some small distance. This means that we only have to calculate all edge and pair betweenness scores once, then adjust the scores in the neighborhood of the modification every time a change is made.</p>
+To formalize that notion, Gregory defines the <span class="math">\(h\)</span>-region of a modification to be the smallest possible subgraph containing all shortest-paths that pass through <span class="math">\(v\)</span> (for a vertex split) or <span class="math">\(e\)</span> (for an edge removal) of length no longer than <span class="math">\(h\)</span>. The <span class="math">\(h\)</span>-region of edge <span class="math">\(e\)</span> that traverses <span class="math">\(\{u, v\}\)</span> is the subgraph with the set of vertices:
+<div style="text-align:center; margin: 20px 0 20px 0">
+<span class="math">\(\{w : d(u, w) \lt h \vee d(v, w) \lt h\}\)</span>
+</div>
+where <span class="math">\(d(a, b)\)</span> is the length of the shortest path between <span class="math">\(a\)</span> and <span class="math">\(b\)</span>. Similarly, the <span class="math">\(h\)</span>-region of vertex <span class="math">\(v\)</span> is the subgraph with the set of vertices:
+<div style="text-align:center; margin: 20px 0 20px 0">
+<span class="math">\(\{w : d(v, w) \le h\}\)</span>
+</div>
+<p>When we remove an edge or split a vertex, we have to update the betweenness scores in its <span class="math">\(h\)</span>-region. Before we modify the graph, we compute all shortest paths no longer than <span class="math">\(h\)</span> that lie entirely within the region, and subtract those scores from the stored values. Then we can make our modification (remove an edge or split a vertex) and recalculate these local shortest paths and betweennesses. Finally, we add these recalculated scores back. This procedure updates the local betweenness scores without requiring a full traversal of the graph.</p>
+<!-- <a class="fancybox-effects-a" href="/images/post_8/h_region.png"><img src="/images/post_8/h_region.png" title="a. Edge {h,i} selected for removal. 2-region of {h,i} is shaded. &#10; b. Shortest paths within region are found and subtracted from betweenness. &#10; c. {h,i} is removed. Shortest paths within region are found and added to betweenness. &#10; From [4]." ></a> &#8211;>
+
+<p>Given our new definition of local betweenness, we modify CONGA into CONGO:</p>
+<ul>
+    <li>
+        <ol>
+            <li>
+Calculate all shortest paths no longer than <span class="math">\(h\)</span>.
+</li>
+            <li>
+From these shortest paths, calculate initial edge and pair betweenness scores.
+</li>
+            <li>
+Calculate all local vertex betweenness scores.
+</li>
+            <li>
+Find set of vertices such that each member’s vertex betweenness is greater than the maximum edge betweenness. If the set is empty, remove the edge with maximum betweenness and skip to step 7.
+</li>
+            <li>
+For each member of the set, calculate the maximum split betweenness and optimal split using the greedy algorithm outlined above.
+</li>
+            <li>
+Find edge with maximum edge betweenness or vertex with maximum split betweenness (if greater).
+</li>
+            <li>
+                <ol>
+                    <li>
+Calculate local betweenness in the <span class="math">\(h\)</span>-region of the planned split or removal.
+</li>
+                    <li>
+Subtract the local betweenness scores from those in the <span class="math">\(h\)</span>-region.
+</li>
+                    <li>
+Remove edge or split vertex.
+</li>
+                    <li>
+Recalculate local betweennesses in <span class="math">\(h\)</span>-region.
+</li>
+                    <li>
+Add back the local betweenness scores.
+</li>
+                </ol>
+            </li>
+            <li>
+Repeat from step 3 until no edges remain.
+</li>
+        </ol>
+    </li>
+</ul>
+
+<p>In practice, CONGO yields similar results to CONGA with arbitrary <span class="math">\(h &gt; 1\)</span>. As <span class="math">\(h\)</span> increases, accuracy increases, but not nearly as dramatically as one might expect. <span class="math">\(h=2\)</span> performs very well on most networks, and CONGA rarely performs much better than CONGO with <span class="math">\(h=3\)</span>.</p>
+<h2 id="performance">Performance</h2>
+<p>We implemented all three algorithms using the Python wrapper of the wonderful open-source graph engine <a href="http://igraph.org/redirect.html">igraph</a>. All of the algorithms are much slower than they could be, especially because we repeatedly calculate all shortest paths in CONGO rather than use the optimized algorithm proposed by Newman or Brandes. In addition, a lot of the core functionality is in unoptimized Python, which doesn’t help runtime.</p>
+<p>For a detailed analysis of execution time using a more optimized version of CONGO, see Gregory’s paper for some great graphs. He generates random graphs with known community structure to do his analysis.</p>
+<p>But what if we’re not sure if the graph has community structure? Let’s find out if CONGO can be used to determine whether a graph can be divided into reasonable communities.</p>
+<p>For this analysis, we used a few classic graphs that we know have community structure, and then generated random graphs with the same number of nodes and edges. We generated these graphs using the <a href="http://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model">Erdős-Réyni model</a>, where each edge is placed between a pair of nodes randomly and independently of all other edges. To get a semi-accurate runtime, we ran the algorithm on each classic data set five times, taking the median value. Since random graphs can – by definition – have random structure, we generated five different random graphs and took the median value for comparison.</p>
+<p>This comparison, albeit somewhat unscientific, provides some insight into the algorithm’s performance.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"><strong>Graph</strong></th>
+<th style="text-align: center;"><strong>Number of vertices</strong></th>
+<th style="text-align: center;"><strong>Number of edges</strong></th>
+<th style="text-align: center;"><strong>Median runtime (h=2)</strong></th>
+<th style="text-align: center;"><strong>Median runtime (h=3)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="http://www-personal.umich.edu/~mejn/netdata/">Zachary’s Karate Club</a></td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">.211 seconds</td>
+<td style="text-align: center;">.362 seconds</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Graph</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">78</td>
+<td style="text-align: center;">.342 seconds</td>
+<td style="text-align: center;">.612 seconds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="http://www-personal.umich.edu/~mejn/netdata/">American College Football</a></td>
+<td style="text-align: center;">115</td>
+<td style="text-align: center;">616</td>
+<td style="text-align: center;">9.8 seconds</td>
+<td style="text-align: center;">34.2 seconds</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Graph</td>
+<td style="text-align: center;">115</td>
+<td style="text-align: center;">616</td>
+<td style="text-align: center;">31.2 seconds</td>
+<td style="text-align: center;">138 seconds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="http://www-personal.umich.edu/~mejn/netdata/">Coauthorships in Network Science</a> (largest component)</td>
+<td style="text-align: center;">379</td>
+<td style="text-align: center;">914</td>
+<td style="text-align: center;">8.7 seconds</td>
+<td style="text-align: center;">12.4 seconds</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Graph</td>
+<td style="text-align: center;">379</td>
+<td style="text-align: center;">914</td>
+<td style="text-align: center;">17.2 seconds</td>
+<td style="text-align: center;">87 seconds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="http://deim.urv.cat/~alexandre.arenas/data/welcome.htm">PGP</a> (largest component)</td>
+<td style="text-align: center;">10680</td>
+<td style="text-align: center;">24340</td>
+<td style="text-align: center;">12431 seconds</td>
+<td style="text-align: center;">23598 seconds</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Random Graph</td>
+<td style="text-align: center;">10680</td>
+<td style="text-align: center;">24340</td>
+<td style="text-align: center;">69236 seconds</td>
+<td style="text-align: center;">88564 seconds (ran once.)</td>
+</tr>
+</tbody>
+</table>
+<p><a class="fancybox-effects-a"  href=/images/post_8/runtime.jpg><img src="/images/post_8/runtime.jpg" title="Graph of the table above. The football graph is much denser than the network science graph, explaining the drop in time." ></a></p>
+<p>What’s happening here? Why do graphs with the same “stats” have dramatically different runtimes? Well, random graphs tend not to have obvious community structure. This means that there are rarely obvious splits or removals to perform, and a large percentage of the split betweennesses has to be calculated every iteration. Furthermore, CONGO’s logs for the random graphs reveal an abundance of early splits, which can transform the number of vertices to <span class="math">\(O(|E|)\)</span> before any removals are performed. Graphs with community structure, on the other hand, tend to split early and often, so the algorithm runs on much smaller components. This suggests that CONGO is <em>not</em> a good algorithm to use to check if some network can be split into communities. CONGO’s performance depends heavily on removing edges early, so it’s best to be confident in the community structure of a graph before feeding it willy-nilly into an algorithm of the CONG* persuasion. CONGO’s poor performance on randomized graphs reminds us just how important it is to pick the right algorithm to work with each graph structure.</p>
+<h2 id="other-thoughts">Other Thoughts</h2>
+<p>CONGO and CONGA would both benefit from parallelization. We could perform the breadth-first search from each node in parallel, asymptotically improving runtime. If we decide to eventually optimize our implementation, parallelization would be a very useful step.</p>
+<p>In this blog post, we don’t consider the quality of the communities generated. Many communities don’t have straightforward <a href="http://en.wikipedia.org/wiki/Ground_truth">ground truth</a>, so “grading” the results of each algorithm tends to be very difficult. In fact, our current <a href="http://www.lab41.org/our-process/">challenge</a> at the lab, called Circulo, is focused primarily on determining when a result is a good one. We’ve been working on metrics to determine which algorithms outperform others in various situations. Take a look at Circulo’s <a href="https://github.com/Lab41/Circulo">GitHub page</a> and submit a pull request. We’re always looking for more contributors.</p>
+<h2 id="resources">Resources</h2>
+<p>To really understand the algorithms described, read the papers and check out the source code for</p>
+<ul>
+<li>Girvan-Newman: <a href="http://www.pnas.org/content/99/12/7821.full">Paper</a><!-- , [source](TODO when we push to public again) --></li>
+<li>CONGA: <a href="http://www.cs.bris.ac.uk/Publications/Papers/2000712.pdf">Paper</a><!-- , [source](TODO when we push to public again) --></li>
+<li>CONGO: <a href="http://www.cs.bris.ac.uk/Publications/Papers/2000885.pdf">Paper</a><!-- , [source](TODO when we push to public again) --></li>
+</ul>
+<p>To experiment for yourself, I recommend trying out <a href="http://igraph.org/redirect.html">igraph</a> and looking into some of the community detection algorithms that they’ve already implemented.</p>
+<h2 id="references">References</h2>
+<p>[1] Newman, M. E., &amp; Girvan, M. (2004). Finding and evaluating community structure in networks. <em>Physical review E</em>, 69(2), 026113.</p>
+<p>[2] Brandes, U. (2001). A faster algorithm for betweenness centrality*. <em>Journal of Mathematical Sociology, 25</em>(2), 163-177.</p>
+<p>[3] Gregory, S. (2007). An algorithm to find overlapping community structure in networks. <em>Knowledge discovery in databases: PKDD 2007</em>, 91-102.</p>
+<p>[4] Gregory, S. (2008). A fast algorithm to find overlapping communities in networks. <em>Machine Learning and Knowledge Discovery in Databases</em>, 408-423.</p>
+<p>[5] Nicosia, V., Mangioni, G., Carchiolo, V., &amp; Malgeri, M. (2009). Extending the definition of modularity to directed graphs with overlapping communities. <em>Journal of Statistical Mechanics: Theory and Experiment, 2009</em>(03), P03024.</p>
+<p>[6] Zarei, M., Izadi, D., &amp; Samani, K. A. (2009). Detecting overlapping community structure of networks based on vertex–vertex correlations. <em>Journal of Statistical Mechanics: Theory and Experiment, 2009</em>(11), P11013.</p></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Robbie Ostrow</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-22T12:00:00+00:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://lab41.github.io/blog/2014/08/22/exploring-the-congo/" data-via="" data-counturl="http://lab41.github.io/blog/2014/08/22/exploring-the-congo/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/07/22/five-steps-to-demonstration-and-delivery/" title="Previous Post: Five Steps to Demonstration and Delivery">&laquo; Five Steps to Demonstration and Delivery</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/12/18/rolx-discovering-individuals-roles-in-a-social-network/" title="Next Post: Beyond Community Detection - RolX">Beyond Community Detection - RolX &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  This project is maintained by the <a href="https://github.com/LAB41">Lab41</a> Team to serve as a platform of discussion on technology topics relevant to Lab41 Challenges. More information about Lab41 can be found at <a href="http://www.lab41.org">www.lab41.org</a>.
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/28/triplewide-trailer-looking-to-rig-ipython/">Triplewide Trailer, Part 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/13/ipython-on-spark-on-docker/">Using Docker to Build an IPython-driven Spark Deployment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/13/skyline/">Introducing...SKYLINE</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/04/circulo-community-detection/">Circulo: A Community Detection Evaluation Framework</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/18/rolx-discovering-individuals-roles-in-a-social-network/">Beyond Community Detection - RolX</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/lab41">@lab41</a> on GitHub
+  
+  <script type="text/javascript">
+   (function($) {
+    $(document).on('ready', function() {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'lab41',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+   })(jQuery);
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Blog Authors</h1>
+  <ul id="blog_authors">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li><a href="https://github.com/kylef-lab41" target="_blank">Kyle Foster</a></li>
+    <li><a href="https://github.com/aganeshLab41" target="_blank">Abhinav Ganesh</a></li>
+    <li><a href="https://github.com/ks-lab41" target="_blank">Kabir Soorya</a></li>
+    <li><a href="https://github.com/Lab41PaulM" target="_blank">Paul Mazzuca</a></li>
+    <li><a href="https://github.com/ymt123" target="_blank">Yonas Tesfaye</a></li>
+    <li><a href="https://github.com/nadesai" target="_blank">Nikhil Desai</a></li>
+    <li><a href="https://github.com/cglewis" target="_blank">Charlie Lewis</a></li>
+    <li><a href="https://github.com/ostrowr" target="_blank">Robbie Ostrow</a></li>
+    <li><a href="https://github.com/karkumar" target="_blank">Karthik Ramachandran</a></li>
+  </ul>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Lab41 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</a></span>
+  <br>
+  <span>
+    Background image: <a href="https://www.flickr.com/photos/vkurland/8219699128">"Stanford Dish hiking trail"</a> by <a href="https://www.flickr.com/photos/vkurland/">Vadim Kurland</a>, used under <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> / Desaturated from original
+  </span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

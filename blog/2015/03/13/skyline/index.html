@@ -1,0 +1,592 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Introducing...SKYLINE - { lab41 }</title>
+  <meta name="author" content="Lab41">
+
+  
+  <meta name="description" content="Here at Lab41, we’ve recently found ourselves interested in dynamic graphs and we’ve spent the last few months trying to understand what tools we &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://lab41.github.io/blog/2015/03/13/skyline/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="{ lab41 }" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="https://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/bootstrap-responsive.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-extra.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-buttons.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/jquery.fancybox-thumbs.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/tables.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="/stylesheets/custom/kronecker.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+
+<script src="/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
+
+<script src="/javascripts/fancybox/jquery.fancybox.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-activate.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-buttons.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-media.js" type="text/javascript"></script>
+<script src="/javascripts/fancybox/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.mousewheel-3.0.6.pack.js" type="text/javascript"></script>
+<script src="/javascripts/r_syntax.js" type="text/javascript"></script>
+<script src="/javascripts/google_analytics.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script>
+<script src="/javascripts/mathjax.js" type="text/x-mathjax-config"></script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script type="text/javascript" src="/javascripts/kroneckerapp.js"></script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40906884-1, UA-40464073-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/"><img src="/images/lab41/logo.png" width="212" height="50" alt='Logo' %}> { blog }</a></h1>
+  
+    <h2>innovation through collaboration</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:lab41.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h3 class="entry-title">Introducing...SKYLINE</h3>
+    
+    
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-13T00:00:00+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2015</time>
+        
+  
+
+<span class="byline author vcard"> - <span class="fn">Kabir Soorya and Abhinav Ganesh</span></span>
+
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><div class="row-fluid" style="margin-bottom: 20px">
+<div class="span3 image_holder_ks" style="padding-top: 5px">
+<img src="/images/post_10_skyline/skyline.png" style="border: 0; box-shadow: none; border-radius: 0; -webkit-box-shadow: none;">
+</div>
+<div class="span9">
+<pre><code>Here at Lab41, we’ve recently found ourselves interested in dynamic graphs and we’ve spent the last few months trying to understand what tools we can use to analyze them – we call this effort Project SkyLine. We’re writing this blog to explain why we think dynamic graphs are interesting, and what we’ve found out so far.</code></pre>
+</div>
+</div>
+<h3 id="whats-so-great-about-dynamic-graphs"><strong>What’s so great about dynamic graphs?</strong></h3>
+<p>We’ve said it before and we’ll say it again, “Graphs are a great way to model the world around us – from links on the Internet, to the wiring of our brains, to our friendships and relationships.” Graphs naturally represent connections, and connections are central to each of these things. That’s not the whole story though: the world is constantly changing, and so are those connections. Web pages are taken down and links are added every day; our brains constantly rewire themselves as we learn and experience the world.</p>
+<p>To understand how the world is changing, we need to be able to analyze graphs that change over time – in other words, <strong>dynamic graphs</strong>. In a dynamic graph, new edges and vertices can be created at any time, old ones can be destroyed, and attributes (things like age or location) can be altered at any moment, updating the graph to reflect changes in the things and relationships it represents.</p>
+<p>We can learn a great deal by applying graph analytic techniques to dynamic graphs. For instance, a dynamically connected components algorithm might tell us when someone joins or leaves a particular group of friends; applying PageRank to the web can show us how web pages rise or fall in mindshare. In addition, we can watch for patterns in the graph – like a series of vertices and edges matching a particular query of interest – flag them as they emerge, and track them for as long as they endure. We call this functionality “triggering” because it lets us respond to specific kinds of changes to the graph by using them to “trigger” relevant actions, as in the example below:</p>
+<p>Imagine we have a graph where the vertices are web pages and the edges are links connecting them. We might have a trigger such as, “Send a notification whenever a page with ‘dogs’ in the URL is connected to a page with ‘cats’ in the URL which is connected to a page with ‘parakeets’ in the URL.”</p>
+<p>The initial graph below doesn’t contain that path and therefore wouldn’t fire that trigger at all:</p>
+<p><a class="fancybox-effects-a"  href=/images/post_10_skyline/trigger_ex.png><img src="/images/post_10_skyline/trigger_ex.png" title="Trigger Example" ></a></p>
+<p>However, a later update could add an edge between “example.com/cats” and “example.com/parakeets,” which should trigger a notification being sent to the user since it matches the path highlighted by the red arrows [“example.com/dogs”, “example.com/cats”, “example.com/parakeets”]:</p>
+<p><a class="fancybox-effects-a"  href=/images/post_10_skyline/trigger_ex_red.png><img src="/images/post_10_skyline/trigger_ex_red.png" title="Trigger Example" ></a></p>
+<p>[“example.com/dogs”, “example.com/cats”, “example.com/parakeets”] and a notification should be sent to the user.</p>
+<h3 id="so-how-many-open-source-packages-does-it-take-to-analyze-a-dynamic-graph"><strong>So, how many open source packages does it take to analyze a dynamic graph?</strong></h3>
+<p>Unfortunately, graph analytics to date have dealt mostly with static graphs – graphs that don’t update change over time – and most of the relevant software is designed for that use case. There are a few exceptions, but even these aren’t very well known, so we decided to figure out what’s possible today.</p>
+<p>We started off by looking at all the open source graph analytics packages we could find. Our goal was to find out what functionality each one offers, what use cases are supported, and how these hold up to the stress of real-world dynamics (possibly changing hundreds of thousands of times per second). Below is a summarized version of what we found, and you can see the results for yourself in all their gory detail <a href="http://lab41.github.io/SkyLine/">here</a>.</p>
+<p>In the table below, we’ve included a few of the categories that we felt were the important points when making a decision on which tool to use. Here’s what each one means:</p>
+<p><strong>ACID Compliance / Eventual Consistency:</strong> Each operation relies on the state of the underlying graph in some way. What guarantees does this platform provide that each operation will see all changes made by its predecessors / will not interrupt or conflict with another operation happening concurrently?</p>
+<p><strong>Supports Graphs Larger than Memory:</strong> Pretty self-explanatory, can this platform handle graphs bigger than the memory of the machine it’s running on?</p>
+<p><strong>Supports Edge/Vertex Labels:</strong> Can we attach additional information to each edge and vertex besides what vertices/edges it’s connected to?</p>
+<p><strong>Supports Dynamic Graphs/Streaming:</strong> Can this platform handle changes to the graph under consideration, without having to reload it altogether?</p>
+<p><strong>Supports Triggering:</strong> If the answer to the feature above is yes, is there a way to run some piece of code every time a particular type of change happens (for instance, every time a vertex is added with the “name” attribute set to “Bob”)?</p>
+<p><strong>Quality of Documentation:</strong> On a scale from “I can haz cheezburger?” to The Encyclopaedia Britannica, just how approachable and comprehensive is the documentation? And on a scale from Twilight to Shakespeare, how readable is it?</p>
+<div>
+<div class="img_holder_ks">
+<a class="fancybox-effects-a" href="/images/post_10_skyline/chart.png" style="text-decoration: none;"> <img src="/images/post_10_skyline/chart.png" title="Chart" style="border: 0; box-shadow: none; border-radius: 0; -webkit-box-shadow: none;"> </a>
+</div>
+
+<p>Summarized Points of Comparison (Full Survey: <a href="http://lab41.github.io/SkyLine" target="_blank" rel="nofollow">http://lab41.github.io/SkyLine</a>)</p>
+<p>Looking at this table, it becomes clear that only a few of the packages under consideration attempt to support all of dynamic graphs, streaming updates, and triggering:</p>
+<p><strong>Titan</strong>: a leading graph database, created and maintained by the team at Aurelius (now DataStax) and being used at places including Cisco Systems and Los Alamos National Labs.</p>
+<p><strong>Stinger</strong>: an open source project started by a team at Georgia Tech based on their work on efficient graph data structures. The goal of Stinger is to support high performance analytics on dynamic graphs!</p>
+<p><strong>Weaver</strong>: a new open source, distributed graph store by a team at Cornell’s Systems Group, which shards the graph over multiple servers, and supports highly efficient transactions and updates.</p>
+<p>As soon as we saw Weaver, we fell in love with the vision behind it. It looks like a really solid idea with a very smart group of contributors working on it. Unfortunately, it’s very much in its infancy, and the FAQ makes it very clear that Weaver isn’t production-ready, so we’ve had to put a pin in this one for now. Nonetheless, we’ll be following it closely over the near future, and are excited to see what becomes of the project.</p>
+<p>That leaves us with Titan and Stinger. Since our first concern is with the platform’s ability to handle updates to the graph efficiently, we decided to benchmark the speed with which each one could process a given stream of changes to a starting graph (actually, a starting collection of disconnected vertices).</p>
+<p>We wrote <a href="https://github.com/Lab41/SkyLine">a Python script</a> to create graphs that are representative of interesting workloads for us: lots of nodes and edges, potentially long cycles, vertex attributes, etc. In order to do this efficiently, our script started off by generating a large number of trees, and then randomly adding ancestors to each node from the set of nodes closer than it to the root. Our script then picked and joined random pairs of nodes, and selected sequences of nodes which it joined together to make cycles (all the requisite probabilities and limits were tunable, and the random number generator was given the constant seed of 0xcafebabe, for reproducibility). This random generation of graphs is slightly different than our previous work with stochastic Kronecker natural graphs which, for those who are interested, <a href="http://lab41.github.io/blog/2013/08/27/stochastic-kronecker-natural-graphs/">can be found here</a>.</p>
+<p>The next step was to turn this graph into a randomly ordered stream of updates that could be used to generate it. This was slightly more complex than it sounds, since we wanted to ensure that:</p>
+<ol style="margin-left: 2em">
+    <li>
+No edge was created unless the vertices on each end existed.
+</li>
+    <li>
+Every vertex created (after those in the initial set) would have an edge connecting it to an existing vertex no more than one step later in the stream.
+</li>
+</ol>   
+<p>In short, this meant that we had to make sure that at least one predecessor of any given vertex existed before it was itself created. To do this, we started with the standard Graph Traversal Algorithm:</p>
+Repeat:
+<ol style="margin-left: 2em">
+    <li>
+Select a path on the frontier. Let’s call the path selected P.
+</li>
+    <li>
+Remove P from the frontier.
+</li>
+    <li>
+For each neighbor of the node at the end of P, extend P to that neighbor and add the extended path to the frontier.
+</ol>
+<p>Until the frontier is empty. (Adapted from <a href="http://artint.info/tutorials/search/search_1.html" target="_blank" rel="nofollow">http://artint.info/tutorials/search/search_1.html</a>)</p>
+<p>Where the frontier is defined as the set of nodes or edges to be explored and is initially set to all nodes that are adjacent to the root (are at the other end of an edge from the root node) or simply all the edges emanating from the root.</p>
+<p>We then tweaked this algorithm so that the frontier was randomly ordered. By ensuring no node would ever get into the frontier (and thus be added to the stream) before at least one of its predecessors, we mirrored the random ordering that real streams exhibit.</p>
+<p>(After all, in the real world, we can easily predict that a father will exist before his son, but not which father will have a son first!) We then fed the resulting streams to both Titan (using the Berkeley DB backend) and Stinger and measured total time taken to process them. Below are our findings.</p>
+<p>We then fed the resulting streams to both Titan (using the Berkeley DB backend) and Stinger and measured total time taken to process them. Below are our findings.</p>
+<table class="table-lab41">
+  <tbody>
+    <tr>
+      <td>
+Number of Nodes
+</td>
+      <td>
+Number of Edges
+</td>
+      <td>
+Titan Time
+</td>
+      <td>
+Stinger Time
+</td></tr>
+    <tr>
+      <td>
+23,236
+</td>
+      <td>
+37,391
+</td>
+      <td>
+8.9 sec
+</td>
+      <td>
+0.05 sec
+</td></tr>
+    <tr>
+      <td>
+33,510
+</td>
+      <td>
+65,759
+</td>
+      <td>
+9.0 sec
+</td>
+      <td>
+0.08 sec
+</td></tr>
+    <tr>
+      <td>
+52,203
+</td>
+      <td>
+100,712
+</td>
+      <td>
+11.5 sec
+</td>
+      <td>
+0.11 sec
+</td></tr>
+    <tr>
+      <td>
+74,724
+</td>
+      <td>
+114,785
+</td>
+      <td>
+11.5 sec
+</td>
+      <td>
+0.13 sec
+</td></tr>
+    <tr>
+      <td>
+97,490
+</td>
+      <td>
+150,234
+</td>
+      <td>
+15.2 sec
+</td>
+      <td>
+0.20 sec
+</td></tr>
+    <tr>
+      <td>
+109,709
+</td>
+      <td>
+168,898
+</td>
+      <td>
+21.8 sec
+</td>
+      <td>
+0.32 sec
+</td></tr>
+    <tr>
+      <td>
+185,705
+</td>
+      <td>
+274,919
+</td>
+      <td>
+19.7 sec
+</td>
+      <td>
+0.31 sec
+</td></tr>
+    <tr>
+      <td>
+190,476
+</td>
+      <td>
+292,376
+</td>
+      <td>
+29.2 sec
+</td>
+      <td>
+0.56 sec
+</td></tr>
+    <tr>
+      <td>
+376,126
+</td>
+      <td>
+557,933
+</td>
+      <td>
+43.0 sec
+</td>
+      <td>
+1.11 sec
+</td></tr>
+    <tr>
+      <td>
+675,017
+</td>
+      <td>
+982,804
+</td>
+      <td>
+58.9 secs
+</td>
+      <td>
+1.19 sec
+</td></tr>
+    <tr>
+      <td>
+2,100,312
+</td>
+      <td>
+3,012,488
+</td>
+      <td>
+14.4 min
+</td>
+      <td>
+N/A<sup>a</sup>
+</td></tr>
+    <tr>
+      <td>
+22,727,509
+</td>
+      <td>
+40,173,501
+</td>
+      <td>
+12.1 hours
+</td>
+      <td>
+N/A<sup >a,b</sup>
+</td></tr>    
+  </tbody>
+</table>
+
+<p><span style="font-size: 10pt"> <sup>a</sup>No data available<br /> <sup>b</sup>This datapoint is provided only as rough bound, as it was produced on a different, much more powerful machine than all the others. </span></p>
+<p>As we can see, Stinger throws down with the best of them. In our tests it was clear that it performed a lot better. Unfortunately, it can only handle graphs of up to a predefined number of vertices (which is very small by default). Titan, on the other hand, while around an order of magnitude slower (using default settings and transaction parameters), was able to handle graphs with no apparent limit on vertex or edge count. Obviously, there are several factors that could explain the performance difference we observed on graphs of comparable size. One reason for this difference is the fact that Stinger operates in memory while Titan is a disk-based transactional database – although there are opportunities to tune those transactions. Other reasons include the fact that Stinger is written in C, whereas Titan uses Java (which could add to the overall performance slowdown).</p>
+<p>Regardless, we’ll probably end up choosing to build on Titan, for a variety of reasons apart from performance. First, it’s ACID compliant, whereas Stinger isn’t. Second, of the two projects it’s much more robust and production-ready. It’s also better documented and more actively supported and contributed to. Finally, it has much better support for ad hoc querying and integration with other analytical tools, such as the <a href="http://www.tinkerpop.com/">TinkerPop</a> stack, and the powerful visualization platform <a href="http://gephi.github.io/">Gephi</a>.</p>
+<h3 id="so-whats-next"><strong>So what’s next?</strong></h3>
+<p>We’re excited about the “triggering” scenario we described above. The ability to spot patterns that emerge as the graph updates, and take actions based on those patterns holds a lot of promise for various application areas. Business rules engines, for instance, do exactly this but with relationally structured data rather than graphs; alternately, being able to annotate models of the human transcriptome with new findings and have a machine notify scientists when patterns emerge that they’re interested in (e.g., This gene that increases connectivity in the fusiform gyrus when knocked out has mutant variations that correlate lower expressions of these other genes that influence height. Yes, I did just make that up.).</p>
+<p>Thus far, we’ve only taken a preliminary look at this problem. We’ve simplified our patterns to be fixed length “chains” where each link specifies a predicate that the corresponding node or edge in a potential matching path must satisfy. Even in this case, the problem is pretty tough. Even simple indexing approaches run into problems like high memory requirements – if you’re caching partial paths as they occur – or the substantial time complexity of the <a href="http://www.dis.uniroma1.it/~demetres/docs/dapsp-full.pdf">dynamic all points shortest path problem</a> – if you want to maintain information about how many hops you have to travel to get to the nearest node satisfying the next predicate in the chain (the first approach would be easy if you knew that the paths were always very frequent or very infrequent, but lacking such information we’re stuck with the worst case for now). Some approaches we’re looking into are smarter caching of subpaths, or employing <a href="https://crypto.stanford.edu/pbc/notes/zdd/">zero-suppressed binary decision diagrams</a>, which have previously been used to count paths in graphs. But it’s early days so far.</p>
+<p>If we’re lucky, and have a successful outcome, we’re hoping to help one or more open source projects implement and adopt a really efficient engine for doing these sorts of analyses and ideally, dynamic graph analytics in general. We think this is going to be a huge development in analytics, and can’t wait to see what the community builds on top of the ability to see how the world is changing.</p>
+<p>Thanks for tuning into another exciting episode of the Lab41 blog. See you next time!</p></div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Kabir Soorya and Abhinav Ganesh</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-03-13T00:00:00+00:00" pubdate data-updated="true">Mar 13<span>th</span>, 2015</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://lab41.github.io/blog/2015/03/13/skyline/" data-via="" data-counturl="http://lab41.github.io/blog/2015/03/13/skyline/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/02/04/circulo-community-detection/" title="Previous Post: Circulo: A Community Detection Evaluation Framework">&laquo; Circulo: A Community Detection Evaluation Framework</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/04/13/ipython-on-spark-on-docker/" title="Next Post: Using Docker to Build an IPython-driven Spark Deployment">Using Docker to Build an IPython-driven Spark Deployment &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  This project is maintained by the <a href="https://github.com/LAB41">Lab41</a> Team to serve as a platform of discussion on technology topics relevant to Lab41 Challenges. More information about Lab41 can be found at <a href="http://www.lab41.org">www.lab41.org</a>.
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/28/triplewide-trailer-looking-to-rig-ipython/">Triplewide Trailer, Part 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/04/13/ipython-on-spark-on-docker/">Using Docker to Build an IPython-driven Spark Deployment</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/03/13/skyline/">Introducing...SKYLINE</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/02/04/circulo-community-detection/">Circulo: A Community Detection Evaluation Framework</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/12/18/rolx-discovering-individuals-roles-in-a-social-network/">Beyond Community Detection - RolX</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/lab41">@lab41</a> on GitHub
+  
+  <script type="text/javascript">
+   (function($) {
+    $(document).on('ready', function() {
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'lab41',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+   })(jQuery);
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+<section>
+  <h1>Blog Authors</h1>
+  <ul id="blog_authors">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <li><a href="https://github.com/kylef-lab41" target="_blank">Kyle Foster</a></li>
+    <li><a href="https://github.com/aganeshLab41" target="_blank">Abhinav Ganesh</a></li>
+    <li><a href="https://github.com/ks-lab41" target="_blank">Kabir Soorya</a></li>
+    <li><a href="https://github.com/Lab41PaulM" target="_blank">Paul Mazzuca</a></li>
+    <li><a href="https://github.com/ymt123" target="_blank">Yonas Tesfaye</a></li>
+    <li><a href="https://github.com/nadesai" target="_blank">Nikhil Desai</a></li>
+    <li><a href="https://github.com/cglewis" target="_blank">Charlie Lewis</a></li>
+    <li><a href="https://github.com/ostrowr" target="_blank">Robbie Ostrow</a></li>
+    <li><a href="https://github.com/karkumar" target="_blank">Karthik Ramachandran</a></li>
+  </ul>
+</section>
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Lab41 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</a></span>
+  <br>
+  <span>
+    Background image: <a href="https://www.flickr.com/photos/vkurland/8219699128">"Stanford Dish hiking trail"</a> by <a href="https://www.flickr.com/photos/vkurland/">Vadim Kurland</a>, used under <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a> / Desaturated from original
+  </span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'https://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
